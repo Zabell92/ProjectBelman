@@ -42,6 +42,8 @@ public class GUIMain extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtOrderInfo = new javax.swing.JTextArea();
+        lblOrderList = new javax.swing.JLabel();
+        lblSimOrder = new javax.swing.JLabel();
         panAddOrder = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblShowOrder = new javax.swing.JTable();
@@ -58,6 +60,7 @@ public class GUIMain extends javax.swing.JFrame
         lblThickness = new javax.swing.JLabel();
         lblCircumference = new javax.swing.JLabel();
         lblDueDate = new javax.swing.JLabel();
+        lblAddOrderList = new javax.swing.JLabel();
         panUpdateOrder = new javax.swing.JPanel();
         btnUpdate = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -76,6 +79,7 @@ public class GUIMain extends javax.swing.JFrame
         lblIDOrder = new javax.swing.JLabel();
         lblUpdateQuantity = new javax.swing.JLabel();
         lblUpdateWidth = new javax.swing.JLabel();
+        lblUpdaterOrderList = new javax.swing.JLabel();
         panRemoveOrder = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblUpdateShowOrder1 = new javax.swing.JTable();
@@ -83,6 +87,7 @@ public class GUIMain extends javax.swing.JFrame
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblRemoveOrder = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,16 +165,26 @@ public class GUIMain extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblOrderList.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblOrderList.setText("Orders:");
+
+        lblSimOrder.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblSimOrder.setText("Similar Orders:");
+
         javax.swing.GroupLayout panOrderInfoLayout = new javax.swing.GroupLayout(panOrderInfo);
         panOrderInfo.setLayout(panOrderInfoLayout);
         panOrderInfoLayout.setHorizontalGroup(
             panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panOrderInfoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(panOrderInfoLayout.createSequentialGroup()
+                        .addGroup(panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblOrderList)
+                            .addComponent(lblSimOrder))
+                        .addGap(0, 80, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,12 +195,19 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panOrderInfoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panOrderInfoLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addComponent(lblOrderList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSimOrder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
 
         jTabbedPane1.addTab("Order Info", panOrderInfo);
@@ -275,6 +297,9 @@ public class GUIMain extends javax.swing.JFrame
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
+        lblAddOrderList.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblAddOrderList.setText("Orders:");
+
         javax.swing.GroupLayout panAddOrderLayout = new javax.swing.GroupLayout(panAddOrder);
         panAddOrder.setLayout(panAddOrderLayout);
         panAddOrderLayout.setHorizontalGroup(
@@ -287,17 +312,20 @@ public class GUIMain extends javax.swing.JFrame
                         .addComponent(btnAdd)
                         .addGap(18, 18, 18)
                         .addComponent(btnClear))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddOrderList))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panAddOrderLayout.setVerticalGroup(
             panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panAddOrderLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(5, 5, 5)
+                .addComponent(lblAddOrderList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnClear))
@@ -406,6 +434,9 @@ public class GUIMain extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblUpdaterOrderList.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblUpdaterOrderList.setText("Orders:");
+
         javax.swing.GroupLayout panUpdateOrderLayout = new javax.swing.GroupLayout(panUpdateOrder);
         panUpdateOrder.setLayout(panUpdateOrderLayout);
         panUpdateOrderLayout.setHorizontalGroup(
@@ -418,17 +449,20 @@ public class GUIMain extends javax.swing.JFrame
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateClear))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUpdaterOrderList))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panUpdateOrderLayout.setVerticalGroup(
             panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panUpdateOrderLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(lblUpdaterOrderList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnUpdateClear))
@@ -459,6 +493,9 @@ public class GUIMain extends javax.swing.JFrame
 
         jButton2.setText("Clear All");
 
+        lblRemoveOrder.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblRemoveOrder.setText("Orders:");
+
         javax.swing.GroupLayout panRemoveOrderLayout = new javax.swing.GroupLayout(panRemoveOrder);
         panRemoveOrder.setLayout(panRemoveOrderLayout);
         panRemoveOrderLayout.setHorizontalGroup(
@@ -474,23 +511,26 @@ public class GUIMain extends javax.swing.JFrame
                     .addGroup(panRemoveOrderLayout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(jButton2))
+                    .addComponent(lblRemoveOrder))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panRemoveOrderLayout.setVerticalGroup(
             panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panRemoveOrderLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(39, 39, 39)
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(27, 27, 27)
+                .addComponent(lblRemoveOrder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Remove Order", panRemoveOrder);
@@ -501,11 +541,11 @@ public class GUIMain extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -582,16 +622,21 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblAddOrderList;
     private javax.swing.JLabel lblCircumference;
     private javax.swing.JLabel lblDueDate;
     private javax.swing.JLabel lblIDOrder;
+    private javax.swing.JLabel lblOrderList;
     private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblRemoveOrder;
+    private javax.swing.JLabel lblSimOrder;
     private javax.swing.JLabel lblThickness;
     private javax.swing.JLabel lblUpdateCircumference;
     private javax.swing.JLabel lblUpdateDueDate;
     private javax.swing.JLabel lblUpdateQuantity;
     private javax.swing.JLabel lblUpdateThickness;
     private javax.swing.JLabel lblUpdateWidth;
+    private javax.swing.JLabel lblUpdaterOrderList;
     private javax.swing.JLabel lblWidth;
     private javax.swing.JPanel panAddOrder;
     private javax.swing.JPanel panOrderInfo;
