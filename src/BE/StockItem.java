@@ -11,12 +11,14 @@ package BE;
 public class StockItem
 {
     private final int ID;
+    private final int MaterialID;
     private double StockQuantity;
     private String Code;
     private String ChargeNo;
-    public StockItem(int ID, double StockQuantity, String Code, String ChargeNo)
+    public StockItem(int ID, int MaterialID, double StockQuantity, String Code, String ChargeNo)
     {
         this.ID = ID;
+        this.MaterialID = MaterialID;
         this.StockQuantity = StockQuantity;
         this.Code = Code;
         this.ChargeNo = ChargeNo;
@@ -77,5 +79,13 @@ public class StockItem
     public void setChargeNo(String ChargeNo)
     {
         this.ChargeNo = ChargeNo;
+    }
+
+    /**
+     * @return the MaterialID
+     */
+    public int getMaterialID()
+    {
+        return MaterialID;
     }
 }
