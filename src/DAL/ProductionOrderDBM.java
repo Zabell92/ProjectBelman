@@ -1,0 +1,57 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DAL;
+
+import BE.ProductionOrder;
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author MikeZJ
+ */
+public class ProductionOrderDBM
+{
+     private SQLServerDataSource dataSource;
+     
+       public ArrayList<ProductionOrder> showAll() throws SQLServerException, SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            String sql = "SELECT * FROM ProductionOrder";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<ProductionOrder> POrder = new ArrayList<>();
+
+            while (rs.next())
+            {
+                int id = rs.getInt("ID");
+                int EmployeeID = rs.getInt("EmployeeID");
+                String Porder = rs.getString("POrder");
+                Date DueDate = rs.getDate("DueDate");
+                int Quantity = rs.getInt("Quantity");
+                int MaterialID = rs.getInt("MaterialID");
+                double Thickness = rs.getDouble("Thickness");
+                double Width = rs.getDouble("Width");
+                double Circumference = rs.getDouble("Circumference");
+                
+
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, MaterialID,Thickness, Width, Circumference);
+                POrder.add(po);
+            }
+            return POrder;
+
+        }
+
+    }
+}
