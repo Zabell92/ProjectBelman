@@ -12,6 +12,7 @@ import java.sql.Date;
  */
 public class ProductionOrder
 {
+
     private int EmployeeID;
     private String POrder;
     private Date DueDate;
@@ -21,18 +22,12 @@ public class ProductionOrder
     private double Width;
     private double Circumference;
     private int ID;
-    
-    
-    
-    
-    
-    
-  
-    public ProductionOrder (int ID, int EmployeeID, String POrder, Date DueDate, 
-          int Quantity, int MaterialID, double Thickness, double Width, 
-          double Circumference)
-  {
-       
+
+    public ProductionOrder(int ID, int EmployeeID, String POrder, Date DueDate,
+            int Quantity, int MaterialID, double Thickness, double Width,
+            double Circumference)
+    {
+
         this.ID = ID;
         this.EmployeeID = EmployeeID;
         this.POrder = POrder;
@@ -42,9 +37,9 @@ public class ProductionOrder
         this.Thickness = Thickness;
         this.Width = Width;
         this.Circumference = Circumference;
-       
-      
-  }
+
+
+    }
 
     /**
      * @return the POrder
@@ -165,5 +160,4 @@ public class ProductionOrder
     {
         return EmployeeID;
     }
-    
 }
