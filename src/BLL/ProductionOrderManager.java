@@ -15,10 +15,15 @@ import java.util.ArrayList;
  */
 public class ProductionOrderManager
 {
-    private ProductionOrderDBM mdb = null;
+    private ProductionOrderDBM podb;
     
+    
+    public ProductionOrderManager() throws Exception
+    {
+        podb = new ProductionOrderDBM();
+    }
     public ArrayList<ProductionOrder> showAll() throws SQLException
     {
-        return mdb.showAll();
+        return podb.showAll();
     }
 }

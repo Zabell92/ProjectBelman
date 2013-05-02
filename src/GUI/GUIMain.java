@@ -28,6 +28,7 @@ public class GUIMain extends javax.swing.JFrame
         initComponents();
         try
         {
+            po = new ProductionOrderManager();
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
         }
@@ -35,6 +36,9 @@ public class GUIMain extends javax.swing.JFrame
         {
 //            JOptionPane.showMessageDialog(this, "EROOR - Can't open GUI", "Error 1", JOptionPane.ERROR_MESSAGE);
              ex.printStackTrace();
+        } catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

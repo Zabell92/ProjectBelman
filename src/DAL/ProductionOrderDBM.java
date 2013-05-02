@@ -7,12 +7,14 @@ package DAL;
 import BE.ProductionOrder;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  *
@@ -21,6 +23,20 @@ import java.util.ArrayList;
 public class ProductionOrderDBM
 {
      private SQLServerDataSource dataSource;
+     
+     public ProductionOrderDBM() throws Exception
+    {
+        Properties props = new Properties();
+        props.load(new FileReader("ConnectionInfo.cfg"));
+
+        dataSource = new SQLServerDataSource();
+
+        dataSource.setServerName(props.getProperty("SERVER"));
+        dataSource.setPortNumber(Integer.parseInt(props.getProperty("PORT")));
+        dataSource.setDatabaseName(props.getProperty("DATABASE"));
+        dataSource.setUser(props.getProperty("USER"));
+        dataSource.setPassword(props.getProperty("PASSWORD"));
+    }
      
        public ArrayList<ProductionOrder> showAll() throws SQLServerException, SQLException
     {
