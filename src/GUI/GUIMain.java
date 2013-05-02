@@ -5,9 +5,13 @@
 package GUI;
 
 import BLL.ProductionOrderManager;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -20,12 +24,14 @@ public class GUIMain extends javax.swing.JFrame
     private ProductionOrderManager po;
     private OrderTableModel OrderModel;
 
+
     /**
      * Creates new form OrderList
      */
     public GUIMain()
     {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
         try
         {
             po = new ProductionOrderManager();
