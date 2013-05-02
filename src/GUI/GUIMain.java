@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import BLL.ProductionOrderManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -12,6 +17,8 @@ import javax.swing.UIManager;
  */
 public class GUIMain extends javax.swing.JFrame
 {
+    private ProductionOrderManager po;
+    private OrderTableModel OrderModel;
 
     /**
      * Creates new form OrderList
@@ -19,6 +26,16 @@ public class GUIMain extends javax.swing.JFrame
     public GUIMain()
     {
         initComponents();
+        try
+        {
+            OrderModel = new OrderTableModel(po.showAll());
+            tblShowOrders.setModel(OrderModel);
+        }
+        catch (SQLException ex)
+        {
+//            JOptionPane.showMessageDialog(this, "EROOR - Can't open GUI", "Error 1", JOptionPane.ERROR_MESSAGE);
+             ex.printStackTrace();
+        }
     }
 
     /**
