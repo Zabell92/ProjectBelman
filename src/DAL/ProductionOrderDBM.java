@@ -62,7 +62,7 @@ public class ProductionOrderDBM
                 double Circumference = rs.getDouble("Circumference");
                 
 
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, MaterialID,Thickness, Width, Circumference);
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity,MaterialID ,Thickness, Width, Circumference);
                 POrder.add(po);
             }
             return POrder;

@@ -6,6 +6,7 @@ package GUI;
 
 import BE.ProductionOrder;
 import BLL.ProductionOrderManager;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -20,11 +21,11 @@ public class OrderTableModel extends AbstractTableModel
     private ProductionOrderManager pom;
     private final String[] header =
     {
-        "Id", "Name", "Address", "Phone Nr", "E-mail", "Contigent is paid?"
+        "Id", "EmployeeId", "POrder", "Duedate", "Quantity", "MaterialID","ThickNess","Width","Circumference"
     };
     private final Class[] columnTypes =
     {
-        Integer.class, String.class, String.class, Integer.class, String.class, Boolean.class
+        Integer.class, Integer.class, String.class, Date.class, Integer.class, Integer.class, Double.class, Double.class, Double.class
     };
     private ArrayList<ProductionOrder> Porder;
 
