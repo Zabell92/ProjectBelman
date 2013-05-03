@@ -218,19 +218,6 @@ public class GUIMain extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Order Info", panOrderInfo);
 
-        tblShowOrder.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String []
-            {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane4.setViewportView(tblShowOrder);
 
         btnAdd.setText("Add Order");
@@ -345,19 +332,6 @@ public class GUIMain extends javax.swing.JFrame
 
         btnUpdate.setText("Add Order");
 
-        tblUpdateShowOrder.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String []
-            {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane5.setViewportView(tblUpdateShowOrder);
 
         btnUpdateClear.setText("Clear All");
@@ -483,19 +457,6 @@ public class GUIMain extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Update Order", panUpdateOrder);
 
-        tblRemoveShowOrder.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String []
-            {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane6.setViewportView(tblRemoveShowOrder);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -560,7 +521,7 @@ public class GUIMain extends javax.swing.JFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();

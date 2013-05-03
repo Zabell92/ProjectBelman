@@ -42,7 +42,7 @@ public class ProductionOrderDBM
     {
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "SELECT * FROM ProductionOrder";
+            String sql = "SELECT * FROM ProductionOrder ORDER BY DueDate";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
