@@ -21,11 +21,11 @@ public class OrderTableModel extends AbstractTableModel
     private ProductionOrderManager pom;
     private final String[] header =
     {
-        "Id", "EmployeeId", "POrder", "Duedate", "Quantity", "Width", "SleeveID"
+        "Id", "POrder", "Duedate", "Quantity", "Width", "SleeveID"
     };
     private final Class[] columnTypes =
     {
-        Integer.class, Integer.class, String.class, Date.class, Integer.class, Double.class, Integer.class
+        Integer.class, String.class, Date.class, Integer.class, Double.class, Integer.class
     };
     private ArrayList<ProductionOrder> Porder;
 
@@ -68,16 +68,14 @@ public class OrderTableModel extends AbstractTableModel
                 case 0:
                     return po.getID();
                 case 1:
-                    return po.getEmployeeID();
-                case 2:
                     return po.getPOrder();
-                case 3:
+                case 2:
                     return po.getDueDate();
-                case 4:
+                case 3:
                     return po.getQuantity();
-                case 5:
+                case 4:
                     return po.getWidth();
-                case 6:
+                case 5:
                     return po.getSleeveID();
 
             }
