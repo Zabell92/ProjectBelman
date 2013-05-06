@@ -111,10 +111,5 @@ public class OrderTableModel extends AbstractTableModel
     {
         Porder = new ArrayList<>(list);
         fireTableDataChanged();
-    }
-    
-    
-            
-    
-      
+    }  
 }
