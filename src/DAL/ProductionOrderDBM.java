@@ -57,8 +57,6 @@ public class ProductionOrderDBM
                 String Porder = rs.getString("POrder");
                 Date DueDate = rs.getDate("DueDate");
                 int Quantity = rs.getInt("Quantity");
-
-
                 double Width = rs.getDouble("Width");
                 int SleeveID = rs.getInt("SleeveID");
 

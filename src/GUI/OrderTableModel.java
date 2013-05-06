@@ -25,7 +25,7 @@ public class OrderTableModel extends AbstractTableModel
     };
     private final Class[] columnTypes =
     {
-        Integer.class, Integer.class, String.class, Date.class, Integer.class, Integer.class, Double.class, Double.class, Double.class
+        Integer.class, Integer.class, String.class, Date.class, Integer.class, Double.class, Integer.class
     };
     private ArrayList<ProductionOrder> Porder;
 
@@ -77,7 +77,6 @@ public class OrderTableModel extends AbstractTableModel
                     return po.getQuantity();
                 case 5:
                     return po.getMaterialID();
-
                 case 6:
                     return po.getWidth();
                 case 7:
