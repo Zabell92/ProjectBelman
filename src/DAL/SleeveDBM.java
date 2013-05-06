@@ -46,6 +46,7 @@ public class SleeveDBM
 
             ResultSet rs = ps.executeQuery();
 
+            ArrayList<Sleeve> Sleeve = new ArrayList<>();
             if (rs.next())
             {
                 int id = rs.getInt("id");
@@ -58,9 +59,10 @@ public class SleeveDBM
 
 
                 Sleeve sl = new Sleeve(id, Thickness, Circumference, StartTime, EndTime, MaterialID);
-                return sl;
+                Sleeve.add(sl);
             }
-            return null;
+            return Sleeve;
         }
     }
+
 }
