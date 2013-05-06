@@ -25,7 +25,7 @@ public class SleeveTableModel extends AbstractTableModel
     {
         Integer.class, Double.class, Double.class, Integer.class
     };
-    private ArrayList<Sleeve> sl;
+    private ArrayList <Sleeve> sl;
 
     public SleeveTableModel()
     {
@@ -39,7 +39,7 @@ public class SleeveTableModel extends AbstractTableModel
         }
     }
 
-    SleeveTableModel(Sleeve getBySleeveId)
+    SleeveTableModel(ArrayList<Sleeve> getBySleeveId)
     {
         fireTableDataChanged();
         sl = getBySleeveId;
@@ -48,13 +48,13 @@ public class SleeveTableModel extends AbstractTableModel
     @Override
     public int getRowCount()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sl.size();
     }
 
     @Override
     public int getColumnCount()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return header.length;
     }
 
      @Override

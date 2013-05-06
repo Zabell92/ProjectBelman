@@ -22,6 +22,7 @@ public class GUIMain extends javax.swing.JFrame
     private ProductionOrderManager po;
     private SleeveManager slm;
     private OrderTableModel OrderModel;
+    private SleeveTableModel SleeveModel;
     private int SleeveID;
 
     /**
@@ -34,7 +35,7 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             po = new ProductionOrderManager();
-            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+            
                     
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
@@ -59,8 +60,9 @@ public class GUIMain extends javax.swing.JFrame
                     }
                 }
             });
-    
-            tblOrderInfo.setModel(SleeveModel);
+            
+            SleeveModel = new SleeveTableModel(slm.getBySleeveId(ID));
+           
         
         
         }
