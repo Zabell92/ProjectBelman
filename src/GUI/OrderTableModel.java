@@ -21,7 +21,7 @@ public class OrderTableModel extends AbstractTableModel
     private ProductionOrderManager pom;
     private final String[] header =
     {
-        "Id", "EmployeeId", "POrder", "Duedate", "Quantity", "MaterialID","ThickNess","Width","Circumference"
+        "Id", "EmployeeId", "POrder", "Duedate", "Quantity", "Width", "SleeveID"
     };
     private final Class[] columnTypes =
     {
@@ -34,8 +34,7 @@ public class OrderTableModel extends AbstractTableModel
         try
         {
             pom = new ProductionOrderManager();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             System.out.println("lol");
         }
@@ -46,7 +45,6 @@ public class OrderTableModel extends AbstractTableModel
         fireTableDataChanged();
         Porder = showAll;
     }
-
 
     @Override
     public int getRowCount()
@@ -79,12 +77,12 @@ public class OrderTableModel extends AbstractTableModel
                     return po.getQuantity();
                 case 5:
                     return po.getMaterialID();
+
                 case 6:
-                    return po.getThickness();
-                case 7:
                     return po.getWidth();
-                case 8:
-                    return po.getCircumference();
+                case 7:
+                    return po.getSleeveID();
+
             }
             return null;
         }

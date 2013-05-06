@@ -22,9 +22,10 @@ import java.util.Properties;
  */
 public class ProductionOrderDBM
 {
-     private SQLServerDataSource dataSource;
-     
-     public ProductionOrderDBM() throws Exception
+
+    private SQLServerDataSource dataSource;
+
+    public ProductionOrderDBM() throws Exception
     {
         Properties props = new Properties();
         props.load(new FileReader("ConnectionInfo.cfg"));
@@ -37,8 +38,8 @@ public class ProductionOrderDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-     
-       public ArrayList<ProductionOrder> showAll() throws SQLServerException, SQLException
+
+    public ArrayList<ProductionOrder> showAll() throws SQLServerException, SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
@@ -56,13 +57,13 @@ public class ProductionOrderDBM
                 String Porder = rs.getString("POrder");
                 Date DueDate = rs.getDate("DueDate");
                 int Quantity = rs.getInt("Quantity");
-                int MaterialID = rs.getInt("MaterialID");
-                double Thickness = rs.getDouble("Thickness");
-                double Width = rs.getDouble("Width");
-                double Circumference = rs.getDouble("Circumference");
-                
 
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity,MaterialID ,Thickness, Width, Circumference);
+
+                double Width = rs.getDouble("Width");
+                int SleeveID = rs.getInt("SleeveID");
+
+
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, Width, SleeveID);
                 POrder.add(po);
             }
             return POrder;

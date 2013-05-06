@@ -18,9 +18,7 @@ public class ProductionOrder
     private Date DueDate;
     private int Quantity;
     private int MaterialID;
-    private double Thickness;
     private double Width;
-    private double Circumference;
     private int ID;
     private final int SleeveID;
 
@@ -33,12 +31,8 @@ public class ProductionOrder
         this.POrder = POrder;
         this.DueDate = DueDate;
         this.Quantity = Quantity;
-
         this.Width = Width;
-
         this.SleeveID = SleeveID;
-
-
     }
 
     /**
@@ -97,7 +91,6 @@ public class ProductionOrder
         return MaterialID;
     }
 
-  
     /**
      * @return the Width
      */
@@ -114,21 +107,6 @@ public class ProductionOrder
         this.Width = Width;
     }
 
-    /**
-     * @return the Circumference
-     */
-    public double getCircumference()
-    {
-        return Circumference;
-    }
-
-    /**
-     * @param Circumference the Circumference to set
-     */
-    public void setCircumference(double Circumference)
-    {
-        this.Circumference = Circumference;
-    }
 
     /**
      * @return the ID
@@ -144,5 +122,13 @@ public class ProductionOrder
     public int getEmployeeID()
     {
         return EmployeeID;
+    }
+
+    /**
+     * @return the SleeveID
+     */
+    public int getSleeveID()
+    {
+        return SleeveID;
     }
 }
