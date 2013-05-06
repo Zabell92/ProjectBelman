@@ -8,6 +8,8 @@ import BLL.ProductionOrderManager;
 import BLL.SleeveManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.TableModel;
@@ -54,14 +56,20 @@ public class GUIMain extends javax.swing.JFrame
 //                        final int column = OrderModel.getSelectedColumn();
 
                         SleeveID = (int) OrderModel.getValueAt(row, 5);
-
+                        try
+                        {
+                            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+                        } catch (Exception ex)
+                        {
+                            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+            tblOrderInfo.setModel(SleeveModel);
                         System.out.println("Valgte SleeveID:" + SleeveID);
                     }
                 }
             });
-
-            tblOrderInfo.setModel(SleeveModel);
-            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+           
+            
 
 
 
