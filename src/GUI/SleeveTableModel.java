@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import BE.ProductionOrder;
 import BE.Sleeve;
 import BLL.SleeveManager;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class SleeveTableModel extends AbstractTableModel
         }
     }
 
-    SleeveTableModel(ArrayList<Sleeve> getBySleeveId)
+    SleeveTableModel(Sleeve getBySleeveId)
     {
         fireTableDataChanged();
         sl = getBySleeveId;
@@ -56,9 +57,25 @@ public class SleeveTableModel extends AbstractTableModel
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Object getValueAt(int i, int i1)
+     @Override
+    public Object getValueAt(int row, int col)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        {
+            Sleeve s = sl.get(row);
+            switch (col)
+            {
+                case 0:
+                    return s.getID();
+                case 1:
+                    return s.getThickness();
+                case 2:
+                    return s.getCircumference();
+                case 3:
+                    return s.getMaterialID();
+    
+
+            }
+            return null;
+        }
     }
 }
