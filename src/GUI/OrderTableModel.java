@@ -76,10 +76,8 @@ public class OrderTableModel extends AbstractTableModel
                 case 4:
                     return po.getQuantity();
                 case 5:
-                    return po.getMaterialID();
-                case 6:
                     return po.getWidth();
-                case 7:
+                case 6:
                     return po.getSleeveID();
 
             }

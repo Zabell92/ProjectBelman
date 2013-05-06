@@ -17,7 +17,7 @@ public class ProductionOrder
     private String POrder;
     private Date DueDate;
     private int Quantity;
-    private int MaterialID;
+
     private double Width;
     private int ID;
     private final int SleeveID;
@@ -83,13 +83,7 @@ public class ProductionOrder
         this.Quantity = Quantity;
     }
 
-    /**
-     * @return the MaterialID
-     */
-    public int getMaterialID()
-    {
-        return MaterialID;
-    }
+
 
     /**
      * @return the Width
