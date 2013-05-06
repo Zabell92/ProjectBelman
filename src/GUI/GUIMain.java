@@ -23,6 +23,7 @@ public class GUIMain extends javax.swing.JFrame
     private SleeveManager slm;
     private OrderTableModel OrderModel;
     private int SleeveID;
+    private SleeveTableModel SleeveModel;
 
     /**
      * Creates new form OrderList
@@ -33,15 +34,19 @@ public class GUIMain extends javax.swing.JFrame
         setExtendedState(MAXIMIZED_BOTH);
         try
         {
-            po = new ProductionOrderManager();
-            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
-                    
+            po = new ProductionOrderManager(); 
+            slm = new SleeveManager();
+            
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
+            
+            
+            
 
+            
             tblShowOrders.addMouseListener(new MouseAdapter()
             {
                 @Override
@@ -59,8 +64,10 @@ public class GUIMain extends javax.swing.JFrame
                     }
                 }
             });
-    
+            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
             tblOrderInfo.setModel(SleeveModel);
+    
+            
         
         
         }

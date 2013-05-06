@@ -6,6 +6,8 @@ package BLL;
 
 import BE.Sleeve;
 import DAL.SleeveDBM;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +17,7 @@ public class SleeveManager
 {
     private SleeveDBM sldb;
     
-   public Sleeve getBySleeveId(int ID) throws Exception
+   public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
     {
         return sldb.getBySleeveId(ID);
     }

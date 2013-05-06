@@ -39,7 +39,7 @@ public class SleeveTableModel extends AbstractTableModel
         }
     }
 
-    SleeveTableModel(Sleeve getBySleeveId)
+    SleeveTableModel(ArrayList<Sleeve> getBySleeveId)
     {
         fireTableDataChanged();
         sl = getBySleeveId;

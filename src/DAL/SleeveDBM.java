@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -35,7 +36,7 @@ public class SleeveDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
     
-    public Sleeve getBySleeveId(int ID) throws Exception
+    public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
@@ -45,6 +46,7 @@ public class SleeveDBM
 
             ResultSet rs = ps.executeQuery();
 
+            ArrayList<Sleeve> Sleeve = new ArrayList<>();
             if (rs.next())
             {
                 int id = rs.getInt("id");
@@ -57,9 +59,10 @@ public class SleeveDBM
 
 
                 Sleeve sl = new Sleeve(id, Thickness, Circumference, StartTime, EndTime, MaterialID);
-                return sl;
+                Sleeve.add(sl);
             }
-            return null;
+            return Sleeve;
         }
     }
+
 }
