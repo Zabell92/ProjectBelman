@@ -34,6 +34,8 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             po = new ProductionOrderManager();
+            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+                    
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
             tblShowOrder.setModel(OrderModel);
@@ -58,7 +60,7 @@ public class GUIMain extends javax.swing.JFrame
                 }
             });
     
-            tblOrderInfo.setModel((TableModel) slm.getBySleeveId(SleeveID));
+            tblOrderInfo.setModel(SleeveModel);
         
         
         }

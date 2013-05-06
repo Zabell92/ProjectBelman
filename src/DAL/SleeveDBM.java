@@ -39,7 +39,7 @@ public class SleeveDBM
     {
         {
             Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM Sleeve WHERE SleeveID = ?";
+            String sql = "SELECT * FROM Sleeve WHERE ID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
 
