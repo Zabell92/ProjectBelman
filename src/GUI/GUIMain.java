@@ -5,6 +5,10 @@
 package GUI;
 
 import BLL.ProductionOrderManager;
+import BLL.SleeveManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 
 /**
@@ -13,19 +17,19 @@ import javax.swing.UIManager;
  */
 public class GUIMain extends javax.swing.JFrame
 {
-    private ProductionOrderManager po;
-    private OrderTableModel OrderModel;
 
-   
-            
-    
+    private ProductionOrderManager po;
+    private SleeveManager slm;
+    private OrderTableModel OrderModel;
+    private int SleeveID;
+
     /**
      * Creates new form OrderList
      */
     public GUIMain()
     {
-      initComponents();
-      setExtendedState(MAXIMIZED_BOTH);     
+        initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
         try
         {
             po = new ProductionOrderManager();
@@ -34,13 +38,34 @@ public class GUIMain extends javax.swing.JFrame
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
-            
+
+            tblShowOrders.addMouseListener(new MouseAdapter()
+            {
+                @Override
+                public void mouseClicked(final MouseEvent e)
+                {
+                    if (e.getClickCount() == 1)
+                    {
+                        final JTable OrderModel = (JTable) e.getSource();
+                        final int row = OrderModel.getSelectedRow();
+//                        final int column = OrderModel.getSelectedColumn();
+
+                        SleeveID = (int) OrderModel.getValueAt(row, 5);
+                        
+                        System.out.println("Valgte SleeveID:" + SleeveID);
+                    }
+                }
+            });
+    
+            txtOrderInfo.append(slm.getBySleeveId(SleeveID));
+        
+        
         }
         catch (Exception ex)
         {
 //            JOptionPane.showMessageDialog(this, "EROOR - Can't open GUI", "Error 1", JOptionPane.ERROR_MESSAGE);
-             ex.printStackTrace();
-        } 
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -574,9 +599,9 @@ public class GUIMain extends javax.swing.JFrame
         {
             public void run()
             {
-                
+
                 new GUIMain().setVisible(true);
-                
+
             }
         });
     }

@@ -6,9 +6,14 @@ package GUI;
 
 import BE.ProductionOrder;
 import BLL.ProductionOrderManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -34,7 +39,8 @@ public class OrderTableModel extends AbstractTableModel
         try
         {
             pom = new ProductionOrderManager();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             System.out.println("lol");
         }
@@ -106,4 +112,9 @@ public class OrderTableModel extends AbstractTableModel
         Porder = new ArrayList<>(list);
         fireTableDataChanged();
     }
+    
+    
+            
+    
+      
 }
