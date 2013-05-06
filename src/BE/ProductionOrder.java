@@ -22,10 +22,10 @@ public class ProductionOrder
     private double Width;
     private double Circumference;
     private int ID;
+    private final int SleeveID;
 
     public ProductionOrder(int ID, int EmployeeID, String POrder, Date DueDate,
-            int Quantity, int MaterialID, double Thickness, double Width,
-            double Circumference)
+            int Quantity, double Width, int SleeveID)
     {
 
         this.ID = ID;
@@ -33,10 +33,10 @@ public class ProductionOrder
         this.POrder = POrder;
         this.DueDate = DueDate;
         this.Quantity = Quantity;
-        this.MaterialID = MaterialID;
-        this.Thickness = Thickness;
+
         this.Width = Width;
-        this.Circumference = Circumference;
+
+        this.SleeveID = SleeveID;
 
 
     }
@@ -97,22 +97,7 @@ public class ProductionOrder
         return MaterialID;
     }
 
-    /**
-     * @return the Thickness
-     */
-    public double getThickness()
-    {
-        return Thickness;
-    }
-
-    /**
-     * @param Thickness the Thickness to set
-     */
-    public void setThickness(double Thickness)
-    {
-        this.Thickness = Thickness;
-    }
-
+  
     /**
      * @return the Width
      */
