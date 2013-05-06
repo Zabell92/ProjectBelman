@@ -35,7 +35,7 @@ public class SleeveDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
     
-    public StockItem getBySleeveId(int ID) throws Exception
+    public Sleeve getBySleeveId(int ID) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
