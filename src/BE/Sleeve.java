@@ -24,8 +24,7 @@ public class Sleeve
         this.Circumference = Circumference;
         this.StartTime = StartTime;
         this.EndTime = EndTime;
-        this.MaterialID = MaterialID;
-        
+        this.MaterialID = MaterialID; 
     }
 
     /**

@@ -4,7 +4,6 @@
  */
 package GUI;
 
-import BE.ProductionOrder;
 import BE.Sleeve;
 import BLL.SleeveManager;
 import java.util.ArrayList;
@@ -72,8 +71,6 @@ public class SleeveTableModel extends AbstractTableModel
                     return s.getCircumference();
                 case 3:
                     return s.getMaterialID();
-    
-
             }
             return null;
         }

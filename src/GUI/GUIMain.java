@@ -24,7 +24,6 @@ public class GUIMain extends javax.swing.JFrame
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
     private int SleeveID;
-    private SleeveTableModel SleeveModel;
 
     /**
      * Creates new form OrderList
@@ -35,19 +34,14 @@ public class GUIMain extends javax.swing.JFrame
         setExtendedState(MAXIMIZED_BOTH);
         try
         {
-            po = new ProductionOrderManager(); 
+            po = new ProductionOrderManager();
             slm = new SleeveManager();
-            
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
-            
-            
-            
 
-            
             tblShowOrders.addMouseListener(new MouseAdapter()
             {
                 @Override
@@ -60,19 +54,19 @@ public class GUIMain extends javax.swing.JFrame
 //                        final int column = OrderModel.getSelectedColumn();
 
                         SleeveID = (int) OrderModel.getValueAt(row, 5);
-                        
+
                         System.out.println("Valgte SleeveID:" + SleeveID);
                     }
                 }
             });
-            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+
             tblOrderInfo.setModel(SleeveModel);
-    
-            
-        
-        
-        }
-        catch (Exception ex)
+            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+
+
+
+
+        } catch (Exception ex)
         {
 //            JOptionPane.showMessageDialog(this, "EROOR - Can't open GUI", "Error 1", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -579,23 +573,19 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (ClassNotFoundException ex)
+        } catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (InstantiationException ex)
+        } catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (IllegalAccessException ex)
+        } catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
