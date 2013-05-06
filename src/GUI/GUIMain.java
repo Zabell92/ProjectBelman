@@ -34,7 +34,7 @@ public class GUIMain extends javax.swing.JFrame
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
-
+            
         }
         catch (Exception ex)
         {
