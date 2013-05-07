@@ -50,8 +50,8 @@
         <Container class="javax.swing.JPanel" name="panOrderInfo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Order Info">
-                <Property name="tabTitle" type="java.lang.String" value="Order Info"/>
+              <JTabbedPaneConstraints tabName="Select Order">
+                <Property name="tabTitle" type="java.lang.String" value="Select Order"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

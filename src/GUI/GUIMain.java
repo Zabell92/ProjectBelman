@@ -273,7 +273,7 @@ public class GUIMain extends javax.swing.JFrame
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("Order Info", panOrderInfo);
+        jTabbedPane1.addTab("Select Order", panOrderInfo);
 
         jScrollPane4.setViewportView(tblShowOrder);
 
