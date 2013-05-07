@@ -55,6 +55,18 @@ public class SleeveTableModel extends AbstractTableModel
     {
         return header.length;
     }
+    
+      @Override
+    public String getColumnName(int col)
+    {
+        return header[col];
+    }
+
+    @Override
+    public Class<?> getColumnClass(int col)
+    {
+        return columnTypes[col];
+    }
 
      @Override
     public Object getValueAt(int row, int col)

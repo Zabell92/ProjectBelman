@@ -63,13 +63,13 @@ public class GUIMain extends javax.swing.JFrame
                         {
                             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                         }
-            tblOrderInfo.setModel(SleeveModel);
+                        tblOrderInfo.setModel(SleeveModel);
                         System.out.println("Valgte SleeveID:" + SleeveID);
                     }
                 }
             });
-           
-            
+
+
 
 
 
@@ -190,7 +190,7 @@ public class GUIMain extends javax.swing.JFrame
                 .addGap(0, 64, Short.MAX_VALUE))
         );
 
-        panBorderInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Order Information:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        panBorderInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sleeve Information:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
         jScrollPane7.setViewportView(tblOrderInfo);
 
