@@ -97,8 +97,6 @@ public class GUIMain extends javax.swing.JFrame
         tblShowOrders = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblOrderList = new javax.swing.JTable();
-        panBorderEmp = new javax.swing.JPanel();
-        cbxEmployee = new javax.swing.JComboBox();
         panBorderInfo = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tblOrderInfo = new javax.swing.JTable();
@@ -171,25 +169,6 @@ public class GUIMain extends javax.swing.JFrame
         ));
         jScrollPane3.setViewportView(tblOrderList);
 
-        panBorderEmp.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Employee:"), "Employee", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-
-        cbxEmployee.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout panBorderEmpLayout = new javax.swing.GroupLayout(panBorderEmp);
-        panBorderEmp.setLayout(panBorderEmpLayout);
-        panBorderEmpLayout.setHorizontalGroup(
-            panBorderEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBorderEmpLayout.createSequentialGroup()
-                .addComponent(cbxEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
-        );
-        panBorderEmpLayout.setVerticalGroup(
-            panBorderEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBorderEmpLayout.createSequentialGroup()
-                .addComponent(cbxEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 64, Short.MAX_VALUE))
-        );
-
         panBorderInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sleeve Information:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
         jScrollPane7.setViewportView(tblOrderInfo);
@@ -198,9 +177,9 @@ public class GUIMain extends javax.swing.JFrame
         panBorderInfo.setLayout(panBorderInfoLayout);
         panBorderInfoLayout.setHorizontalGroup(
             panBorderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBorderInfoLayout.createSequentialGroup()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBorderInfoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panBorderInfoLayout.setVerticalGroup(
             panBorderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,9 +209,7 @@ public class GUIMain extends javax.swing.JFrame
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panBorderInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panBorderEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(468, 468, 468))
         );
         panOrderInfoLayout.setVerticalGroup(
             panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +224,6 @@ public class GUIMain extends javax.swing.JFrame
                         .addComponent(lblSimOrder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panBorderEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panBorderInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -336,7 +312,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panAddOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addGroup(panAddOrderLayout.createSequentialGroup()
                         .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panAddOrderLayout.createSequentialGroup()
@@ -345,7 +321,7 @@ public class GUIMain extends javax.swing.JFrame
                                 .addComponent(btnClear))
                             .addComponent(panBorderAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblAddOrderList))
-                        .addGap(0, 314, Short.MAX_VALUE)))
+                        .addGap(0, 156, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAddOrderLayout.setVerticalGroup(
@@ -463,7 +439,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panUpdateOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addGroup(panUpdateOrderLayout.createSequentialGroup()
                         .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panUpdateOrderLayout.createSequentialGroup()
@@ -472,7 +448,7 @@ public class GUIMain extends javax.swing.JFrame
                                 .addComponent(btnUpdateClear))
                             .addComponent(lblUpdaterOrderList)
                             .addComponent(panBorderUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 330, Short.MAX_VALUE)))
+                        .addGap(0, 172, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panUpdateOrderLayout.setVerticalGroup(
@@ -512,7 +488,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panRemoveOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addGroup(panRemoveOrderLayout.createSequentialGroup()
                         .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panRemoveOrderLayout.createSequentialGroup()
@@ -553,7 +529,8 @@ public class GUIMain extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,7 +593,6 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpdateClear;
-    private javax.swing.JComboBox cbxEmployee;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -646,7 +622,6 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JLabel lblWidth;
     private javax.swing.JPanel panAddOrder;
     private javax.swing.JPanel panBorderAdd;
-    private javax.swing.JPanel panBorderEmp;
     private javax.swing.JPanel panBorderInfo;
     private javax.swing.JPanel panBorderUpdate;
     private javax.swing.JPanel panOrderInfo;
