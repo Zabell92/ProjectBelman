@@ -43,7 +43,7 @@ public class MaterialTableModel extends AbstractTableModel
     MaterialTableModel(ArrayList<Material> getByMaterialID)
     {
         fireTableDataChanged();
-        ml = getByMaterialID;
+//        ml = getByMaterialID;
     }
 
     @Override
@@ -74,17 +74,17 @@ public class MaterialTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col)
     {
         {
-            Material m = ml.get(row);
+//            Material m = ml.get(row);
             switch (col)
             {
-                case 0:
-                    return s.getID();
-                case 1:
-                    return s.getThickness();
-                case 2:
-                    return s.getCircumference();
-                case 3:
-                    return s.getMaterialID();
+//                case 0:
+//                    return m.getID();
+//                case 1:
+//                    return m.getThickness();
+//                case 2:
+//                    return m.getCircumference();
+//                case 3:
+//                    return m.getMaterialID();
             }
             return null;
         }
