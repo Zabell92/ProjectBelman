@@ -20,11 +20,11 @@ public class MaterialTableModel extends AbstractTableModel
     private MaterialManager mlm;
     private final String[] header =
     {
-        "Id", "Thickness", "Circumference", "MaterialID"
+        "Id", "Material Name", "Material Densisty"
     };
     private final Class[] columnTypes =
     {
-        Integer.class, Double.class, Double.class, Integer.class
+        Integer.class, String.class, Double.class
     };
     private ArrayList <Material> ml;
 

@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
 import BLL.SleeveManager;
 import java.awt.event.MouseAdapter;
@@ -23,9 +24,12 @@ public class GUIMain extends javax.swing.JFrame
 
     private ProductionOrderManager po;
     private SleeveManager slm;
+    private MaterialManager mm;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
+    private MaterialTableModel MaterialModel;
     private int SleeveID;
+    private int MaterialID;
 
     /**
      * Creates new form OrderList
@@ -38,36 +42,16 @@ public class GUIMain extends javax.swing.JFrame
         {
             po = new ProductionOrderManager();
             slm = new SleeveManager();
+            mm = new MaterialManager();
+
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
+            SleeveListener();
+            MaterialListener();
 
-            tblShowOrders.addMouseListener(new MouseAdapter()
-            {
-                @Override
-                public void mouseClicked(final MouseEvent e)
-                {
-                    if (e.getClickCount() == 1)
-                    {
-                        final JTable OrderModel = (JTable) e.getSource();
-                        final int row = OrderModel.getSelectedRow();
-//                        final int column = OrderModel.getSelectedColumn();
-
-                        SleeveID = (int) OrderModel.getValueAt(row, 5);
-                        try
-                        {
-                            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
-                        } catch (Exception ex)
-                        {
-                            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        tblOrderInfo.setModel(SleeveModel);
-                        System.out.println("Valgte SleeveID:" + SleeveID);
-                    }
-                }
-            });
 
 
 
@@ -99,7 +83,7 @@ public class GUIMain extends javax.swing.JFrame
         tblOrderList = new javax.swing.JTable();
         panBorderInfo = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tblOrderInfo = new javax.swing.JTable();
+        tblSleeveInfo = new javax.swing.JTable();
         lblOrderList = new javax.swing.JLabel();
         lblSimOrder = new javax.swing.JLabel();
         panBorderMat = new javax.swing.JPanel();
@@ -174,7 +158,7 @@ public class GUIMain extends javax.swing.JFrame
 
         panBorderInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sleeve Information:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jScrollPane7.setViewportView(tblOrderInfo);
+        jScrollPane7.setViewportView(tblSleeveInfo);
 
         javax.swing.GroupLayout panBorderInfoLayout = new javax.swing.GroupLayout(panBorderInfo);
         panBorderInfo.setLayout(panBorderInfoLayout);
@@ -197,19 +181,6 @@ public class GUIMain extends javax.swing.JFrame
 
         panBorderMat.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Material Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        tblMaterialInfo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String []
-            {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane2.setViewportView(tblMaterialInfo);
 
         javax.swing.GroupLayout panBorderMatLayout = new javax.swing.GroupLayout(panBorderMat);
@@ -574,7 +545,7 @@ public class GUIMain extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -674,11 +645,11 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JPanel panRemoveOrder;
     private javax.swing.JPanel panUpdateOrder;
     private javax.swing.JTable tblMaterialInfo;
-    private javax.swing.JTable tblOrderInfo;
     private javax.swing.JTable tblOrderList;
     private javax.swing.JTable tblRemoveShowOrder;
     private javax.swing.JTable tblShowOrder;
     private javax.swing.JTable tblShowOrders;
+    private javax.swing.JTable tblSleeveInfo;
     private javax.swing.JTable tblUpdateShowOrder;
     private javax.swing.JTextField txtCircumference;
     private javax.swing.JTextField txtDueDate;
@@ -692,4 +663,59 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtUpdateWidth;
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
+    public void SleeveListener()
+    {
+        tblShowOrders.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(final MouseEvent e)
+            {
+                if (e.getClickCount() == 1)
+                {
+                    final JTable OrderModel = (JTable) e.getSource();
+                    final int row = OrderModel.getSelectedRow();
+//                        final int column = OrderModel.getSelectedColumn();
+
+                    SleeveID = (int) OrderModel.getValueAt(row, 5);
+                    try
+                    {
+                        SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+                    } catch (Exception ex)
+                    {
+                        Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    tblSleeveInfo.setModel(SleeveModel);
+                    System.out.println("Valgte SleeveID:" + SleeveID);
+                }
+            }
+        });
+    }
+
+    public void MaterialListener()
+    {
+        tblSleeveInfo.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(final MouseEvent e)
+            {
+                if (e.getClickCount() == 1)
+                {
+                    final JTable SleeveModel = (JTable) e.getSource();
+                    final int row = SleeveModel.getSelectedRow();
+//                        final int column = OrderModel.getSelectedColumn();
+
+                    MaterialID = (int) OrderModel.getValueAt(row, 3);
+                    try
+                    {
+                        MaterialModel = new MaterialTableModel(mm.getByMaterialId(MaterialID));
+                    } catch (Exception ex)
+                    {
+                        Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    tblMaterialInfo.setModel(MaterialModel);
+                    System.out.println("Valgte MaterialID:" + MaterialID);
+                }
+            }
+        });
+    }
 }
