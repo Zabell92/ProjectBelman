@@ -663,7 +663,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtUpdateWidth;
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
-    public void SleeveListener()
+    private void SleeveListener()
     {
         tblShowOrders.addMouseListener(new MouseAdapter()
         {
@@ -691,7 +691,7 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
-    public void MaterialListener()
+    private void MaterialListener()
     {
         tblSleeveInfo.addMouseListener(new MouseAdapter()
         {
@@ -704,7 +704,7 @@ public class GUIMain extends javax.swing.JFrame
                     final int row = SleeveModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
 
-                    MaterialID = (int) OrderModel.getValueAt(row, 3);
+                    MaterialID = (int) SleeveModel.getValueAt(row, 3);
                     try
                     {
                         MaterialModel = new MaterialTableModel(mm.getByMaterialId(MaterialID));
