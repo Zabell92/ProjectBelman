@@ -26,7 +26,7 @@ public class MaterialTableModel extends AbstractTableModel
     {
         Integer.class, Double.class, Double.class, Integer.class
     };
-    private ArrayList <Sleeve> ml;
+    private ArrayList <Material> ml;
 
     public MaterialTableModel()
     {
@@ -43,7 +43,7 @@ public class MaterialTableModel extends AbstractTableModel
     MaterialTableModel(ArrayList<Material> getByMaterialID)
     {
         fireTableDataChanged();
-//        ml = getByMaterialID;
+        ml = getByMaterialID;
     }
 
     @Override
@@ -79,10 +79,10 @@ public class MaterialTableModel extends AbstractTableModel
             {
                 case 0:
                     return m.getID();
-//                case 1:
-                    return m.getThickness();
-//                case 2:
-                    return m.getCircumference();
+                case 1:
+                    return m.getMaterialName();
+                case 2:
+                    return m.getMaterialDensity();
 
             }
             return null;
