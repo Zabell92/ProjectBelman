@@ -4,6 +4,7 @@
  */
 package DAL;
 
+import BE.Material;
 import BE.Sleeve;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.io.FileReader;
@@ -35,7 +36,7 @@ public class MaterialDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
     
-    public ArrayList<Sleeve> getByMaterialID(int ID) throws Exception
+    public ArrayList<Material> getByMaterialID(int ID) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
@@ -45,22 +46,20 @@ public class MaterialDBM
 
             ResultSet rs = ps.executeQuery();
 
-            ArrayList<Sleeve> Sleeve = new ArrayList<>();
+            ArrayList<Material> Material = new ArrayList<>();
             if (rs.next())
             {
                 int id = rs.getInt("id");
-                double Thickness = rs.getDouble("Thickness");
-                double Circumference = rs.getDouble("Circumference");
-                int StartTime = rs.getInt("StartTime");
-                int EndTime = rs.getInt("EndTime");
-                int MaterialID = rs.getInt("MaterialID");
+                String MaterialName = rs.getString("MaterialName");
+                double MaterialDensity = rs.getDouble("MaterialDensity");
+                
 
 
 
-                Sleeve sl = new Sleeve(id, Thickness, Circumference, StartTime, EndTime, MaterialID);
-                Sleeve.add(sl);
+                Material ml = new Material(id, MaterialName, MaterialDensity);
+                Material.add(ml);
             }
-            return Sleeve;
+            return Material;
         }
     }
 

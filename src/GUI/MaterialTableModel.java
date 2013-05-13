@@ -74,17 +74,16 @@ public class MaterialTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col)
     {
         {
-//            Material m = ml.get(row);
+            Material m = ml.get(row);
             switch (col)
             {
-//                case 0:
-//                    return m.getID();
+                case 0:
+                    return m.getID();
 //                case 1:
-//                    return m.getThickness();
+                    return m.getThickness();
 //                case 2:
-//                    return m.getCircumference();
-//                case 3:
-//                    return m.getMaterialID();
+                    return m.getCircumference();
+
             }
             return null;
         }
