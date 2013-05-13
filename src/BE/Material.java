@@ -15,7 +15,7 @@ public class Material
     private double MaterialDensity;
     
     
-    Material(int ID, String MaterialName, double MaterialDensity)
+   public Material(int ID, String MaterialName, double MaterialDensity)
     {
         this.ID = ID;
         this.MaterialName = MaterialName;
