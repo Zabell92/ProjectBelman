@@ -9,6 +9,7 @@ import BE.Sleeve;
 import BLL.MaterialManager;
 import BLL.SleeveManager;
 import java.util.ArrayList;
+import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -88,4 +89,16 @@ public class MaterialTableModel extends AbstractTableModel
             return null;
         }
     }
+
+    @Override
+    public boolean isCellEditable(int row, int col)
+    {
+        return (false);
+    }
+
+    public void setCollection(Collection<Material> list)
+    {
+        ml = new ArrayList<>(list);
+        fireTableDataChanged();
+    }  
 }
