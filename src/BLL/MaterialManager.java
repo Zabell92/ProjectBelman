@@ -5,6 +5,7 @@
  */
 package BLL;
 
+import BE.Material;
 import BE.Sleeve;
 import DAL.MaterialDBM;
 import DAL.SleeveDBM;
@@ -23,7 +24,7 @@ public class MaterialManager
         this.mdb = new MaterialDBM();
     }
     
-   public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
+   public ArrayList<Material> getByMaterialId(int ID) throws Exception
     {
         return mdb.getByMaterialID(ID);
         
