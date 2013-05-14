@@ -23,7 +23,7 @@ import javax.swing.table.AbstractTableModel;
     };
     private final Class[] columnTypes =
     {
-        Integer.class, String.class, Double.class
+        Integer.class, Double.class, Double.class, String.class
     };
     private ArrayList <CoilType> ct;
 

@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import BLL.CoilTypeManager;
 import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
 import BLL.SleeveManager;
@@ -14,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -27,11 +27,14 @@ public class GUIMain extends javax.swing.JFrame
     private SleeveManager slm;
     private MaterialManager mm;
     private StockManager sm;
+    private CoilTypeManager ctm;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
-    private StockTableModel StockTableModel;
+    private StockTableModel StockModel;
+    private CoilTypeTableModel CoilTypeModel;
     private int SleeveID;
     private int MaterialID;
+    private int CoilTypeID;
 
     /**
      * Creates new form OrderList
@@ -47,6 +50,7 @@ public class GUIMain extends javax.swing.JFrame
             slm = new SleeveManager();
             mm = new MaterialManager();
             sm = new StockManager();
+            ctm = new CoilTypeManager();
 
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
@@ -55,6 +59,7 @@ public class GUIMain extends javax.swing.JFrame
             tblRemoveShowOrder.setModel(OrderModel);
             SleeveListener();
             StockListener();
+            CoilListener();
 
 
 
@@ -93,6 +98,9 @@ public class GUIMain extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblOrderList = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tblCoilInfo = new javax.swing.JTable();
         panAddOrder = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblShowOrder = new javax.swing.JTable();
@@ -193,7 +201,7 @@ public class GUIMain extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -223,6 +231,23 @@ public class GUIMain extends javax.swing.JFrame
                 .addContainerGap())
         );
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Coil Information"), "Coil Information"));
+
+        jScrollPane8.setViewportView(tblCoilInfo);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout panOrderInfoLayout = new javax.swing.GroupLayout(panOrderInfo);
         panOrderInfo.setLayout(panOrderInfoLayout);
         panOrderInfoLayout.setHorizontalGroup(
@@ -230,14 +255,18 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panOrderInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panOrderInfoLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(panOrderInfoLayout.createSequentialGroup()
                         .addGroup(panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(panBorderInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panBorderMat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panOrderInfoLayout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 470, Short.MAX_VALUE))))
         );
         panOrderInfoLayout.setVerticalGroup(
             panOrderInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +280,9 @@ public class GUIMain extends javax.swing.JFrame
                         .addGap(18, 18, 18)
                         .addComponent(panBorderMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Select Order", panOrderInfo);
@@ -338,7 +369,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panAddOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                     .addGroup(panAddOrderLayout.createSequentialGroup()
                         .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panAddOrderLayout.createSequentialGroup()
@@ -347,7 +378,7 @@ public class GUIMain extends javax.swing.JFrame
                                 .addComponent(btnClear))
                             .addComponent(panBorderAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblAddOrderList))
-                        .addGap(0, 267, Short.MAX_VALUE)))
+                        .addGap(0, 336, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAddOrderLayout.setVerticalGroup(
@@ -355,7 +386,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panAddOrderLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(panBorderAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addComponent(lblAddOrderList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,7 +496,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panUpdateOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                     .addGroup(panUpdateOrderLayout.createSequentialGroup()
                         .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panUpdateOrderLayout.createSequentialGroup()
@@ -474,7 +505,7 @@ public class GUIMain extends javax.swing.JFrame
                                 .addComponent(btnUpdateClear))
                             .addComponent(lblUpdaterOrderList)
                             .addComponent(panBorderUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 283, Short.MAX_VALUE)))
+                        .addGap(0, 352, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panUpdateOrderLayout.setVerticalGroup(
@@ -482,7 +513,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panUpdateOrderLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(panBorderUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addComponent(lblUpdaterOrderList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -514,7 +545,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panRemoveOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                     .addGroup(panRemoveOrderLayout.createSequentialGroup()
                         .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panRemoveOrderLayout.createSequentialGroup()
@@ -536,7 +567,7 @@ public class GUIMain extends javax.swing.JFrame
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
                 .addComponent(lblRemoveOrder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -559,7 +590,7 @@ public class GUIMain extends javax.swing.JFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
 
         pack();
@@ -623,6 +654,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -630,6 +662,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblAddOrderList;
@@ -654,6 +687,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JPanel panOrderInfo;
     private javax.swing.JPanel panRemoveOrder;
     private javax.swing.JPanel panUpdateOrder;
+    private javax.swing.JTable tblCoilInfo;
     private javax.swing.JTable tblOrderList;
     private javax.swing.JTable tblRemoveShowOrder;
     private javax.swing.JTable tblShowOrder;
@@ -717,13 +751,40 @@ public class GUIMain extends javax.swing.JFrame
                     SleeveID = (int) SleeveModel.getValueAt(row, 0);
                     try
                     {
-                        StockTableModel = new StockTableModel(sm.getBySleeveId(SleeveID));
+                        StockModel = new StockTableModel(sm.getBySleeveId(SleeveID));
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    tblStockList.setModel(StockTableModel);
-                    System.out.println("Valgte MaterialID:" + MaterialID);
+                    tblStockList.setModel(StockModel);
+                    System.out.println("Valgte StockItem:" + SleeveID);
+                }
+            }
+        });
+    }
+    private void CoilListener()
+    {
+        tblStockList.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(final MouseEvent e)
+            {
+                if (e.getClickCount() == 1)
+                {
+                    final JTable SleeveModel = (JTable) e.getSource();
+                    final int row = SleeveModel.getSelectedRow();
+//                        final int column = OrderModel.getSelectedColumn();
+
+                    CoilTypeID = (int) StockModel.getValueAt(row, 5);
+                    try
+                    {
+                        CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(CoilTypeID));
+                    } catch (Exception ex)
+                    {
+                        Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    tblCoilInfo.setModel(CoilTypeModel);
+                    System.out.println("Valgte CoilTypeID:" + CoilTypeID);
                 }
             }
         });
