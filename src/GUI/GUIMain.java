@@ -804,7 +804,7 @@ public class GUIMain extends javax.swing.JFrame
         String no = formatter.format(count);
         txtDueDate.setText(no);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         String expDateString = sdf.format(cal.getTime()).toString();
         System.out.println("Date: " + expDateString);
@@ -812,16 +812,17 @@ public class GUIMain extends javax.swing.JFrame
         for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
         {
             String dueDate = tblShowOrders.getModel().getValueAt(i, 2).toString();
-            System.out.println(dueDate);
+            System.out.println("Hvad er due date " + dueDate);
             int res = dueDate.compareTo(expDateString);
             if (res >= 3)
             {
-                System.out.println("if ni " + (res >= 3));
+                System.out.println("if res " + (res >= 3));
             }
             else
             {
-                System.out.println("else ni" + (res >= 3));
+                System.out.println("else res" + (res >= 3));
                 System.out.println("Hvad er res: " + res);
+                System.out.println("Hvordan ser dato ud: " + dueDate);
                 
                 tblShowOrders.setBackground(Color.RED);
                 
