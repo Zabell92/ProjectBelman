@@ -644,6 +644,7 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
+    // <editor-fold defaultstate="collapsed" desc="Netbeans declarations">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
@@ -707,6 +708,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtUpdateWidth;
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>
     private void SleeveListener()
     {
         tblShowOrders.addMouseListener(new MouseAdapter()
