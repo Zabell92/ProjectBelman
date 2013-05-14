@@ -7,6 +7,7 @@ package GUI;
 import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
 import BLL.SleeveManager;
+import BLL.StockManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
@@ -25,9 +26,10 @@ public class GUIMain extends javax.swing.JFrame
     private ProductionOrderManager po;
     private SleeveManager slm;
     private MaterialManager mm;
+    private StockManager sm;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
-    private MaterialTableModel MaterialModel;
+    private StockTableModel StockTableModel;
     private int SleeveID;
     private int MaterialID;
 
@@ -36,6 +38,7 @@ public class GUIMain extends javax.swing.JFrame
      */
     public GUIMain()
     {
+     
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         try
@@ -43,6 +46,7 @@ public class GUIMain extends javax.swing.JFrame
             po = new ProductionOrderManager();
             slm = new SleeveManager();
             mm = new MaterialManager();
+            sm = new StockManager();
 
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
@@ -50,7 +54,7 @@ public class GUIMain extends javax.swing.JFrame
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
             SleeveListener();
-            MaterialListener();
+            StockListener();
 
 
 
@@ -82,7 +86,7 @@ public class GUIMain extends javax.swing.JFrame
         tblSleeveInfo = new javax.swing.JTable();
         panBorderMat = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblMaterialInfo = new javax.swing.JTable();
+        tblStockList = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblShowOrders = new javax.swing.JTable();
@@ -159,9 +163,9 @@ public class GUIMain extends javax.swing.JFrame
                 .addContainerGap())
         );
 
-        panBorderMat.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Material Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        panBorderMat.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Stock Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jScrollPane2.setViewportView(tblMaterialInfo);
+        jScrollPane2.setViewportView(tblStockList);
 
         javax.swing.GroupLayout panBorderMatLayout = new javax.swing.GroupLayout(panBorderMat);
         panBorderMat.setLayout(panBorderMatLayout);
@@ -650,12 +654,12 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JPanel panOrderInfo;
     private javax.swing.JPanel panRemoveOrder;
     private javax.swing.JPanel panUpdateOrder;
-    private javax.swing.JTable tblMaterialInfo;
     private javax.swing.JTable tblOrderList;
     private javax.swing.JTable tblRemoveShowOrder;
     private javax.swing.JTable tblShowOrder;
     private javax.swing.JTable tblShowOrders;
     private javax.swing.JTable tblSleeveInfo;
+    private javax.swing.JTable tblStockList;
     private javax.swing.JTable tblUpdateShowOrder;
     private javax.swing.JTextField txtCircumference;
     private javax.swing.JTextField txtDueDate;
@@ -697,7 +701,7 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
-    private void MaterialListener()
+    private void StockListener()
     {
         tblSleeveInfo.addMouseListener(new MouseAdapter()
         {
@@ -710,15 +714,15 @@ public class GUIMain extends javax.swing.JFrame
                     final int row = SleeveModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
 
-                    MaterialID = (int) SleeveModel.getValueAt(row, 3);
+                    SleeveID = (int) SleeveModel.getValueAt(row,1);
                     try
                     {
-                        MaterialModel = new MaterialTableModel(mm.getByMaterialId(MaterialID));
+                        StockTableModel = new StockTableModel(sm.getBySleeveId(SleeveID));
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    tblMaterialInfo.setModel(MaterialModel);
+                    tblStockList.setModel(StockTableModel);
                     System.out.println("Valgte MaterialID:" + MaterialID);
                 }
             }

@@ -11,17 +11,19 @@ package BE;
 public class StockItem
 {
     private final int ID;
-    private final int MaterialID;
     private double StockQuantity;
-    private String Code;
+    private double Length;
     private String ChargeNo;
-    public StockItem(int ID, int MaterialID, double StockQuantity, String Code, String ChargeNo)
+    private final int SleeveID;
+    private final int CoilTypeID;
+    public StockItem(int ID, double StockQuantity, double Length, String ChargeNo, int SleeveID, int CoilTypeID  )
     {
         this.ID = ID;
-        this.MaterialID = MaterialID;
+        this.SleeveID = SleeveID;
         this.StockQuantity = StockQuantity;
-        this.Code = Code;
         this.ChargeNo = ChargeNo;
+        this.CoilTypeID = CoilTypeID;
+        this.Length = Length;
         
     }
 
@@ -49,21 +51,7 @@ public class StockItem
         this.StockQuantity = StockQuantity;
     }
 
-    /**
-     * @return the Code
-     */
-    public String getCode()
-    {
-        return Code;
-    }
-
-    /**
-     * @param Code the Code to set
-     */
-    public void setCode(String Code)
-    {
-        this.Code = Code;
-    }
+   
 
     /**
      * @return the ChargeNo
@@ -84,8 +72,29 @@ public class StockItem
     /**
      * @return the MaterialID
      */
-    public int getMaterialID()
+    public int getSleeveID()
     {
-        return MaterialID;
+        return SleeveID;
+    }
+    
+    public int getCoilTypeID()
+    {
+        return CoilTypeID;
+    }
+
+    /**
+     * @return the Length
+     */
+    public double getLength()
+    {
+        return Length;
+    }
+
+    /**
+     * @param Length the Length to set
+     */
+    public void setLength(double Length)
+    {
+        this.Length = Length;
     }
 }

@@ -4,10 +4,8 @@
  */
 package GUI;
 
-import BE.Material;
-import BE.Sleeve;
-import BLL.MaterialManager;
-import BLL.SleeveManager;
+import BE.StockItem;
+import BLL.StockManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -16,24 +14,24 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Aka
  */
-public class MaterialTableModel extends AbstractTableModel
+public class StockTableModel extends AbstractTableModel
 {
-    private MaterialManager mlm;
+    private StockManager sm;
     private final String[] header =
     {
-        "Id", "Material Name", "Material Densisty"
+        "Id","StockQuantity","Length","ChargeNo", "SleeveID", "CoilTypeID"
     };
     private final Class[] columnTypes =
     {
-        Integer.class, String.class, Double.class
+        Integer.class, Double.class, Double.class, String.class, Integer.class, Integer.class
     };
-    private ArrayList <Material> ml;
+    private ArrayList <StockItem> si;
 
-    public MaterialTableModel()
+    public StockTableModel()
     {
         try
         {
-            mlm = new MaterialManager();
+            sm = new StockManager();
         }
         catch (Exception ex)
         {
@@ -41,16 +39,16 @@ public class MaterialTableModel extends AbstractTableModel
         }
     }
 
-    MaterialTableModel(ArrayList<Material> getByMaterialID)
+    StockTableModel(ArrayList<StockItem> getByMaterialID)
     {
         fireTableDataChanged();
-        ml = getByMaterialID;
+        si = getByMaterialID;
     }
 
     @Override
     public int getRowCount()
     {
-        return ml.size();
+        return si.size();
     }
 
     @Override
@@ -75,15 +73,21 @@ public class MaterialTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col)
     {
         {
-            Material m = ml.get(row);
+            StockItem s = si.get(row);
             switch (col)
             {
                 case 0:
-                    return m.getID();
+                    return s.getID();
                 case 1:
-                    return m.getMaterialName();
+                    return s.getStockQuantity();
                 case 2:
-                    return m.getMaterialDensity();
+                    return s.getLength();
+                case 3: 
+                    return s.getChargeNo();
+                case 4:
+                   return s.getSleeveID();
+                case 5: 
+                    return s.getCoilTypeID();
 
             }
             return null;
@@ -96,9 +100,9 @@ public class MaterialTableModel extends AbstractTableModel
         return (false);
     }
 
-    public void setCollection(Collection<Material> list)
+    public void setCollection(Collection<StockItem> list)
     {
-        ml = new ArrayList<>(list);
+        si = new ArrayList<>(list);
         fireTableDataChanged();
     }  
 }

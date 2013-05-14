@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -35,30 +36,32 @@ public class StockDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
 
-    public StockItem getByMaterialId(int ID) throws Exception
+    public ArrayList<StockItem> getBySleeveId(int ID) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM Stock WHERE MaterialID = ?";
+            String sql = "SELECT * FROM Stock WHERE SleeveID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
 
             ResultSet rs = ps.executeQuery();
-
+            ArrayList<StockItem> StockItem = new ArrayList<>();
             if (rs.next())
             {
                 int id = rs.getInt("id");
-                int MaterialID = rs.getInt("MaterialID");
-                double StockQuantity = rs.getDouble("address");
-                String Code = rs.getString("code");
+                
+                double StockQuantity = rs.getDouble("StockQuantity");
+                double Length = rs.getDouble("Length");
                 String ChargeNo = rs.getString("ChargeNo");
+                int SleeveID = rs.getInt("SleeveID");
+                int CoilTypeID = rs.getInt("CoilTypeID");
 
 
 
-                StockItem s = new StockItem(id, MaterialID, StockQuantity, Code, ChargeNo);
-                return s;
+                StockItem s = new StockItem(id, StockQuantity, Length, ChargeNo,  SleeveID, CoilTypeID);
+                StockItem.add(s);
             }
-            return null;
+            return StockItem;
         }
     }
 }
