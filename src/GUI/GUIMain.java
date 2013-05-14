@@ -714,7 +714,7 @@ public class GUIMain extends javax.swing.JFrame
                     final int row = SleeveModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
 
-                    SleeveID = (int) SleeveModel.getValueAt(row,1);
+                    SleeveID = (int) SleeveModel.getValueAt(row, 0);
                     try
                     {
                         StockTableModel = new StockTableModel(sm.getBySleeveId(SleeveID));
