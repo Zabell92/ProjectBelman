@@ -9,8 +9,13 @@ import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
 import BLL.SleeveManager;
 import BLL.StockManager;
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -60,6 +65,7 @@ public class GUIMain extends javax.swing.JFrame
             SleeveListener();
             StockListener();
             CoilListener();
+            UrgentOrder();
 
 
 
@@ -788,5 +794,38 @@ public class GUIMain extends javax.swing.JFrame
                 }
             }
         });
+    }
+    private void UrgentOrder()
+    {
+        int count = (tblShowOrders.getRowCount());
+        NumberFormat formatter = new DecimalFormat("###,###");
+        String no = formatter.format(count);
+        txtDueDate.setText(no);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar cal = Calendar.getInstance();
+        String expDateString = sdf.format(cal.getTime()).toString();
+        System.out.println("Date: " + expDateString);
+
+        for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
+        {
+            String dueDate = tblShowOrders.getModel().getValueAt(i, 2).toString();
+            System.out.println(dueDate);
+            int res = dueDate.compareTo(expDateString);
+            if (res >= 3)
+            {
+                System.out.println("if ni " + (res >= 3));
+            }
+            else
+            {
+                System.out.println("else ni" + (res >= 3));
+                System.out.println("Hvad er res: " + res);
+                
+                tblShowOrders.setBackground(Color.RED);
+                
+                      
+                
+            }
+        }
     }
 }
