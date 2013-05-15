@@ -851,8 +851,13 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
                 }
+                
+                
+                
+                
                 System.out.println("Hvad er due date " + dueDate);
                 System.out.println("Hvad er exp date " + expDateString);
+                System.out.println("Hvor meget er res " + res);
                 //  tblShowOrders.setBackground(Color.yellow);
                 //  tblShowOrders.getTableCellRendererComponent();
             }
