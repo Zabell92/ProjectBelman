@@ -852,15 +852,17 @@ public class GUIMain extends javax.swing.JFrame
                     
                 ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
                 // tblShowOrders.setBackground(Color.BLUE);
-
-
-                tblShowOrders.getColumnModel().getColumn(0).setCellRenderer(cr);
-
-
-
-
+                for (int j = 0; j < 6; j++)
+                {
+                    tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
+                }
+                
+                
+                
+                
                 System.out.println("Hvad er due date " + dueDate);
                 System.out.println("Hvad er exp date " + expDateString);
+                System.out.println("Hvor meget er res " + res);
                 //  tblShowOrders.setBackground(Color.yellow);
 //                  tblShowOrders.getTableCellRendererComponent();
                 
