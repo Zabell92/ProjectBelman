@@ -817,41 +817,10 @@ public class GUIMain extends javax.swing.JFrame
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         String expDateString = sdf.format(cal.getTime()).toString();
-        //   System.out.println("Date: " + expDateString);
-
-
-        for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
+           
+         for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
         {
-            String dueDate = tblShowOrders.getModel().getValueAt(i, 2).toString();
-
-            //  DateFormat dateformatter;
-            Date date = new Date();
-            Date date1 = new Date();
-            // dateformatter = new SimpleDateFormat("dd-MMM-yy");
-            try
-            {
-                date = sdf.parse(dueDate);
-                date1 = sdf.parse(expDateString);
-                //         System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
-            } catch (ParseException ex)
-            {
-                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            long res = ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
-            //   return (int)
-
-
-            if (res >= 3) 
-            {
-
-                System.out.println("RES: Hvad er due date " + dueDate);
-                System.out.println("RES: Hvad er exp date " + expDateString);
-            } else 
-            {
-                    
                 ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
-                // tblShowOrders.setBackground(Color.BLUE);
                 for (int j = 0; j < 6; j++)
                 {
                     tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
@@ -860,13 +829,15 @@ public class GUIMain extends javax.swing.JFrame
                 
                 
                 
-                System.out.println("Hvad er due date " + dueDate);
-                System.out.println("Hvad er exp date " + expDateString);
-                System.out.println("Hvor meget er res " + res);
-                //  tblShowOrders.setBackground(Color.yellow);
-//                  tblShowOrders.getTableCellRendererComponent();
+//                System.out.println("Hvad er due date " + dueDate);
+//                System.out.println("Hvad er exp date " + expDateString);
+//                System.out.println("Hvor meget er res " + res);
+
                 
             }
         }
     }
-}
+    
+    
+
+

@@ -2,9 +2,6 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,7 +16,7 @@ class ColorRender extends JLabel implements TableCellRenderer
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Calendar cal = Calendar.getInstance();
     String expDateString = sdf.format(cal.getTime()).toString();
-//    Date date = new Date();
+    
     private String rowName;
 
     public ColorRender(String row)
@@ -33,10 +30,11 @@ class ColorRender extends JLabel implements TableCellRenderer
     {
         Object columnValue = table.getValueAt(row, table.getColumnModel().getColumnIndex(rowName));
 
-
-
-
-
+            Date date = new Date();
+            Date date1 = new Date();
+           
+        
+    
         if (value != null)
         {
             setText(value.toString());
@@ -52,17 +50,30 @@ class ColorRender extends JLabel implements TableCellRenderer
             setForeground(table.getForeground());
             for (int i = 0; i < table.getRowCount(); i++)
             {
-                String dateValue = table.getValueAt(i, 2).toString();
-                if ((dateValue).equals(expDateString))
+                String dueDate = table.getValueAt(i, 2).toString();
+                 try
+            {
+                date = sdf.parse(dueDate);
+                date1 = sdf.parse(expDateString);
+                //         System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+            } catch (ParseException ex)
+            {
+                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            long res = ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
+                if (res>=4)
                 {
-                    System.out.println("JA DET PASSER");
+                }
+                else{
+                    
                     if (row <= i)
                     {
                         setBackground(Color.red);
                     }
+                    
                 }
-                System.out.println("COLOR RENDER VALUE: " + table.getValueAt(i, 2));
-                System.out.println("EXP DATE: " + expDateString);
+                
 
             }
 
