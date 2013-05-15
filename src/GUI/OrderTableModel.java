@@ -101,6 +101,7 @@ public class OrderTableModel extends AbstractTableModel
         return (false);
     }
 
+    
     public void setCollection(Collection<ProductionOrder> list)
     {
         Porder = new ArrayList<>(list);

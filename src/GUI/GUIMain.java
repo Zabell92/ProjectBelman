@@ -12,14 +12,18 @@ import BLL.StockManager;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -46,7 +50,7 @@ public class GUIMain extends javax.swing.JFrame
      */
     public GUIMain()
     {
-     
+
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         try
@@ -715,6 +719,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
+
     private void SleeveListener()
     {
         tblShowOrders.addMouseListener(new MouseAdapter()
@@ -770,6 +775,7 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
+
     private void CoilListener()
     {
         tblStockList.addMouseListener(new MouseAdapter()
@@ -797,6 +803,7 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
+
     private void UrgentOrder()
     {
         int count = (tblShowOrders.getRowCount());
@@ -807,27 +814,47 @@ public class GUIMain extends javax.swing.JFrame
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         String expDateString = sdf.format(cal.getTime()).toString();
-        System.out.println("Date: " + expDateString);
+        //   System.out.println("Date: " + expDateString);
+
 
         for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
         {
             String dueDate = tblShowOrders.getModel().getValueAt(i, 2).toString();
-            System.out.println("Hvad er due date " + dueDate);
-            int res = dueDate.compareTo(expDateString);
+
+            //  DateFormat dateformatter;
+            Date date = new Date();
+            Date date1 = new Date();
+            // dateformatter = new SimpleDateFormat("dd-MMM-yy");
+            try
+            {
+                date = sdf.parse(dueDate);
+                date1 = sdf.parse(expDateString);
+                //         System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+            } catch (ParseException ex)
+            {
+                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            long res = ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
+            //   return (int)
             if (res >= 3)
             {
-                System.out.println("if res " + (res >= 3));
-            }
-            else
+
+                System.out.println("RES: Hvad er due date " + dueDate);
+                System.out.println("RES: Hvad er exp date " + expDateString);
+            } else
             {
-                System.out.println("else res" + (res >= 3));
-                System.out.println("Hvad er res: " + res);
-                System.out.println("Hvordan ser dato ud: " + dueDate);
                 
-                tblShowOrders.setBackground(Color.RED);
-                
-                      
-                
+                ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
+                // tblShowOrders.setBackground(Color.BLUE);
+                for (int j = 0; j < 6; j++)
+                {
+                    tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
+                }
+                System.out.println("Hvad er due date " + dueDate);
+                System.out.println("Hvad er exp date " + expDateString);
+                //  tblShowOrders.setBackground(Color.yellow);
+                //  tblShowOrders.getTableCellRendererComponent();
             }
         }
     }
