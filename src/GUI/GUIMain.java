@@ -17,8 +17,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -722,6 +724,7 @@ public class GUIMain extends javax.swing.JFrame
 
     private void SleeveListener()
     {
+
         tblShowOrders.addMouseListener(new MouseAdapter()
         {
             @Override
@@ -837,24 +840,30 @@ public class GUIMain extends javax.swing.JFrame
 
             long res = ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
             //   return (int)
-            if (res >= 3)
+
+
+            if (res >= 3) 
             {
 
                 System.out.println("RES: Hvad er due date " + dueDate);
                 System.out.println("RES: Hvad er exp date " + expDateString);
-            } else
+            } else 
             {
-                
+                    
                 ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
                 // tblShowOrders.setBackground(Color.BLUE);
-                for (int j = 0; j < 6; j++)
-                {
-                    tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
-                }
+
+
+                tblShowOrders.getColumnModel().getColumn(0).setCellRenderer(cr);
+
+
+
+
                 System.out.println("Hvad er due date " + dueDate);
                 System.out.println("Hvad er exp date " + expDateString);
                 //  tblShowOrders.setBackground(Color.yellow);
-                //  tblShowOrders.getTableCellRendererComponent();
+//                  tblShowOrders.getTableCellRendererComponent();
+                
             }
         }
     }

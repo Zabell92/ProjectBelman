@@ -6,9 +6,12 @@ package GUI;
 
 import BE.ProductionOrder;
 import BLL.ProductionOrderManager;
+import java.awt.Color;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -44,6 +47,19 @@ public class OrderTableModel extends AbstractTableModel
     {
         fireTableDataChanged();
         Porder = showAll;
+    }
+    
+    List<Color> rowColours = Arrays.asList(
+        Color.RED,
+        Color.GREEN,
+        Color.CYAN
+    );
+    public void setRowColour(int row, Color c) {
+        rowColours.set(row, c);
+        fireTableRowsUpdated(row, row);
+    }
+    public Color getRowColour(int row) {
+        return rowColours.get(row);
     }
 
     @Override
