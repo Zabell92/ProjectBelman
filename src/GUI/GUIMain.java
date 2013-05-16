@@ -230,7 +230,7 @@ public class GUIMain extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -425,7 +425,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panAddOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
                     .addGroup(panAddOrderLayout.createSequentialGroup()
                         .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panAddOrderLayout.createSequentialGroup()
@@ -434,7 +434,7 @@ public class GUIMain extends javax.swing.JFrame
                                 .addComponent(btnClear))
                             .addComponent(panBorderAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblAddOrderList))
-                        .addGap(0, 415, Short.MAX_VALUE)))
+                        .addGap(0, 425, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAddOrderLayout.setVerticalGroup(
@@ -552,7 +552,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panUpdateOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
                     .addGroup(panUpdateOrderLayout.createSequentialGroup()
                         .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panUpdateOrderLayout.createSequentialGroup()
@@ -561,7 +561,7 @@ public class GUIMain extends javax.swing.JFrame
                                 .addComponent(btnUpdateClear))
                             .addComponent(lblUpdaterOrderList)
                             .addComponent(panBorderUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 431, Short.MAX_VALUE)))
+                        .addGap(0, 441, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panUpdateOrderLayout.setVerticalGroup(
@@ -601,7 +601,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panRemoveOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
                     .addGroup(panRemoveOrderLayout.createSequentialGroup()
                         .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panRemoveOrderLayout.createSequentialGroup()
@@ -642,8 +642,7 @@ public class GUIMain extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
