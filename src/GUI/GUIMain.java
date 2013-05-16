@@ -731,8 +731,9 @@ public class GUIMain extends javax.swing.JFrame
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
-
+                    
                     SleeveID = (int) OrderModel.getValueAt(row, 5);
+                    CoilTypeWidth = (double) OrderModel.getValueAt(row, 4);
                     
                     try
                     {
@@ -796,7 +797,7 @@ public class GUIMain extends javax.swing.JFrame
 //                        final int column = OrderModel.getSelectedColumn();
 
                     MaterialID = (int) SleeveModel.getValueAt(row, 3);
-                    CoilTypeWidth = (double) OrderModel.getValueAt(row, 4);
+                    
                     try
                     {
                         
@@ -808,7 +809,8 @@ public class GUIMain extends javax.swing.JFrame
                     }
                     
                     tblCoilInfo.setModel(CoilTypeModel);
-                    System.out.println("Valgte CoilTypeID:" + MaterialID);
+                    System.out.println("Valgte CoilTypeID: " + MaterialID);
+                    System.out.println("Valgte Width: " + CoilTypeWidth);
                 }
             }
         });
