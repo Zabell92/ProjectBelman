@@ -46,7 +46,7 @@ public class StockDBM
 
             ResultSet rs = ps.executeQuery();
             ArrayList<StockItem> StockItem = new ArrayList<>();
-            if (rs.next())
+            while (rs.next())
             {
                 int id = rs.getInt("id");
                 

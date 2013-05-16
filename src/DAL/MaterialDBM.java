@@ -46,7 +46,7 @@ public class MaterialDBM
             ResultSet rs = ps.executeQuery();
 
             ArrayList<Material> Material = new ArrayList<>();
-            if (rs.next())
+            while (rs.next())
             {
                 int id = rs.getInt("id");
                 String MaterialName = rs.getString("MaterialName");

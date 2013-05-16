@@ -47,7 +47,7 @@ public class SleeveDBM
             ResultSet rs = ps.executeQuery();
 
             ArrayList<Sleeve> Sleeve = new ArrayList<>();
-            if (rs.next())
+            while (rs.next())
             {
                 int id = rs.getInt("id");
                 double Thickness = rs.getDouble("Thickness");
