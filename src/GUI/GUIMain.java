@@ -48,7 +48,6 @@ public class GUIMain extends javax.swing.JFrame
     private int MaterialID;
     private int CoilTypeID;
     private double CoilTypeWidth;
-    
 
     /**
      * Creates new form OrderList
@@ -786,10 +785,10 @@ public class GUIMain extends javax.swing.JFrame
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
-                    
+
                     SleeveID = (int) OrderModel.getValueAt(row, 5);
                     CoilTypeWidth = (double) OrderModel.getValueAt(row, 4);
-                    
+
                     try
                     {
                         SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
@@ -799,8 +798,8 @@ public class GUIMain extends javax.swing.JFrame
                     }
                     tblSleeveInfo.setModel(SleeveModel);
 //                    System.out.println("Valgte SleeveID:" + SleeveID);
-                    
-                         
+
+
                 }
 
 
@@ -848,21 +847,21 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable SleeveModel = (JTable) e.getSource();
                     final int row = SleeveModel.getSelectedRow();
-                    
+
 //                        final int column = OrderModel.getSelectedColumn();
 
                     MaterialID = (int) SleeveModel.getValueAt(row, 3);
-                    
+
                     try
                     {
-                        
+
                         CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(MaterialID, CoilTypeWidth));
-                        
+
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                     tblCoilInfo.setModel(CoilTypeModel);
                     System.out.println("Valgte CoilTypeID: " + MaterialID);
                     System.out.println("Valgte Width: " + CoilTypeWidth);
