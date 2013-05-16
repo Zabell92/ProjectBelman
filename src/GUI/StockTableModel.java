@@ -9,6 +9,7 @@ import BLL.StockManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -104,5 +105,12 @@ public class StockTableModel extends AbstractTableModel
     {
         si = new ArrayList<>(list);
         fireTableDataChanged();
-    }  
+    }
+    
+    
+   public void clear()
+   {
+       fireTableRowsDeleted(0, 3);
+   }
+       
 }

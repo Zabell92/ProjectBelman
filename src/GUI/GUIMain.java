@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DropMode;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.TableColumnModel;
@@ -72,12 +73,6 @@ public class GUIMain extends javax.swing.JFrame
             StockListener();
             CoilListener();
             UrgentOrder();
-
-
-
-
-
-
 
         } catch (Exception ex)
         {
@@ -745,10 +740,15 @@ public class GUIMain extends javax.swing.JFrame
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     tblSleeveInfo.setModel(SleeveModel);
-                    System.out.println("Valgte SleeveID:" + SleeveID);
+//                    System.out.println("Valgte SleeveID:" + SleeveID);
+                    
+                         
                 }
+
+
             }
         });
+
     }
 
     private void StockListener()
@@ -817,27 +817,23 @@ public class GUIMain extends javax.swing.JFrame
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         String expDateString = sdf.format(cal.getTime()).toString();
-           
-         for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
+
+        for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
         {
-                ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
-                for (int j = 0; j < 6; j++)
-                {
-                    tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
-                }
-                
-                
-                
-                
+            ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
+            for (int j = 0; j < 6; j++)
+            {
+                tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
+            }
+
+
+
+
 //                System.out.println("Hvad er due date " + dueDate);
 //                System.out.println("Hvad er exp date " + expDateString);
 //                System.out.println("Hvor meget er res " + res);
 
-                
-            }
+
         }
     }
-    
-    
-
-
+}
