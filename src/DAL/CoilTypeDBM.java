@@ -37,13 +37,14 @@ public class CoilTypeDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
 
-    public ArrayList<CoilType> getByCoilTypeID(int ID) throws Exception
+    public ArrayList<CoilType> getByCoilTypeID(int ID, double Width) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM CoilType WHERE MaterialID = ?";
+            String sql = "SELECT * FROM CoilType WHERE MaterialID, Width VALUES (?,?) ";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
+            ps.setDouble(2, Width);
 
             ResultSet rs = ps.executeQuery();
 
@@ -52,11 +53,11 @@ public class CoilTypeDBM
             {
                 int id = rs.getInt("ID");
                 int MaterialID = rs.getInt("MaterialID");
-                double Width = rs.getDouble("Width");
+                double width = rs.getDouble("Width");
                 double Thickness = rs.getDouble("Thickness");
                 String Code = rs.getString("Code");
                 
-                CoilType ct = new CoilType(id, MaterialID, Width, Thickness, Code);
+                CoilType ct = new CoilType(id, MaterialID, width, Thickness, Code);
                 CoilType.add(ct);
             }
             return CoilType;

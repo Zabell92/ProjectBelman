@@ -21,9 +21,9 @@ public class CoilTypeManager
         this.ctdb = new CoilTypeDBM();
     }
     
-   public ArrayList<CoilType> getByCoilTypeID(int ID) throws Exception
+   public ArrayList<CoilType> getByCoilTypeID(int ID, double Width) throws Exception
     {
-        return ctdb.getByCoilTypeID(ID);
+        return ctdb.getByCoilTypeID(ID,Width);
         
     }  
 }
