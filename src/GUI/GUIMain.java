@@ -47,6 +47,7 @@ public class GUIMain extends javax.swing.JFrame
     private int SleeveID;
     private int MaterialID;
     private int CoilTypeID;
+    
 
     /**
      * Creates new form OrderList
@@ -781,7 +782,7 @@ public class GUIMain extends javax.swing.JFrame
 
     private void CoilListener()
     {
-        tblStockList.addMouseListener(new MouseAdapter()
+        tblSleeveInfo.addMouseListener(new MouseAdapter()
         {
             @Override
             public void mouseClicked(final MouseEvent e)
@@ -790,18 +791,21 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable SleeveModel = (JTable) e.getSource();
                     final int row = SleeveModel.getSelectedRow();
+                    
 //                        final int column = OrderModel.getSelectedColumn();
 
-                    CoilTypeID = (int) StockModel.getValueAt(row, 5);
+                    MaterialID = (int) SleeveModel.getValueAt(row, 3);
                     try
                     {
-                        CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(CoilTypeID));
+                        CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(MaterialID));
+                       
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    
                     tblCoilInfo.setModel(CoilTypeModel);
-                    System.out.println("Valgte CoilTypeID:" + CoilTypeID);
+                    System.out.println("Valgte CoilTypeID:" + MaterialID);
                 }
             }
         });

@@ -19,11 +19,11 @@ import javax.swing.table.AbstractTableModel;
     private CoilTypeManager ctm;
     private final String[] header =
     {
-        "ID", "Width", "Thickness", "Code"
+        "ID","MaterialID", "Width", "Thickness", "Code"
     };
     private final Class[] columnTypes =
     {
-        Integer.class, Double.class, Double.class, String.class
+        Integer.class,Integer.class, Double.class, Double.class, String.class
     };
     private ArrayList <CoilType> ct;
 
@@ -79,10 +79,12 @@ import javax.swing.table.AbstractTableModel;
                 case 0:
                     return c.getID();
                 case 1:
-                    return c.getWidth();
+                    return c.getMaterialID();
                 case 2:
-                    return c.getThickness();
+                    return c.getWidth();
                 case 3:
+                    return c.getThickness();
+                case 4:
                     return c.getCode();
 
             }

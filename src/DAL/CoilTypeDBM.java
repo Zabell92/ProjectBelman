@@ -41,14 +41,14 @@ public class CoilTypeDBM
     {
         {
             Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM CoilType WHERE ID = ?";
+            String sql = "SELECT * FROM CoilType WHERE MaterialID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
 
             ResultSet rs = ps.executeQuery();
 
             ArrayList<CoilType> CoilType = new ArrayList<>();
-            if (rs.next())
+            while (rs.next())
             {
                 int id = rs.getInt("ID");
                 int MaterialID = rs.getInt("MaterialID");
