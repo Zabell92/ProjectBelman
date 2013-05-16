@@ -41,7 +41,7 @@ public class CoilTypeDBM
     {
         {
             Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM CoilType WHERE MaterialID, Width VALUES (?,?) ";
+            String sql = "SELECT * FROM CoilType WHERE MaterialID = ? AND Width <= ? + 300";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
             ps.setDouble(2, Width);
