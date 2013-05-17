@@ -39,12 +39,13 @@ public class SimilarOrdersDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
 
-    public ArrayList<ProductionOrder> showAll() throws SQLServerException, SQLException
+    public ArrayList<ProductionOrder> getSimilarOrders(double Width) throws SQLServerException, SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "SELECT * FROM ProductionOrder ORDER BY DueDate";
+            String sql = "SELECT * FROM ProductionOrder WHERE Width <= ? ORDER BY DueDate";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDouble(1, Width);
 
             ResultSet rs = ps.executeQuery();
 
@@ -57,11 +58,11 @@ public class SimilarOrdersDBM
                 String Porder = rs.getString("POrder");
                 Date DueDate = rs.getDate("DueDate");
                 int Quantity = rs.getInt("Quantity");
-                double Width = rs.getDouble("Width");
+                double width = rs.getDouble("Width");
                 int SleeveID = rs.getInt("SleeveID");
 
 
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, Width, SleeveID);
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, width, SleeveID);
                 POrder.add(po);
             }
             return POrder;

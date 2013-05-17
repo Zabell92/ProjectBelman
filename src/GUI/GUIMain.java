@@ -7,6 +7,7 @@ package GUI;
 import BLL.CoilTypeManager;
 import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
+import BLL.SimilarOrderManager;
 import BLL.SleeveManager;
 import BLL.StockManager;
 import java.awt.Color;
@@ -40,14 +41,17 @@ public class GUIMain extends javax.swing.JFrame
     private MaterialManager mm;
     private StockManager sm;
     private CoilTypeManager ctm;
+    private SimilarOrderManager som;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
     private StockTableModel StockModel;
     private CoilTypeTableModel CoilTypeModel;
+    private SimilarOrderTableModel SimilarOrderModel;
     private int SleeveID;
     private int MaterialID;
     private int CoilTypeID;
     private double CoilTypeWidth;
+    private double SimilarWidth;
 
     /**
      * Creates new form OrderList
@@ -64,6 +68,7 @@ public class GUIMain extends javax.swing.JFrame
             mm = new MaterialManager();
             sm = new StockManager();
             ctm = new CoilTypeManager();
+            som = new SimilarOrderManager();
 
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
@@ -74,6 +79,7 @@ public class GUIMain extends javax.swing.JFrame
             StockListener();
             CoilListener();
             UrgentOrder();
+            SimilarOrdersListener();
 
         } catch (Exception ex)
         {
@@ -107,13 +113,13 @@ public class GUIMain extends javax.swing.JFrame
         tblShowOrders = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblOrderList = new javax.swing.JTable();
+        tblSimilarOrders = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblCoilInfo = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblSimilarSleeves = new javax.swing.JTable();
         panAddOrder = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblShowOrder = new javax.swing.JTable();
@@ -241,7 +247,7 @@ public class GUIMain extends javax.swing.JFrame
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Similar Orders:"));
 
-        jScrollPane3.setViewportView(tblOrderList);
+        jScrollPane3.setViewportView(tblSimilarOrders);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -281,7 +287,7 @@ public class GUIMain extends javax.swing.JFrame
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Similar Sleeves:"));
 
-        jScrollPane10.setViewportView(jTable2);
+        jScrollPane10.setViewportView(tblSimilarSleeves);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -641,7 +647,7 @@ public class GUIMain extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -726,7 +732,6 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblAddOrderList;
     private javax.swing.JLabel lblCircumference;
@@ -751,10 +756,11 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JPanel panRemoveOrder;
     private javax.swing.JPanel panUpdateOrder;
     private javax.swing.JTable tblCoilInfo;
-    private javax.swing.JTable tblOrderList;
     private javax.swing.JTable tblRemoveShowOrder;
     private javax.swing.JTable tblShowOrder;
     private javax.swing.JTable tblShowOrders;
+    private javax.swing.JTable tblSimilarOrders;
+    private javax.swing.JTable tblSimilarSleeves;
     private javax.swing.JTable tblSleeveInfo;
     private javax.swing.JTable tblStockList;
     private javax.swing.JTable tblUpdateShowOrder;
@@ -865,6 +871,39 @@ public class GUIMain extends javax.swing.JFrame
                     tblCoilInfo.setModel(CoilTypeModel);
                     System.out.println("Valgte CoilTypeID: " + MaterialID);
                     System.out.println("Valgte Width: " + CoilTypeWidth);
+                }
+            }
+        });
+    }
+    
+     private void SimilarOrdersListener()
+    {
+        tblCoilInfo.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(final MouseEvent e)
+            {
+                if (e.getClickCount() == 1)
+                {
+                    final JTable SleeveModel = (JTable) e.getSource();
+                    final int row = SleeveModel.getSelectedRow();
+
+//                        final int column = OrderModel.getSelectedColumn();
+
+                    SimilarWidth = (double) SleeveModel.getValueAt(row, 2);
+
+                    try
+                    {
+
+                        SimilarOrderModel = new SimilarOrderTableModel(som.getSimilarOrders(SimilarWidth));
+
+                    } catch (Exception ex)
+                    {
+                        Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    tblSimilarOrders.setModel(SimilarOrderModel);
+                    System.out.println("Valgte Width: " + SimilarWidth);
                 }
             }
         });

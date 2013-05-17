@@ -28,4 +28,84 @@ public class SimilarOrders
         this.EndTime = EndTime;
         this.MaterialID = MaterialID; 
     }
+
+    /**
+     * @return the ID
+     */
+    public int getID()
+    {
+        return ID;
+    }
+
+    /**
+     * @return the Thickness
+     */
+    public double getThickness()
+    {
+        return Thickness;
+    }
+
+    /**
+     * @param Thickness the Thickness to set
+     */
+    public void setThickness(double Thickness)
+    {
+        this.Thickness = Thickness;
+    }
+
+    /**
+     * @return the Circumference
+     */
+    public double getCircumference()
+    {
+        return Circumference;
+    }
+
+    /**
+     * @param Circumference the Circumference to set
+     */
+    public void setCircumference(double Circumference)
+    {
+        this.Circumference = Circumference;
+    }
+
+    /**
+     * @return the StartTime
+     */
+    public int getStartTime()
+    {
+        return StartTime;
+    }
+
+    /**
+     * @param StartTime the StartTime to set
+     */
+    public void setStartTime(int StartTime)
+    {
+        this.StartTime = StartTime;
+    }
+
+    /**
+     * @return the EndTime
+     */
+    public int getEndTime()
+    {
+        return EndTime;
+    }
+
+    /**
+     * @param EndTime the EndTime to set
+     */
+    public void setEndTime(int EndTime)
+    {
+        this.EndTime = EndTime;
+    }
+
+    /**
+     * @return the MaterialID
+     */
+    public int getMaterialID()
+    {
+        return MaterialID;
+    }
 }

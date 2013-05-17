@@ -302,7 +302,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblOrderList">
+                    <Component class="javax.swing.JTable" name="tblSimilarOrders">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -390,7 +390,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable2">
+                    <Component class="javax.swing.JTable" name="tblSimilarSleeves">
                     </Component>
                   </SubComponents>
                 </Container>
