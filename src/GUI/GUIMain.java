@@ -10,24 +10,16 @@ import BLL.ProductionOrderManager;
 import BLL.SimilarOrderManager;
 import BLL.SleeveManager;
 import BLL.StockManager;
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DropMode;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -52,6 +44,7 @@ public class GUIMain extends javax.swing.JFrame
     private int CoilTypeID;
     private double CoilTypeWidth;
     private double SimilarWidth;
+    private int Counter;
 
     /**
      * Creates new form OrderList
@@ -70,16 +63,21 @@ public class GUIMain extends javax.swing.JFrame
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
 
+            Counter = 0;
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
+
+
+            Initialize();
             SleeveListener();
             StockListener();
             CoilListener();
             UrgentOrder();
             SimilarOrdersListener();
+
 
         } catch (Exception ex)
         {
@@ -780,14 +778,15 @@ public class GUIMain extends javax.swing.JFrame
 
     private void SleeveListener()
     {
-
         tblShowOrders.addMouseListener(new MouseAdapter()
         {
             @Override
             public void mouseClicked(final MouseEvent e)
             {
-                if (e.getClickCount() == 1)
+                if (e.getClickCount() >= 1)
                 {
+                    Counter++;
+                    System.out.println("Mouse clicked: " + Counter );
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
@@ -797,12 +796,19 @@ public class GUIMain extends javax.swing.JFrame
 
                     try
                     {
+                        SimilarOrderModel = new SimilarOrderTableModel(som.getSimilarOrders(0.0));
                         SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+                        CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(0, 0.0));
+                        StockModel = new StockTableModel(sm.getBySleeveId(0));
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    tblCoilInfo.setModel(CoilTypeModel);
                     tblSleeveInfo.setModel(SleeveModel);
+                    tblStockList.setModel(StockModel);
+                    tblSimilarOrders.setModel(SimilarOrderModel);
+                    //tblCoilInfo.setModel(CoilTypeModel);
 //                    System.out.println("Valgte SleeveID:" + SleeveID);
 
 
@@ -875,8 +881,8 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
-    
-     private void SimilarOrdersListener()
+
+    private void SimilarOrdersListener()
     {
         tblCoilInfo.addMouseListener(new MouseAdapter()
         {
@@ -903,6 +909,7 @@ public class GUIMain extends javax.swing.JFrame
                     }
 
                     tblSimilarOrders.setModel(SimilarOrderModel);
+                    //        tblSimilarOrders.setModel(SimilarOrderModel);
                     System.out.println("Valgte Width: " + SimilarWidth);
                 }
             }
@@ -937,5 +944,25 @@ public class GUIMain extends javax.swing.JFrame
 
 
         }
+    }
+
+    private void Initialize()
+    {
+        try
+        {
+            SimilarOrderModel = new SimilarOrderTableModel(som.getSimilarOrders(0.0));
+            StockModel = new StockTableModel(sm.getBySleeveId(0));
+            CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(0, 0.0));
+            SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
+
+        } catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tblStockList.setModel(StockModel);
+        tblSimilarOrders.setModel(SimilarOrderModel);
+        tblCoilInfo.setModel(CoilTypeModel);
+        tblSleeveInfo.setModel(SleeveModel);
+        //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
