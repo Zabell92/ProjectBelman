@@ -92,6 +92,10 @@ public class SimilarOrderTableModel extends AbstractTableModel
                     return po.getWidth();
                 case 5:
                     return po.getSleeveID();
+//                case 6:
+//                    return po.isIsDone();
+//                case 7:
+//                    return po.getUsedTime();
 
             }
             return null;
