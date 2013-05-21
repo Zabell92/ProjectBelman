@@ -37,4 +37,9 @@ public class ProductionOrderManager
     {
         podb.updateIsDone(ID);
     }
+    
+    public void updateEmployee(int ID, String Name) throws SQLException
+    {
+        podb.updateEmployee(ID, Name);
+    }
 }
