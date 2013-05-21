@@ -72,38 +72,25 @@ public class ProductionOrderDBM
         }
     }
 
-    public ArrayList<ProductionOrder> insertTime(int TimeUsed, int ID) throws SQLException
+    public void insertTime(long TimeUsed, int ID) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
             String sql = "UPDATE ProductionOrder SET TimeUsed = ? Where ID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ResultSet rs = ps.executeQuery();
-             ps.setInt(1, TimeUsed);
-             ps.setInt(2, ID);
+            ps.setLong(1, TimeUsed);
+            ps.setInt(2, ID);
 
-            ArrayList<ProductionOrder> POrder = new ArrayList<>();
 
-            while (rs.next())
+            int affectedRows = ps.executeUpdate();
+
+            while (affectedRows == 0)
             {
-                int id = rs.getInt("ID");
-                int EmployeeID = rs.getInt("EmployeeID");
-                String Porder = rs.getString("POrder");
-                Date DueDate = rs.getDate("DueDate");
-                int Quantity = rs.getInt("Quantity");
-                double Width = rs.getDouble("Width");
-                int SleeveID = rs.getInt("SleeveID");
-                boolean IsDone = rs.getBoolean("IsDone");
-                int timeUsed = rs.getInt("TimeUsed");
-
-
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder,
-                        DueDate, Quantity, Width, SleeveID, IsDone, timeUsed);
-                POrder.add(po);
+                throw new SQLException("Unable to insert time");
             }
+//          
 
-            return POrder;
         }
 
     }

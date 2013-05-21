@@ -13,6 +13,7 @@ import BLL.SleeveManager;
 import BLL.StockManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -43,6 +44,7 @@ public class GUIMain extends javax.swing.JFrame
     private CoilTypeTableModel CoilTypeModel;
     private SimilarOrderTableModel SimilarOrderModel;
     private SimilarSleeveTableModel SimilarSleeveModel;
+    private int POrderID;
     private int SleeveID;
     private int MaterialID;
     private int CoilTypeID;
@@ -86,6 +88,7 @@ public class GUIMain extends javax.swing.JFrame
             UrgentOrder();
             SimilarOrdersListener();
             SimilarSleeveListener();
+            ProductionIDListener();
             
             
             
@@ -770,8 +773,17 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnStopActionPerformed
       StopWatch.stop();
       
-            strElapsedTime = Long.toString(StopWatch.getElapsedTimeSecs());
-            lblTime.setText(strElapsedTime);
+//            strElapsedTime = Long.toString(StopWatch.getElapsedTimeSecs());
+//            lblTime.setText(strElapsedTime);
+        try
+        {
+            po.insertTime(StopWatch.getElapsedTimeSecs(), POrderID);
+            po.updateIsDone(POrderID);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
       
       
        System.out.println("Tid: " + StopWatch.getElapsedTimeSecs());
@@ -1076,6 +1088,29 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
+      
+      private int ProductionIDListener()
+      {
+          tblShowOrders.addMouseListener(new MouseAdapter()
+          {
+             @Override
+            public void mouseClicked(final MouseEvent e)
+            {
+                if (e.getClickCount() == 1)
+                {
+                    final JTable OrderModel = (JTable) e.getSource();
+                    final int row = OrderModel.getSelectedRow();
+//                        final int column = OrderModel.getSelectedColumn();
+
+                    POrderID = (int) OrderModel.getValueAt(row, 0);
+                  
+                    System.out.println("Valgte StockItem:" + POrderID);
+                }
+               
+          }
+      });
+           return POrderID;
+      }
 
     private void Initialize()
     {

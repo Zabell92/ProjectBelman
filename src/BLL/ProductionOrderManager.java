@@ -28,9 +28,9 @@ public class ProductionOrderManager
         return podb.showAll();
     }
 
-    public ArrayList<ProductionOrder> insertTime(int TimeUsed, int ID) throws SQLException
+    public void insertTime(long TimeUsed, int ID) throws SQLException
     {
-        return podb.insertTime(TimeUsed, ID);
+        podb.insertTime(TimeUsed, ID);
     }
     
     public void updateIsDone(int ID) throws SQLException
