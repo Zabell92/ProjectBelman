@@ -34,8 +34,10 @@ public class StopWatch
 
     public void stop()
     {
-        this.stopTime = System.currentTimeMillis();
+        
         this.running = false;
+        this.stopTime = System.currentTimeMillis();
+        
     }
 
     //elaspsed time in milliseconds
@@ -59,11 +61,11 @@ public class StopWatch
         long elapsed;
         if (running)
         {
-            elapsed = ((System.currentTimeMillis() - startTime) / 1000);
+            elapsed = ((System.currentTimeMillis() - startTime) / 1000 );
         }
         else
         {
-            elapsed = ((stopTime - startTime) / 1000);
+            elapsed = ((stopTime - startTime) / 1000 );
         }
         return elapsed;
     }
