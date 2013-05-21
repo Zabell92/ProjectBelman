@@ -16,7 +16,7 @@ public class StopWatch
     private boolean running = false;
 
     
-//     public void StopWatch()
+//     public StopWatch()
 //    {
 //        StopWatch s = new StopWatch();
 //        s.start();

@@ -36,6 +36,7 @@ public class GUIMain extends javax.swing.JFrame
     private CoilTypeManager ctm;
     private SimilarOrderManager som;
     private SimilarSleeveManager ssm;
+    private StopWatch StopWatch;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
     private StockTableModel StockModel;
@@ -49,6 +50,7 @@ public class GUIMain extends javax.swing.JFrame
     private double CoilTypeWidth;
     private double SimilarWidth;
     private int Counter;
+    private String strElapsedTime;
 
     /**
      * Creates new form OrderList
@@ -57,6 +59,7 @@ public class GUIMain extends javax.swing.JFrame
     {
 
         initComponents();
+            
         setExtendedState(MAXIMIZED_BOTH);
         try
         {
@@ -67,7 +70,7 @@ public class GUIMain extends javax.swing.JFrame
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
             ssm = new SimilarSleeveManager();
-            stopwatch = new StopWatch();
+            StopWatch = new StopWatch();
 
             Counter = 0;
             OrderModel = new OrderTableModel(po.showAll());
@@ -84,6 +87,9 @@ public class GUIMain extends javax.swing.JFrame
             UrgentOrder();
             SimilarOrdersListener();
             SimilarSleeveListener();
+            
+            
+            
 
 
         } catch (Exception ex)
@@ -130,7 +136,8 @@ public class GUIMain extends javax.swing.JFrame
         btnStart = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
         cbxEmp = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
+        lblEmp = new javax.swing.JLabel();
+        lblTime = new javax.swing.JLabel();
         panAddOrder = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblShowOrder = new javax.swing.JTable();
@@ -268,7 +275,7 @@ public class GUIMain extends javax.swing.JFrame
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -348,7 +355,9 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
 
-        jLabel2.setText("Employee:");
+        lblEmp.setText("Employee:");
+
+        lblTime.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -362,20 +371,26 @@ public class GUIMain extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnStop)
                         .addGap(0, 129, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblEmp)
                             .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblEmp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(lblTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStart)
@@ -747,19 +762,23 @@ public class GUIMain extends javax.swing.JFrame
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-        stopwatch.start();
+        StopWatch.start();
         
-
+        
+        
+        
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
     {//GEN-HEADEREND:event_btnStopActionPerformed
-        stopwatch.stop();
-        System.out.println("Tid " + stopwatch.getElapsedTimeSecs());
-
-
-
-        // TODO add your handling code here:
+      StopWatch.stop();
+      
+            strElapsedTime = Long.toString(StopWatch.getElapsedTimeSecs());
+            lblTime.setText(strElapsedTime);
+      
+      
+       System.out.println("Tid: " + StopWatch.getElapsedTimeSecs());
     }//GEN-LAST:event_btnStopActionPerformed
 
     /**
@@ -818,7 +837,6 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -840,10 +858,12 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JLabel lblAddOrderList;
     private javax.swing.JLabel lblCircumference;
     private javax.swing.JLabel lblDueDate;
+    private javax.swing.JLabel lblEmp;
     private javax.swing.JLabel lblIDOrder;
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblRemoveOrder;
     private javax.swing.JLabel lblThickness;
+    private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblUpdateCircumference;
     private javax.swing.JLabel lblUpdateDueDate;
     private javax.swing.JLabel lblUpdateQuantity;
