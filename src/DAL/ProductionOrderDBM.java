@@ -70,6 +70,57 @@ public class ProductionOrderDBM
             return POrder;
 
         }
+    }
 
+    public ArrayList<ProductionOrder> insertTime(int TimeUsed, int ID) throws SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            String sql = "UPDATE ProductionOrder SET TimeUsed = ? Where ID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+             ps.setInt(1, TimeUsed);
+             ps.setInt(2, ID);
+
+            ArrayList<ProductionOrder> POrder = new ArrayList<>();
+
+            while (rs.next())
+            {
+                int id = rs.getInt("ID");
+                int EmployeeID = rs.getInt("EmployeeID");
+                String Porder = rs.getString("POrder");
+                Date DueDate = rs.getDate("DueDate");
+                int Quantity = rs.getInt("Quantity");
+                double Width = rs.getDouble("Width");
+                int SleeveID = rs.getInt("SleeveID");
+                boolean IsDone = rs.getBoolean("IsDone");
+                int timeUsed = rs.getInt("TimeUsed");
+
+
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder,
+                        DueDate, Quantity, Width, SleeveID, IsDone, timeUsed);
+                POrder.add(po);
+            }
+
+            return POrder;
+        }
+
+    }
+
+    public void updateIsDone(int ID) throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+
+        String sql = "UPDATE ProductionOrder SET IsDone = 1 WHERE ID = ?";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, ID);
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to update isDone");
+        }
     }
 }
