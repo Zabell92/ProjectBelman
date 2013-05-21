@@ -61,11 +61,11 @@ public class StopWatch
         long elapsed;
         if (running)
         {
-            elapsed = ((System.currentTimeMillis() - startTime) / 1000 / 60);
+            elapsed = ((System.currentTimeMillis() - startTime) / 1000 );
         }
         else
         {
-            elapsed = ((stopTime - startTime) / 1000 / 60);
+            elapsed = ((stopTime - startTime) / 1000 );
         }
         return elapsed;
     }

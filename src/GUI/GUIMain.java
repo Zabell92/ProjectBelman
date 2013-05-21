@@ -78,8 +78,9 @@ public class GUIMain extends javax.swing.JFrame
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
-
-
+            
+            
+            
             Initialize();
             SleeveListener();
             StockListener();
@@ -765,8 +766,7 @@ public class GUIMain extends javax.swing.JFrame
         StopWatch.start();
         
         
-        
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnStartActionPerformed
 
@@ -778,7 +778,7 @@ public class GUIMain extends javax.swing.JFrame
             lblTime.setText(strElapsedTime);
       
       
-       System.out.println("Tid: " + StopWatch.getElapsedTimeSecs());
+       
     }//GEN-LAST:event_btnStopActionPerformed
 
     /**
