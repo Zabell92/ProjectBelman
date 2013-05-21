@@ -808,7 +808,6 @@ public class GUIMain extends javax.swing.JFrame
                     tblSleeveInfo.setModel(SleeveModel);
                     tblStockList.setModel(StockModel);
                     tblSimilarOrders.setModel(SimilarOrderModel);
-                    //tblCoilInfo.setModel(CoilTypeModel);
 //                    System.out.println("Valgte SleeveID:" + SleeveID);
 
 
@@ -821,7 +820,7 @@ public class GUIMain extends javax.swing.JFrame
     }
 
     private void StockListener()
-    {
+    {       
         tblCoilInfo.addMouseListener(new MouseAdapter()
         {
             @Override
