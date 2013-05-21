@@ -36,6 +36,7 @@ public class GUIMain extends javax.swing.JFrame
     private CoilTypeManager ctm;
     private SimilarOrderManager som;
     private SimilarSleeveManager ssm;
+    private StopWatch StopWatch;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
     private StockTableModel StockModel;
@@ -66,6 +67,7 @@ public class GUIMain extends javax.swing.JFrame
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
             ssm = new SimilarSleeveManager();
+            StopWatch = new StopWatch();
 
             Counter = 0;
             OrderModel = new OrderTableModel(po.showAll());
@@ -326,6 +328,13 @@ public class GUIMain extends javax.swing.JFrame
         });
 
         btnStop.setText("Done");
+        btnStop.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnStopActionPerformed(evt);
+            }
+        });
 
         cbxEmp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxEmp.addActionListener(new java.awt.event.ActionListener()
@@ -737,13 +746,20 @@ public class GUIMain extends javax.swing.JFrame
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-        
+        StopWatch.start();
         
         
         
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
+    {//GEN-HEADEREND:event_btnStopActionPerformed
+      StopWatch.stop();
+      
+       System.out.println("Tid: " + StopWatch.getElapsedTimeSecs());
+    }//GEN-LAST:event_btnStopActionPerformed
 
     /**
      * @param args the command line arguments

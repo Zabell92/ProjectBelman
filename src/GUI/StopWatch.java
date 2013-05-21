@@ -16,14 +16,14 @@ public class StopWatch
     private boolean running = false;
 
     
-     public StopWatch()
-    {
-        StopWatch s = new StopWatch();
-        s.start();
-        //code you want to time goes here
-        s.stop();
-        System.out.println("elapsed time in milliseconds: " + s.getElapsedTime());
-    }
+//     public StopWatch()
+//    {
+//        StopWatch s = new StopWatch();
+//        s.start();
+//        //code you want to time goes here
+//        s.stop();
+//        System.out.println("elapsed time in milliseconds: " + s.getElapsedTime());
+//    }
     
     
     public void start()

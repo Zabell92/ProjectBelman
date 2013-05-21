@@ -59,9 +59,12 @@ public class ProductionOrderDBM
                 int Quantity = rs.getInt("Quantity");
                 double Width = rs.getDouble("Width");
                 int SleeveID = rs.getInt("SleeveID");
+                boolean IsDone = rs.getBoolean("IsDone");
+                int TimeUsed = rs.getInt("TimeUsed");
 
 
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, Width, SleeveID);
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder,
+                        DueDate, Quantity, Width, SleeveID, IsDone, TimeUsed);
                 POrder.add(po);
             }
             return POrder;

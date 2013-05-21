@@ -60,9 +60,12 @@ public class SimilarOrdersDBM
                 int Quantity = rs.getInt("Quantity");
                 double width = rs.getDouble("Width");
                 int SleeveID = rs.getInt("SleeveID");
+                 boolean IsDone = rs.getBoolean("IsDone");
+                int TimeUsed = rs.getInt("TimeUsed");
 
 
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder, DueDate, Quantity, width, SleeveID);
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder,
+                        DueDate, Quantity, width, SleeveID, IsDone, TimeUsed);
                 POrder.add(po);
             }
             return POrder;

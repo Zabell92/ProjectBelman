@@ -21,9 +21,11 @@ public class ProductionOrder
     private double Width;
     private int ID;
     private final int SleeveID;
+    private boolean IsDone;
+    private final int UsedTime;
 
     public ProductionOrder(int ID, int EmployeeID, String POrder, Date DueDate,
-            int Quantity, double Width, int SleeveID)
+            int Quantity, double Width, int SleeveID, boolean IsDone, int UsedTime)
     {
 
         this.ID = ID;
@@ -33,6 +35,9 @@ public class ProductionOrder
         this.Quantity = Quantity;
         this.Width = Width;
         this.SleeveID = SleeveID;
+        this.IsDone = IsDone;
+        this.UsedTime = UsedTime;
+        
     }
 
     /**
@@ -124,5 +129,29 @@ public class ProductionOrder
     public int getSleeveID()
     {
         return SleeveID;
+    }
+
+    /**
+     * @return the IsDone
+     */
+    public boolean isIsDone()
+    {
+        return IsDone;
+    }
+
+    /**
+     * @param IsDone the IsDone to set
+     */
+    public void setIsDone(boolean IsDone)
+    {
+        this.IsDone = IsDone;
+    }
+
+    /**
+     * @return the UsedTime
+     */
+    public int getUsedTime()
+    {
+        return UsedTime;
     }
 }
