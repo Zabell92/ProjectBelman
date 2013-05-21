@@ -16,14 +16,14 @@ public class StopWatch
     private boolean running = false;
 
     
-     public StopWatch()
-    {
-        StopWatch s = new StopWatch();
-        s.start();
-        //code you want to time goes here
-        s.stop();
-        System.out.println("elapsed time in milliseconds: " + s.getElapsedTime());
-    }
+//     public void StopWatch()
+//    {
+//        StopWatch s = new StopWatch();
+//        s.start();
+//        //code you want to time goes here
+//        s.stop();
+//        System.out.println("elapsed time in milliseconds: " + s.getElapsedTime());
+//    }
     
     
     public void start()
@@ -34,8 +34,10 @@ public class StopWatch
 
     public void stop()
     {
-        this.stopTime = System.currentTimeMillis();
+        
         this.running = false;
+        this.stopTime = System.currentTimeMillis();
+        
     }
 
     //elaspsed time in milliseconds
@@ -59,11 +61,11 @@ public class StopWatch
         long elapsed;
         if (running)
         {
-            elapsed = ((System.currentTimeMillis() - startTime) / 1000);
+            elapsed = ((System.currentTimeMillis() - startTime) / 1000 / 60);
         }
         else
         {
-            elapsed = ((stopTime - startTime) / 1000);
+            elapsed = ((stopTime - startTime) / 1000 / 60);
         }
         return elapsed;
     }

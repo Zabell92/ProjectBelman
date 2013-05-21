@@ -42,6 +42,7 @@ public class GUIMain extends javax.swing.JFrame
     private CoilTypeTableModel CoilTypeModel;
     private SimilarOrderTableModel SimilarOrderModel;
     private SimilarSleeveTableModel SimilarSleeveModel;
+    private StopWatch stopwatch;
     private int SleeveID;
     private int MaterialID;
     private int CoilTypeID;
@@ -66,6 +67,7 @@ public class GUIMain extends javax.swing.JFrame
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
             ssm = new SimilarSleeveManager();
+            stopwatch = new StopWatch();
 
             Counter = 0;
             OrderModel = new OrderTableModel(po.showAll());
@@ -326,6 +328,13 @@ public class GUIMain extends javax.swing.JFrame
         });
 
         btnStop.setText("Done");
+        btnStop.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnStopActionPerformed(evt);
+            }
+        });
 
         cbxEmp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxEmp.addActionListener(new java.awt.event.ActionListener()
@@ -498,7 +507,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panAddOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
                     .addGroup(panAddOrderLayout.createSequentialGroup()
                         .addGroup(panAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panAddOrderLayout.createSequentialGroup()
@@ -625,7 +634,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panUpdateOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
                     .addGroup(panUpdateOrderLayout.createSequentialGroup()
                         .addGroup(panUpdateOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panUpdateOrderLayout.createSequentialGroup()
@@ -674,7 +683,7 @@ public class GUIMain extends javax.swing.JFrame
             .addGroup(panRemoveOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
                     .addGroup(panRemoveOrderLayout.createSequentialGroup()
                         .addGroup(panRemoveOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panRemoveOrderLayout.createSequentialGroup()
@@ -735,13 +744,20 @@ public class GUIMain extends javax.swing.JFrame
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
+        stopwatch.start();
         
-        
-        
-        
-        
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
+    {//GEN-HEADEREND:event_btnStopActionPerformed
+        stopwatch.stop();
+        System.out.println("Tid " + stopwatch.getElapsedTimeSecs());
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -872,7 +888,7 @@ public class GUIMain extends javax.swing.JFrame
                 if (e.getClickCount() >= 1)
                 {
                     Counter++;
-                    System.out.println("Mouse clicked: " + Counter );
+                    System.out.println("Mouse clicked: " + Counter);
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
 //                        final int column = OrderModel.getSelectedColumn();
@@ -887,7 +903,7 @@ public class GUIMain extends javax.swing.JFrame
     }
 
     private void StockListener()
-    {       
+    {
         tblCoilInfo.addMouseListener(new MouseAdapter()
         {
             @Override
@@ -1011,9 +1027,8 @@ public class GUIMain extends javax.swing.JFrame
 
         }
     }
-    
-    
-      private void SimilarSleeveListener()
+
+    private void SimilarSleeveListener()
     {
         tblSimilarOrders.addMouseListener(new MouseAdapter()
         {
@@ -1041,7 +1056,6 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
-
     private void Initialize()
     {
         try
@@ -1063,7 +1077,4 @@ public class GUIMain extends javax.swing.JFrame
         tblSimilarSleeves.setModel(SimilarSleeveModel);
         //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
 }
