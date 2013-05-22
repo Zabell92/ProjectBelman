@@ -43,7 +43,7 @@ public class SimilarOrdersDBM
     {
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "SELECT * FROM ProductionOrder WHERE Width <= ? ORDER BY DueDate";
+            String sql = "SELECT * FROM ProductionOrder WHERE Width <= ? AND IsDone = 0 ORDER BY DueDate";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDouble(1, Width);
 

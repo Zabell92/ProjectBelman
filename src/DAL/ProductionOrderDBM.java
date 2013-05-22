@@ -43,7 +43,7 @@ public class ProductionOrderDBM
     {
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "SELECT * FROM ProductionOrder ORDER BY DueDate";
+            String sql = "SELECT * FROM ProductionOrder WHERE IsDone = 0 ORDER BY DueDate ";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -72,24 +72,25 @@ public class ProductionOrderDBM
         }
     }
 
-    public void insertTime(long TimeUsed, int ID) throws SQLException
+    public void insertData(long TimeUsed, int EmployeeID, int ID) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "UPDATE ProductionOrder SET TimeUsed = ? Where ID = ?";
+            String sql = "UPDATE ProductionOrder SET TimeUsed = ?, EmployeeID = ? Where ID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setLong(1, TimeUsed);
-            ps.setInt(2, ID);
+            ps.setInt(2, EmployeeID);
+            ps.setInt(3, ID);
 
 
             int affectedRows = ps.executeUpdate();
 
             while (affectedRows == 0)
             {
-                throw new SQLException("Unable to insert time");
+                throw new SQLException("Unable to insert data");
             }
-//          
+         
 
         }
 

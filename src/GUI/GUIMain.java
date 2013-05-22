@@ -158,6 +158,7 @@ public class GUIMain extends javax.swing.JFrame
         cbxEmp = new javax.swing.JComboBox();
         lblEmp = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
+        lblTimeTitle = new javax.swing.JLabel();
         panAddOrder = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblShowOrder = new javax.swing.JTable();
@@ -295,7 +296,7 @@ public class GUIMain extends javax.swing.JFrame
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -377,7 +378,11 @@ public class GUIMain extends javax.swing.JFrame
 
         lblEmp.setText("Employee:");
 
-        lblTime.setText("jLabel3");
+        lblTime.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblTime.setText("0");
+
+        lblTimeTitle.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblTimeTitle.setText("Time:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -392,6 +397,8 @@ public class GUIMain extends javax.swing.JFrame
                         .addComponent(btnStop)
                         .addGap(0, 129, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblTimeTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,16 +409,14 @@ public class GUIMain extends javax.swing.JFrame
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblEmp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(30, 30, 30)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblEmp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTimeTitle))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStart)
                     .addComponent(btnStop))
@@ -778,6 +783,8 @@ public class GUIMain extends javax.swing.JFrame
     private void cbxEmpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxEmpActionPerformed
     {//GEN-HEADEREND:event_cbxEmpActionPerformed
       
+        
+        // hej hej
     }//GEN-LAST:event_cbxEmpActionPerformed
 
     private void FillComboBox(){
@@ -814,8 +821,9 @@ public class GUIMain extends javax.swing.JFrame
 
         try
         {
-            po.insertTime(Long.parseLong(lblTime.getText()), POrderID);
+            po.insertData(Long.parseLong(lblTime.getText()), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
+            
         } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -905,6 +913,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JLabel lblRemoveOrder;
     private javax.swing.JLabel lblThickness;
     private javax.swing.JLabel lblTime;
+    private javax.swing.JLabel lblTimeTitle;
     private javax.swing.JLabel lblUpdateCircumference;
     private javax.swing.JLabel lblUpdateDueDate;
     private javax.swing.JLabel lblUpdateQuantity;
