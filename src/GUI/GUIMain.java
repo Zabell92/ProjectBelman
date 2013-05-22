@@ -823,8 +823,9 @@ public class GUIMain extends javax.swing.JFrame
     }
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-        timer = new Timer();
+//        timer = new Timer();
         test = new UpdateUITask();
+
         timer.schedule(test, 1000, 1000);
         btnStart.setEnabled(false);
     }//GEN-LAST:event_btnStartActionPerformed
@@ -832,7 +833,10 @@ public class GUIMain extends javax.swing.JFrame
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
     {//GEN-HEADEREND:event_btnStopActionPerformed
         test.cancel();
-        timer.cancel();
+//        timer.cancel();
+
+
+
 
         try
         {
@@ -842,8 +846,7 @@ public class GUIMain extends javax.swing.JFrame
             OrderModel.setCollection(po.showAll());
 
 
-        }
-        catch (SQLException ex)
+        } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -860,15 +863,14 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnPauseActionPerformed
 
         test.cancel();
-        timer.cancel();
+//        timer.cancel();
 
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
                     + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
 
-        }
-        catch (SQLException ex)
+        } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1004,7 +1006,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Mouse Listener">
+    // <editor-fold defaultstate="collapsed" desc="Mouse Listener">
 
     private void SleeveListener()
     {
