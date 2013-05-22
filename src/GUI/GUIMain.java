@@ -821,16 +821,19 @@ public class GUIMain extends javax.swing.JFrame
         test.cancel();
         timer.cancel();
         
-
+        
+        
+         
         try
         {
             po.insertData(Long.parseLong(lblTime.getText()), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
-            
+                                   
         } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
         
     }//GEN-LAST:event_btnStopActionPerformed
