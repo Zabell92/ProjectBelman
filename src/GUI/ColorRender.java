@@ -42,7 +42,8 @@ class ColorRender extends JLabel implements TableCellRenderer
         {
             setBackground(table.getSelectionBackground());
             setForeground(table.getSelectionForeground());
-        } else
+        }
+        else
         {
             setBackground(table.getBackground());
             setForeground(table.getForeground());
@@ -54,7 +55,8 @@ class ColorRender extends JLabel implements TableCellRenderer
                     date = sdf.parse(dueDate);
                     date1 = sdf.parse(expDateString);
                     //         System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
-                } catch (ParseException ex)
+                }
+                catch (ParseException ex)
                 {
                     Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -62,7 +64,8 @@ class ColorRender extends JLabel implements TableCellRenderer
                 long res = ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
                 if (res >= 4)
                 {
-                } else
+                }
+                else
                 {
 
                     if (row <= i)

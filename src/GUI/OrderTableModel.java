@@ -37,7 +37,8 @@ public class OrderTableModel extends AbstractTableModel
         try
         {
             pom = new ProductionOrderManager();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             System.out.println("lol");
         }

@@ -111,7 +111,8 @@ public class GUIMain extends javax.swing.JFrame
 
 
 
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
 //            JOptionPane.showMessageDialog(this, "EROOR - Can't open GUI", "Error 1", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -794,8 +795,6 @@ public class GUIMain extends javax.swing.JFrame
 
     private void cbxEmpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxEmpActionPerformed
     {//GEN-HEADEREND:event_cbxEmpActionPerformed
-      
-        
         // hej hej
     }//GEN-LAST:event_cbxEmpActionPerformed
 
@@ -812,7 +811,8 @@ public class GUIMain extends javax.swing.JFrame
 
 
             // TODO add your handling code here:
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -836,43 +836,45 @@ public class GUIMain extends javax.swing.JFrame
 
         try
         {
-            po.updateTime(Long.parseLong((lblTime.getText())) +
-                    po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
+            po.updateTime(Long.parseLong((lblTime.getText()))
+                    + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());
-            
-            
-        } catch (SQLException ex)
+
+
+        }
+        catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         btnStart.setEnabled(true);
-        
-        
+
+
 //        tblShowOrders.setModel(OrderModel);
 //        
-       
-        
+
+
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void btnPauseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPauseActionPerformed
     {//GEN-HEADEREND:event_btnPauseActionPerformed
-        
+
         test.cancel();
         timer.cancel();
-            
+
         try
         {
-            po.updateTime(Long.parseLong((lblTime.getText())) +
-                    po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
-            
-        } catch (SQLException ex)
+            po.updateTime(Long.parseLong((lblTime.getText()))
+                    + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
+
+        }
+        catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         btnStart.setEnabled(true);
-        
-        
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPauseActionPerformed
 
@@ -889,19 +891,23 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ex)
+        }
+        catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
+        }
+        catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
+        }
+        catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        }
+        catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(GUIMain.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -1041,7 +1047,8 @@ public class GUIMain extends javax.swing.JFrame
                     try
                     {
                         StockModel = new StockTableModel(sm.getBySleeveId(CoilTypeID));
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1073,7 +1080,8 @@ public class GUIMain extends javax.swing.JFrame
 
                         CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(MaterialID, CoilTypeWidth));
 
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1107,7 +1115,8 @@ public class GUIMain extends javax.swing.JFrame
 
                         SimilarOrderModel = new SimilarOrderTableModel(som.getSimilarOrders(SimilarWidth));
 
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1137,7 +1146,8 @@ public class GUIMain extends javax.swing.JFrame
                     try
                     {
                         SimilarSleeveModel = new SimilarSleeveTableModel(ssm.getNewSimilarSleeve(SleeveID));
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1181,7 +1191,8 @@ public class GUIMain extends javax.swing.JFrame
             SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
             SimilarSleeveModel = new SimilarSleeveTableModel(ssm.getNewSimilarSleeve(0));
 
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1228,12 +1239,10 @@ public class GUIMain extends javax.swing.JFrame
                 @Override
                 public void run()
                 {
-                    
-                        lblTime.setText(String.valueOf(nSeconds++));
-                   
+
+                    lblTime.setText(String.valueOf(nSeconds++));
+
                 }
-                    
-                 
             });
         }
 

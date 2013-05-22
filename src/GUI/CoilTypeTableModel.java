@@ -33,7 +33,8 @@ public class CoilTypeTableModel extends AbstractTableModel
         try
         {
             ctm = new CoilTypeManager();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             System.out.println("lol");
         }

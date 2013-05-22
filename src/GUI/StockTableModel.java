@@ -34,7 +34,8 @@ public class StockTableModel extends AbstractTableModel
         try
         {
             sm = new StockManager();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             System.out.println("lol");
         }

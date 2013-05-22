@@ -33,7 +33,8 @@ public class SimilarSleeveTableModel extends AbstractTableModel
         try
         {
             sslm = new SimilarSleeveManager();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             System.out.println("lol");
         }
