@@ -28,9 +28,9 @@ public class ProductionOrderManager
         return podb.showAll();
     }
 
-    public void insertData(long TimeUsed, int EmployeeID, int ID) throws SQLException
+    public void updateTime(long TimeUsed, int EmployeeID, int ID) throws SQLException
     {
-        podb.insertData(TimeUsed, EmployeeID, ID);
+        podb.updateTime(TimeUsed, EmployeeID, ID);
     }
 
     public void updateIsDone(int ID) throws SQLException
@@ -43,7 +43,7 @@ public class ProductionOrderManager
         podb.updateEmployee(ID, Name);
     }
     
-    public ArrayList<ProductionOrder> getTime(int ID) throws SQLException
+    public int getTime(int ID) throws SQLException
     {
         return podb.getTime(ID);
         
