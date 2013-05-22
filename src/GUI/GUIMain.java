@@ -4,20 +4,26 @@
  */
 package GUI;
 
+import BE.Employee;
 import BLL.CoilTypeManager;
+import BLL.EmployeeManager;
 import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
 import BLL.SimilarOrderManager;
 import BLL.SimilarSleeveManager;
 import BLL.SleeveManager;
 import BLL.StockManager;
+import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -30,6 +36,10 @@ import javax.swing.UIManager;
 public class GUIMain extends javax.swing.JFrame
 {
 
+    public void setTimerText(long time)
+    {
+        lblTime.setText(Long.toString(time * 1000));
+    }
     private ProductionOrderManager po;
     private SleeveManager slm;
     private MaterialManager mm;
@@ -51,7 +61,11 @@ public class GUIMain extends javax.swing.JFrame
     private double CoilTypeWidth;
     private double SimilarWidth;
     private int Counter;
-    private String strElapsedTime;
+    private Employee Employees;
+    private EmployeeManager EManager;
+    // private String strElapsedTime;
+    private Timer timer = new Timer();
+    private UpdateUITask test = new UpdateUITask();
 
     /**
      * Creates new form OrderList
@@ -60,10 +74,11 @@ public class GUIMain extends javax.swing.JFrame
     {
 
         initComponents();
-            
+
         setExtendedState(MAXIMIZED_BOTH);
         try
         {
+            EManager = new EmployeeManager();
             po = new ProductionOrderManager();
             slm = new SleeveManager();
             mm = new MaterialManager();
@@ -79,10 +94,12 @@ public class GUIMain extends javax.swing.JFrame
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
-            
-            
-            
+
+
+
+
             Initialize();
+            FillComboBox();
             SleeveListener();
             StockListener();
             CoilListener();
@@ -90,9 +107,9 @@ public class GUIMain extends javax.swing.JFrame
             SimilarOrdersListener();
             SimilarSleeveListener();
             ProductionIDListener();
-            
-            
-            
+
+
+
 
 
         } catch (Exception ex)
@@ -760,36 +777,49 @@ public class GUIMain extends javax.swing.JFrame
 
     private void cbxEmpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxEmpActionPerformed
     {//GEN-HEADEREND:event_cbxEmpActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_cbxEmpActionPerformed
 
+    private void FillComboBox(){
+        cbxEmp.removeAllItems();
+          ArrayList<Employee> testemployee = new ArrayList<Employee>();
+        try
+        {
+            for (Employee e : EManager.getAllEmployees())
+            {
+                testemployee.add(e);
+            }
+
+
+            // TODO add your handling code here:
+        } catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(Employee E : testemployee){
+            cbxEmp.addItem(E.getName());
+        }
+    }
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-        StopWatch.start();
-        
-        
-
-        // TODO add your handling code here:
+        timer = new Timer();
+        test = new UpdateUITask();
+        timer.schedule(test, 1000, 1000);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
     {//GEN-HEADEREND:event_btnStopActionPerformed
-      StopWatch.stop();
-      
-//            strElapsedTime = Long.toString(StopWatch.getElapsedTimeSecs());
-//            lblTime.setText(strElapsedTime);
+        test.cancel();
+        timer.cancel();
+
         try
         {
-            po.insertTime(StopWatch.getElapsedTimeSecs(), POrderID);
+            po.insertTime(Long.parseLong(lblTime.getText()), POrderID);
             po.updateIsDone(POrderID);
-        }
-        catch (SQLException ex)
+        } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-      
-       
     }//GEN-LAST:event_btnStopActionPerformed
 
     /**
@@ -1091,12 +1121,11 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
-      
-      private int ProductionIDListener()
-      {
-          tblShowOrders.addMouseListener(new MouseAdapter()
-          {
-             @Override
+    private int ProductionIDListener()
+    {
+        tblShowOrders.addMouseListener(new MouseAdapter()
+        {
+            @Override
             public void mouseClicked(final MouseEvent e)
             {
                 if (e.getClickCount() == 1)
@@ -1106,14 +1135,14 @@ public class GUIMain extends javax.swing.JFrame
 //                        final int column = OrderModel.getSelectedColumn();
 
                     POrderID = (int) OrderModel.getValueAt(row, 0);
-                  
+
                     System.out.println("Valgte StockItem:" + POrderID);
                 }
-               
-          }
-      });
-           return POrderID;
-      }
+
+            }
+        });
+        return POrderID;
+    }
 
     private void Initialize()
     {
@@ -1135,5 +1164,32 @@ public class GUIMain extends javax.swing.JFrame
         tblSleeveInfo.setModel(SleeveModel);
         tblSimilarSleeves.setModel(SimilarSleeveModel);
         //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    class UpdateUITask extends TimerTask
+    {
+
+        private long nSeconds = 0;
+
+        @Override
+        public void run()
+        {
+            EventQueue.invokeLater(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    lblTime.setText(String.valueOf(nSeconds++));
+                }
+            });
+        }
+
+        /**
+         * @return the nSeconds
+         */
+        public long getSeconds()
+        {
+            return nSeconds;
+        }
     }
 }

@@ -59,4 +59,24 @@ public class EmployeeDBM
             return Employee;
         }
     }
+     
+     public ArrayList<Employee> getAllEmployees() throws Exception{
+         Connection con = dataSource.getConnection();
+            String sql = "SELECT * FROM Employee";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Employee> Employee = new ArrayList<>();
+            while (rs.next())
+            {
+                int id = rs.getInt("id");
+                String Name = rs.getString("Name");
+                
+                
+                Employee em = new Employee(id, Name);
+                Employee.add(em);
+            }
+            return Employee;
+         //return null;
+     }
 }

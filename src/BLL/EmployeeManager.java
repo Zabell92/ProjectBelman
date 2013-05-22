@@ -26,5 +26,10 @@ public class EmployeeManager
         return edb.getByEmployeeID(ID);
         
     }  
+   
+   public ArrayList<Employee> getAllEmployees() throws Exception{
+       
+       return edb.getAllEmployees();
+   }
     
 }
