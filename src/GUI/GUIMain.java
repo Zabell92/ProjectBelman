@@ -860,20 +860,19 @@ public class GUIMain extends javax.swing.JFrame
     private void btnPauseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPauseActionPerformed
     {//GEN-HEADEREND:event_btnPauseActionPerformed
         
-        test.cancel();
-        timer.cancel();
+        
 
-        try
-        {
-            po.insertData(Long.parseLong((lblTime.getText() + ), cbxEmp.getSelectedIndex() + 1, POrderID);
-//            po.updateIsDone(POrderID);
-            OrderModel.setCollection(po.showAll());;
-            
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        btnStart.setEnabled(true);
+//        try
+//        {
+//            po.insertData(Long.parseLong((lblTime.getText() +  ), cbxEmp.getSelectedIndex() + 1, POrderID);
+////            po.updateIsDone(POrderID);
+//            OrderModel.setCollection(po.showAll());
+//            
+//        } catch (SQLException ex)
+//        {
+//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        btnStart.setEnabled(true);
         
         
         // TODO add your handling code here:
