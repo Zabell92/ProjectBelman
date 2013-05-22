@@ -836,7 +836,7 @@ public class GUIMain extends javax.swing.JFrame
 
         try
         {
-            po.insertData(Long.parseLong(lblTime.getText()), cbxEmp.getSelectedIndex() + 1, POrderID);
+            po.insertData(Long.parseLong(lblTime.getText() + po.getTime(POrderID)), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());;
             
@@ -858,10 +858,11 @@ public class GUIMain extends javax.swing.JFrame
         
         test.cancel();
         timer.cancel();
-
+            
         try
         {
-            po.insertData(Long.parseLong((lblTime.getText() + ), cbxEmp.getSelectedIndex() + 1, POrderID);
+            po.insertData(Long.parseLong((lblTime.getText()) + 
+                    po.getTime(POrderID)), cbxEmp.getSelectedIndex() + 1, POrderID);
 //            po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());;
             
