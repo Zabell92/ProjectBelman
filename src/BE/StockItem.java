@@ -10,13 +10,15 @@ package BE;
  */
 public class StockItem
 {
+
     private final int ID;
     private double StockQuantity;
     private double Length;
     private String ChargeNo;
     private final int SleeveID;
     private final int CoilTypeID;
-    public StockItem(int ID, double StockQuantity, double Length, String ChargeNo, int SleeveID, int CoilTypeID  )
+
+    public StockItem(int ID, double StockQuantity, double Length, String ChargeNo, int SleeveID, int CoilTypeID)
     {
         this.ID = ID;
         this.SleeveID = SleeveID;
@@ -24,7 +26,7 @@ public class StockItem
         this.ChargeNo = ChargeNo;
         this.CoilTypeID = CoilTypeID;
         this.Length = Length;
-        
+
     }
 
     /**
@@ -51,8 +53,6 @@ public class StockItem
         this.StockQuantity = StockQuantity;
     }
 
-   
-
     /**
      * @return the ChargeNo
      */
@@ -76,7 +76,7 @@ public class StockItem
     {
         return SleeveID;
     }
-    
+
     public int getCoilTypeID()
     {
         return CoilTypeID;

@@ -16,16 +16,17 @@ import java.util.ArrayList;
  */
 public class StockManager
 {
+
     private StockDBM sdb;
 
     public StockManager() throws Exception
     {
         this.sdb = new StockDBM();
     }
-    
-   public ArrayList<StockItem> getBySleeveId(int ID) throws Exception
+
+    public ArrayList<StockItem> getBySleeveId(int ID) throws Exception
     {
         return sdb.getBySleeveId(ID);
-        
-    } 
+
+    }
 }

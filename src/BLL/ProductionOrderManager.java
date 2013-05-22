@@ -32,12 +32,12 @@ public class ProductionOrderManager
     {
         podb.insertData(TimeUsed, EmployeeID, ID);
     }
-    
+
     public void updateIsDone(int ID) throws SQLException
     {
         podb.updateIsDone(ID);
     }
-    
+
     public void updateEmployee(int ID, String Name) throws SQLException
     {
         podb.updateEmployee(ID, Name);

@@ -56,7 +56,7 @@ public class CoilTypeDBM
                 double width = rs.getDouble("Width");
                 double Thickness = rs.getDouble("Thickness");
                 String Code = rs.getString("Code");
-                
+
                 CoilType ct = new CoilType(id, MaterialID, width, Thickness, Code);
                 CoilType.add(ct);
             }

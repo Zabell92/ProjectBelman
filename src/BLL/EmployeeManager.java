@@ -14,22 +14,23 @@ import java.util.ArrayList;
  */
 public class EmployeeManager
 {
-  private EmployeeDBM edb;
+
+    private EmployeeDBM edb;
 
     public EmployeeManager() throws Exception
     {
         this.edb = new EmployeeDBM();
     }
-    
-   public ArrayList<Employee> getByEmployeeID(int ID) throws Exception
+
+    public ArrayList<Employee> getByEmployeeID(int ID) throws Exception
     {
         return edb.getByEmployeeID(ID);
-        
-    }  
-   
-   public ArrayList<Employee> getAllEmployees() throws Exception{
-       
-       return edb.getAllEmployees();
-   }
-    
+
+    }
+
+    public ArrayList<Employee> getAllEmployees() throws Exception
+    {
+
+        return edb.getAllEmployees();
+    }
 }

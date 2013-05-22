@@ -20,8 +20,9 @@ import java.util.Properties;
  */
 public class EmployeeDBM
 {
+
     private SQLServerDataSource dataSource;
-    
+
     public EmployeeDBM() throws Exception
     {
         Properties props = new Properties();
@@ -34,9 +35,9 @@ public class EmployeeDBM
         dataSource.setDatabaseName(props.getProperty("DATABASE"));
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
-    } 
-    
-     public ArrayList<Employee> getByEmployeeID(int ID) throws Exception
+    }
+
+    public ArrayList<Employee> getByEmployeeID(int ID) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
@@ -51,32 +52,33 @@ public class EmployeeDBM
             {
                 int id = rs.getInt("id");
                 String Name = rs.getString("Name");
-                
-                
+
+
                 Employee em = new Employee(id, Name);
                 Employee.add(em);
             }
             return Employee;
         }
     }
-     
-     public ArrayList<Employee> getAllEmployees() throws Exception{
-         Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM Employee";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
 
-            ArrayList<Employee> Employee = new ArrayList<>();
-            while (rs.next())
-            {
-                int id = rs.getInt("id");
-                String Name = rs.getString("Name");
-                
-                
-                Employee em = new Employee(id, Name);
-                Employee.add(em);
-            }
-            return Employee;
-         //return null;
-     }
+    public ArrayList<Employee> getAllEmployees() throws Exception
+    {
+        Connection con = dataSource.getConnection();
+        String sql = "SELECT * FROM Employee";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        ArrayList<Employee> Employee = new ArrayList<>();
+        while (rs.next())
+        {
+            int id = rs.getInt("id");
+            String Name = rs.getString("Name");
+
+
+            Employee em = new Employee(id, Name);
+            Employee.add(em);
+        }
+        return Employee;
+        //return null;
+    }
 }

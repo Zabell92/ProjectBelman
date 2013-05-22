@@ -17,24 +17,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class StockTableModel extends AbstractTableModel
 {
+
     private StockManager sm;
     private final String[] header =
     {
-        "Id","StockQuantity","Length","ChargeNo", "SleeveID", "CoilTypeID"
+        "Id", "StockQuantity", "Length", "ChargeNo", "SleeveID", "CoilTypeID"
     };
     private final Class[] columnTypes =
     {
         Integer.class, Double.class, Double.class, String.class, Integer.class, Integer.class
     };
-    private ArrayList <StockItem> si;
+    private ArrayList<StockItem> si;
 
     public StockTableModel()
     {
         try
         {
             sm = new StockManager();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             System.out.println("lol");
         }
@@ -57,8 +57,8 @@ public class StockTableModel extends AbstractTableModel
     {
         return header.length;
     }
-    
-      @Override
+
+    @Override
     public String getColumnName(int col)
     {
         return header[col];
@@ -70,7 +70,7 @@ public class StockTableModel extends AbstractTableModel
         return columnTypes[col];
     }
 
-     @Override
+    @Override
     public Object getValueAt(int row, int col)
     {
         {
@@ -83,11 +83,11 @@ public class StockTableModel extends AbstractTableModel
                     return s.getStockQuantity();
                 case 2:
                     return s.getLength();
-                case 3: 
+                case 3:
                     return s.getChargeNo();
                 case 4:
-                   return s.getSleeveID();
-                case 5: 
+                    return s.getSleeveID();
+                case 5:
                     return s.getCoilTypeID();
 
             }
@@ -106,11 +106,9 @@ public class StockTableModel extends AbstractTableModel
         si = new ArrayList<>(list);
         fireTableDataChanged();
     }
-    
-    
-   public void clear()
-   {
-       fireTableRowsDeleted(0, 3);
-   }
-       
+
+    public void clear()
+    {
+        fireTableRowsDeleted(0, 3);
+    }
 }

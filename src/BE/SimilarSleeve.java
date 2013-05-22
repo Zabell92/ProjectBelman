@@ -10,13 +10,14 @@ package BE;
  */
 public class SimilarSleeve
 {
+
     private final int ID;
     private double Thickness;
     private double Circumference;
     private int StartTime;
     private int EndTime;
     private final int MaterialID;
- 
+
     public SimilarSleeve(int ID, double Thickness, double Circumference, int StartTime, int EndTime, int MaterialID)
     {
         this.ID = ID;
@@ -24,7 +25,7 @@ public class SimilarSleeve
         this.Circumference = Circumference;
         this.StartTime = StartTime;
         this.EndTime = EndTime;
-        this.MaterialID = MaterialID; 
+        this.MaterialID = MaterialID;
     }
 
     /**

@@ -19,6 +19,7 @@ import java.util.Properties;
  */
 public class MaterialDBM
 {
+
     private SQLServerDataSource dataSource;
 
     public MaterialDBM() throws Exception
@@ -34,7 +35,7 @@ public class MaterialDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-    
+
     public ArrayList<Material> getByMaterialID(int ID) throws Exception
     {
         {
@@ -51,7 +52,7 @@ public class MaterialDBM
                 int id = rs.getInt("id");
                 String MaterialName = rs.getString("MaterialName");
                 double MaterialDensity = rs.getDouble("MaterialDensity");
-                
+
 
 
 
@@ -61,5 +62,4 @@ public class MaterialDBM
             return Material;
         }
     }
-
 }

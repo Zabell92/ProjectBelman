@@ -47,7 +47,6 @@ public class GUIMain extends javax.swing.JFrame
     private CoilTypeManager ctm;
     private SimilarOrderManager som;
     private SimilarSleeveManager ssm;
-    private StopWatch StopWatch;
     private OrderTableModel OrderModel;
     private SleeveTableModel SleeveModel;
     private StockTableModel StockModel;
@@ -86,7 +85,7 @@ public class GUIMain extends javax.swing.JFrame
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
             ssm = new SimilarSleeveManager();
-            StopWatch = new StopWatch();
+
 
             Counter = 0;
             OrderModel = new OrderTableModel(po.showAll());
@@ -787,9 +786,10 @@ public class GUIMain extends javax.swing.JFrame
         // hej hej
     }//GEN-LAST:event_cbxEmpActionPerformed
 
-    private void FillComboBox(){
+    private void FillComboBox()
+    {
         cbxEmp.removeAllItems();
-          ArrayList<Employee> testemployee = new ArrayList<Employee>();
+        ArrayList<Employee> testemployee = new ArrayList<Employee>();
         try
         {
             for (Employee e : EManager.getAllEmployees())
@@ -803,7 +803,8 @@ public class GUIMain extends javax.swing.JFrame
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for(Employee E : testemployee){
+        for (Employee E : testemployee)
+        {
             cbxEmp.addItem(E.getName());
         }
     }
@@ -951,6 +952,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Mouse Listener">
 
     private void SleeveListener()
     {
@@ -1072,36 +1074,6 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
-    private void UrgentOrder()
-    {
-        int count = (tblShowOrders.getRowCount());
-        NumberFormat formatter = new DecimalFormat("###,###");
-        String no = formatter.format(count);
-        txtDueDate.setText(no);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        String expDateString = sdf.format(cal.getTime()).toString();
-
-        for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
-        {
-            ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
-            for (int j = 0; j < 6; j++)
-            {
-                tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
-            }
-
-
-
-
-//                System.out.println("Hvad er due date " + dueDate);
-//                System.out.println("Hvad er exp date " + expDateString);
-//                System.out.println("Hvor meget er res " + res);
-
-
-        }
-    }
-
     private void SimilarSleeveListener()
     {
         tblSimilarOrders.addMouseListener(new MouseAdapter()
@@ -1173,6 +1145,28 @@ public class GUIMain extends javax.swing.JFrame
         tblSleeveInfo.setModel(SleeveModel);
         tblSimilarSleeves.setModel(SimilarSleeveModel);
         //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+// </editor-fold>
+
+    private void UrgentOrder()
+    {
+        int count = (tblShowOrders.getRowCount());
+        NumberFormat formatter = new DecimalFormat("###,###");
+        String no = formatter.format(count);
+        txtDueDate.setText(no);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        String expDateString = sdf.format(cal.getTime()).toString();
+
+        for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
+        {
+            ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
+            for (int j = 0; j < 6; j++)
+            {
+                tblShowOrders.getColumnModel().getColumn(j).setCellRenderer(cr);
+            }
+        }
     }
 
     class UpdateUITask extends TimerTask

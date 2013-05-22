@@ -14,26 +14,26 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author MikeZJ
  */
-  public class CoilTypeTableModel extends AbstractTableModel
+public class CoilTypeTableModel extends AbstractTableModel
 {
+
     private CoilTypeManager ctm;
     private final String[] header =
     {
-        "ID","MaterialID", "Width", "Thickness", "Code"
+        "ID", "MaterialID", "Width", "Thickness", "Code"
     };
     private final Class[] columnTypes =
     {
-        Integer.class,Integer.class, Double.class, Double.class, String.class
+        Integer.class, Integer.class, Double.class, Double.class, String.class
     };
-    private ArrayList <CoilType> ct;
+    private ArrayList<CoilType> ct;
 
     public CoilTypeTableModel()
     {
         try
         {
             ctm = new CoilTypeManager();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             System.out.println("lol");
         }
@@ -56,8 +56,8 @@ import javax.swing.table.AbstractTableModel;
     {
         return header.length;
     }
-    
-      @Override
+
+    @Override
     public String getColumnName(int col)
     {
         return header[col];
@@ -69,7 +69,7 @@ import javax.swing.table.AbstractTableModel;
         return columnTypes[col];
     }
 
-     @Override
+    @Override
     public Object getValueAt(int row, int col)
     {
         {
@@ -102,7 +102,5 @@ import javax.swing.table.AbstractTableModel;
     {
         ct = new ArrayList<>(list);
         fireTableDataChanged();
-    }  
+    }
 }
-  
-
