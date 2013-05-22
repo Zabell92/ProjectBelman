@@ -158,6 +158,7 @@ public class GUIMain extends javax.swing.JFrame
         lblEmp = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
         lblTimeTitle = new javax.swing.JLabel();
+        btnPause = new javax.swing.JButton();
         panAddOrder = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblShowOrder = new javax.swing.JTable();
@@ -383,6 +384,15 @@ public class GUIMain extends javax.swing.JFrame
         lblTimeTitle.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblTimeTitle.setText("Time:");
 
+        btnPause.setText("Pause");
+        btnPause.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnPauseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -391,18 +401,20 @@ public class GUIMain extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnStart)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnStop)
-                        .addGap(0, 129, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lblTimeTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEmp)
-                            .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbxEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnStart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPause)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnStop)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -418,7 +430,8 @@ public class GUIMain extends javax.swing.JFrame
                 .addGap(25, 25, 25)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStart)
-                    .addComponent(btnStop))
+                    .addComponent(btnStop)
+                    .addComponent(btnPause))
                 .addContainerGap())
         );
 
@@ -814,6 +827,7 @@ public class GUIMain extends javax.swing.JFrame
         test = new UpdateUITask();
         
         timer.schedule(test, 1000, 1000);
+        btnStart.setEnabled(false);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
@@ -828,15 +842,42 @@ public class GUIMain extends javax.swing.JFrame
         {
             po.insertData(Long.parseLong(lblTime.getText()), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
-                                   
+            OrderModel.setCollection(po.showAll());;
+            
         } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        btnStart.setEnabled(true);
         
         
+//        tblShowOrders.setModel(OrderModel);
+//        
+       
         
     }//GEN-LAST:event_btnStopActionPerformed
+
+    private void btnPauseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPauseActionPerformed
+    {//GEN-HEADEREND:event_btnPauseActionPerformed
+        
+        test.cancel();
+        timer.cancel();
+
+        try
+        {
+            po.insertData(Long.parseLong((lblTime.getText() + ), cbxEmp.getSelectedIndex() + 1, POrderID);
+//            po.updateIsDone(POrderID);
+            OrderModel.setCollection(po.showAll());;
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        btnStart.setEnabled(true);
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPauseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -885,6 +926,7 @@ public class GUIMain extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnPause;
     private javax.swing.JButton btnStart;
     private javax.swing.JButton btnStop;
     private javax.swing.JButton btnUpdate;

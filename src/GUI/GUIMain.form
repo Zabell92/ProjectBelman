@@ -416,21 +416,23 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnStart" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnStop" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="129" max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblTimeTitle" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lblTime" min="-2" pref="96" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="44" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblEmp" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbxEmp" min="-2" pref="86" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnStart" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnPause" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnStop" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -452,6 +454,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnStart" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnStop" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPause" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -510,6 +513,14 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Time:"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnPause">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Pause"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPauseActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
