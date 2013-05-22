@@ -812,6 +812,7 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnStartActionPerformed
         timer = new Timer();
         test = new UpdateUITask();
+        
         timer.schedule(test, 1000, 1000);
     }//GEN-LAST:event_btnStartActionPerformed
 
@@ -819,6 +820,7 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnStopActionPerformed
         test.cancel();
         timer.cancel();
+        
 
         try
         {
@@ -829,6 +831,8 @@ public class GUIMain extends javax.swing.JFrame
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }//GEN-LAST:event_btnStopActionPerformed
 
     /**
@@ -952,7 +956,7 @@ public class GUIMain extends javax.swing.JFrame
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Mouse Listener">
+    // <editor-fold defaultstate="collapsed" desc="Mouse Listener">
 
     private void SleeveListener()
     {
