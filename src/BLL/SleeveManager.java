@@ -15,16 +15,17 @@ import java.util.ArrayList;
  */
 public class SleeveManager
 {
+
     private SleeveDBM sldb;
 
     public SleeveManager() throws Exception
     {
         this.sldb = new SleeveDBM();
     }
-    
-   public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
+
+    public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
     {
         return sldb.getBySleeveId(ID);
-        
+
     }
 }

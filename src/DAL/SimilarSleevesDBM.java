@@ -19,7 +19,8 @@ import java.util.Properties;
  */
 public class SimilarSleevesDBM
 {
-  private SQLServerDataSource dataSource;
+
+    private SQLServerDataSource dataSource;
 
     public SimilarSleevesDBM() throws Exception
     {
@@ -34,7 +35,7 @@ public class SimilarSleevesDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-    
+
     public ArrayList<Sleeve> getNewSimilarSleeve(int ID, double Width, double Thickness) throws Exception
     {
         {
@@ -62,5 +63,5 @@ public class SimilarSleevesDBM
             }
             return Sleeve;
         }
-    }   
+    }
 }

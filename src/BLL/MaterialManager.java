@@ -15,16 +15,17 @@ import java.util.ArrayList;
  */
 public class MaterialManager
 {
-  private MaterialDBM mdb;
+
+    private MaterialDBM mdb;
 
     public MaterialManager() throws Exception
     {
         this.mdb = new MaterialDBM();
     }
-    
-   public ArrayList<Material> getByMaterialId(int ID) throws Exception
+
+    public ArrayList<Material> getByMaterialId(int ID) throws Exception
     {
         return mdb.getByMaterialID(ID);
-        
-    }  
+
+    }
 }

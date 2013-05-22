@@ -20,6 +20,7 @@ import java.util.Properties;
  */
 public class SleeveDBM
 {
+
     private SQLServerDataSource dataSource;
 
     public SleeveDBM() throws Exception
@@ -35,7 +36,7 @@ public class SleeveDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-    
+
     public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
     {
         {
@@ -64,5 +65,4 @@ public class SleeveDBM
             return Sleeve;
         }
     }
-
 }

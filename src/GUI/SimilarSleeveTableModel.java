@@ -16,6 +16,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class SimilarSleeveTableModel extends AbstractTableModel
 {
+
     private SimilarSleeveManager sslm;
     private final String[] header =
     {
@@ -25,15 +26,14 @@ public class SimilarSleeveTableModel extends AbstractTableModel
     {
         Integer.class, Double.class, Double.class, Integer.class
     };
-    private ArrayList <SimilarSleeve> sl;
+    private ArrayList<SimilarSleeve> sl;
 
     public SimilarSleeveTableModel()
     {
         try
         {
             sslm = new SimilarSleeveManager();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             System.out.println("lol");
         }
@@ -56,8 +56,8 @@ public class SimilarSleeveTableModel extends AbstractTableModel
     {
         return header.length;
     }
-    
-      @Override
+
+    @Override
     public String getColumnName(int col)
     {
         return header[col];
@@ -69,7 +69,7 @@ public class SimilarSleeveTableModel extends AbstractTableModel
         return columnTypes[col];
     }
 
-     @Override
+    @Override
     public Object getValueAt(int row, int col)
     {
         {
@@ -88,7 +88,8 @@ public class SimilarSleeveTableModel extends AbstractTableModel
             return null;
         }
     }
-       @Override
+
+    @Override
     public boolean isCellEditable(int row, int col)
     {
         return (false);

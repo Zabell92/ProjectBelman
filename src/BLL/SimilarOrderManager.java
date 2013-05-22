@@ -16,13 +16,14 @@ import java.util.ArrayList;
  */
 public class SimilarOrderManager
 {
+
     private SimilarOrdersDBM sodb;
-    
-    
+
     public SimilarOrderManager() throws Exception
     {
         sodb = new SimilarOrdersDBM();
     }
+
     public ArrayList<ProductionOrder> getSimilarOrders(double Width) throws SQLException
     {
         return sodb.getSimilarOrders(Width);

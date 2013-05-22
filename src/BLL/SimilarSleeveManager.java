@@ -16,14 +16,14 @@ import java.util.ArrayList;
  */
 public class SimilarSleeveManager
 {
-   
+
     private SimilarSleeveDBM ssldb;
-    
-    
+
     public SimilarSleeveManager() throws Exception
     {
         ssldb = new SimilarSleeveDBM();
     }
+
     public ArrayList<SimilarSleeve> getNewSimilarSleeve(int ID) throws Exception
     {
         return ssldb.getNewSimilarSleeve(ID);

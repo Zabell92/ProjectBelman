@@ -17,7 +17,6 @@ public class ProductionOrder
     private String POrder;
     private Date DueDate;
     private int Quantity;
-
     private double Width;
     private int ID;
     private final int SleeveID;
@@ -37,7 +36,7 @@ public class ProductionOrder
         this.SleeveID = SleeveID;
         this.IsDone = IsDone;
         this.UsedTime = UsedTime;
-        
+
     }
 
     /**
@@ -88,8 +87,6 @@ public class ProductionOrder
         this.Quantity = Quantity;
     }
 
-
-
     /**
      * @return the Width
      */
@@ -105,7 +102,6 @@ public class ProductionOrder
     {
         this.Width = Width;
     }
-
 
     /**
      * @return the ID

@@ -1064,7 +1064,6 @@ public class GUIMain extends javax.swing.JFrame
         });
     }
 
-
     private void SimilarSleeveListener()
     {
         tblSimilarOrders.addMouseListener(new MouseAdapter()
@@ -1138,6 +1137,7 @@ public class GUIMain extends javax.swing.JFrame
         //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 // </editor-fold>
+
     private void UrgentOrder()
     {
         int count = (tblShowOrders.getRowCount());

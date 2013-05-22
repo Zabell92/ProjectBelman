@@ -49,7 +49,7 @@ public class StockDBM
             while (rs.next())
             {
                 int id = rs.getInt("id");
-                
+
                 double StockQuantity = rs.getDouble("StockQuantity");
                 double Length = rs.getDouble("Length");
                 String ChargeNo = rs.getString("ChargeNo");
@@ -58,7 +58,7 @@ public class StockDBM
 
 
 
-                StockItem s = new StockItem(id, StockQuantity, Length, ChargeNo,  SleeveID, CoilTypeID);
+                StockItem s = new StockItem(id, StockQuantity, Length, ChargeNo, SleeveID, CoilTypeID);
                 StockItem.add(s);
             }
             return StockItem;

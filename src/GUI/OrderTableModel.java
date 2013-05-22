@@ -48,17 +48,19 @@ public class OrderTableModel extends AbstractTableModel
         fireTableDataChanged();
         Porder = showAll;
     }
-    
     List<Color> rowColours = Arrays.asList(
-        Color.RED,
-        Color.GREEN,
-        Color.CYAN
-    );
-    public void setRowColour(int row, Color c) {
+            Color.RED,
+            Color.GREEN,
+            Color.CYAN);
+
+    public void setRowColour(int row, Color c)
+    {
         rowColours.set(row, c);
         fireTableRowsUpdated(row, row);
     }
-    public Color getRowColour(int row) {
+
+    public Color getRowColour(int row)
+    {
         return rowColours.get(row);
     }
 
@@ -121,7 +123,6 @@ public class OrderTableModel extends AbstractTableModel
         return (false);
     }
 
-    
     public void setCollection(Collection<ProductionOrder> list)
     {
         Porder = new ArrayList<>(list);

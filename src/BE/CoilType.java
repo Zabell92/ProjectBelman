@@ -10,13 +10,14 @@ package BE;
  */
 public class CoilType
 {
+
     private final int ID;
     private final int MaterialID;
     private double Width;
     private double Thickness;
     private String Code;
-    
-    public CoilType(int ID, int MaterialID, double Width, 
+
+    public CoilType(int ID, int MaterialID, double Width,
             double Thickness, String Code)
     {
         this.ID = ID;
@@ -24,7 +25,7 @@ public class CoilType
         this.Width = Width;
         this.Thickness = Thickness;
         this.Code = Code;
-        
+
     }
 
     /**

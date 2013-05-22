@@ -10,12 +10,12 @@ package BE;
  */
 public class Material
 {
+
     private final int ID;
     private String MaterialName;
     private double MaterialDensity;
-    
-    
-   public Material(int ID, String MaterialName, double MaterialDensity)
+
+    public Material(int ID, String MaterialName, double MaterialDensity)
     {
         this.ID = ID;
         this.MaterialName = MaterialName;
@@ -62,5 +62,3 @@ public class Material
         this.MaterialDensity = MaterialDensity;
     }
 }
-
-

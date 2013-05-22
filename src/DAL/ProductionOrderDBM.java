@@ -110,14 +110,13 @@ public class ProductionOrderDBM
             throw new SQLException("Unable to update isDone");
         }
     }
-    
+
     public void updateEmployee(int ID, String Name) throws SQLException
-            
     {
         Connection con = dataSource.getConnection();
-        
-        String sql ="Update ProductionOrder SET EmployeeID = ? WHERE Name = ?";
-        
+
+        String sql = "Update ProductionOrder SET EmployeeID = ? WHERE Name = ?";
+
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, ID);
         ps.setString(2, Name);

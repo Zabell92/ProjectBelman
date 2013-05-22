@@ -14,16 +14,17 @@ import java.util.ArrayList;
  */
 public class CoilTypeManager
 {
+
     private CoilTypeDBM ctdb;
 
     public CoilTypeManager() throws Exception
     {
         this.ctdb = new CoilTypeDBM();
     }
-    
-   public ArrayList<CoilType> getByCoilTypeID(int ID, double Width) throws Exception
+
+    public ArrayList<CoilType> getByCoilTypeID(int ID, double Width) throws Exception
     {
-        return ctdb.getByCoilTypeID(ID,Width);
-        
-    }  
+        return ctdb.getByCoilTypeID(ID, Width);
+
+    }
 }
