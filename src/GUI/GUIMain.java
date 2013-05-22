@@ -823,7 +823,7 @@ public class GUIMain extends javax.swing.JFrame
     }
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-        timer = new Timer();
+//        timer = new Timer();
         test = new UpdateUITask();
         
         timer.schedule(test, 1000, 1000);
@@ -833,7 +833,7 @@ public class GUIMain extends javax.swing.JFrame
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
     {//GEN-HEADEREND:event_btnStopActionPerformed
         test.cancel();
-        timer.cancel();
+//        timer.cancel();
         
         
         
@@ -842,7 +842,7 @@ public class GUIMain extends javax.swing.JFrame
         {
             po.insertData(Long.parseLong(lblTime.getText() + po.getTime(POrderID)), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
-            OrderModel.setCollection(po.showAll());;
+            OrderModel.setCollection(po.showAll());
             
         } catch (SQLException ex)
         {
@@ -861,14 +861,14 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnPauseActionPerformed
         
         test.cancel();
-        timer.cancel();
+//        timer.cancel();
             
         try
         {
             po.insertData(Long.parseLong((lblTime.getText()) + 
                     po.getTime(POrderID)), cbxEmp.getSelectedIndex() + 1, POrderID);
 //            po.updateIsDone(POrderID);
-            OrderModel.setCollection(po.showAll());;
+            OrderModel.setCollection(po.showAll());
             
         } catch (SQLException ex)
         {
