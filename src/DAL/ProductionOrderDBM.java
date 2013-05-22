@@ -72,11 +72,12 @@ public class ProductionOrderDBM
         }
     }
 
-    public void insertData(long TimeUsed, int EmployeeID, int ID) throws SQLException
+    public void updateTime(long TimeUsed, int EmployeeID, int ID) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "UPDATE ProductionOrder SET TimeUsed = ?, EmployeeID = ? Where ID = ?";
+            String sql = "UPDATE ProductionOrder SET TimeUsed = ?, "
+                    + "EmployeeID = ? Where ID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setLong(1, TimeUsed);
@@ -129,7 +130,7 @@ public class ProductionOrderDBM
         }
     }
 
-    public ArrayList<ProductionOrder> getTime(int ID) throws SQLException
+    public int getTime(int ID) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
@@ -140,26 +141,15 @@ public class ProductionOrderDBM
 
             ResultSet rs = ps.executeQuery();
 
-            ArrayList<ProductionOrder> POrder = new ArrayList<>();
-
-            while (rs.next())
+            if (rs.next())
             {
-                int id = rs.getInt("ID");
-                int EmployeeID = rs.getInt("EmployeeID");
-                String Porder = rs.getString("POrder");
-                Date DueDate = rs.getDate("DueDate");
-                int Quantity = rs.getInt("Quantity");
-                double width = rs.getDouble("Width");
-                int SleeveID = rs.getInt("SleeveID");
-                boolean IsDone = rs.getBoolean("IsDone");
+                
                 int TimeUsed = rs.getInt("TimeUsed");
+                return TimeUsed;
 
 
-                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder,
-                        DueDate, Quantity, width, SleeveID, IsDone, TimeUsed);
-                POrder.add(po);
             }
-            return POrder;
+            throw new SQLException("ID Not found");
 
         }
     }

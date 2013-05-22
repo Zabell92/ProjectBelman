@@ -836,9 +836,11 @@ public class GUIMain extends javax.swing.JFrame
 
         try
         {
-            po.insertData(Long.parseLong(lblTime.getText() + po.getTime(POrderID)), cbxEmp.getSelectedIndex() + 1, POrderID);
+            po.updateTime(Long.parseLong((lblTime.getText())) +
+                    po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
-            OrderModel.setCollection(po.showAll());;
+            OrderModel.setCollection(po.showAll());
+            
             
         } catch (SQLException ex)
         {
@@ -861,10 +863,8 @@ public class GUIMain extends javax.swing.JFrame
             
         try
         {
-            po.insertData(Long.parseLong((lblTime.getText()) + 
-                    po.getTime(POrderID)), cbxEmp.getSelectedIndex() + 1, POrderID);
-//            po.updateIsDone(POrderID);
-            OrderModel.setCollection(po.showAll());;
+            po.updateTime(Long.parseLong((lblTime.getText())) +
+                    po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
             
         } catch (SQLException ex)
         {
@@ -1228,8 +1228,12 @@ public class GUIMain extends javax.swing.JFrame
                 @Override
                 public void run()
                 {
-                    lblTime.setText(String.valueOf(nSeconds++));
+                    
+                        lblTime.setText(String.valueOf(nSeconds++));
+                   
                 }
+                    
+                 
             });
         }
 
