@@ -794,8 +794,6 @@ public class GUIMain extends javax.swing.JFrame
 
     private void cbxEmpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxEmpActionPerformed
     {//GEN-HEADEREND:event_cbxEmpActionPerformed
-      
-        
         // hej hej
     }//GEN-LAST:event_cbxEmpActionPerformed
 
@@ -825,7 +823,7 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnStartActionPerformed
 //        timer = new Timer();
         test = new UpdateUITask();
-        
+
         timer.schedule(test, 1000, 1000);
         btnStart.setEnabled(false);
     }//GEN-LAST:event_btnStartActionPerformed
@@ -834,49 +832,49 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnStopActionPerformed
         test.cancel();
 //        timer.cancel();
-        
-        
-        
-         
+
+
+
+
         try
         {
-            po.updateTime(Long.parseLong((lblTime.getText())) +
-                    po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
+            po.updateTime(Long.parseLong((lblTime.getText()))
+                    + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
             po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());
-            
-            
+
+
         } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         btnStart.setEnabled(true);
-        
-        
+
+
 //        tblShowOrders.setModel(OrderModel);
 //        
-       
-        
+
+
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void btnPauseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPauseActionPerformed
     {//GEN-HEADEREND:event_btnPauseActionPerformed
-        
+
         test.cancel();
 //        timer.cancel();
-            
+
         try
         {
-            po.updateTime(Long.parseLong((lblTime.getText())) +
-                    po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
-            
+            po.updateTime(Long.parseLong((lblTime.getText()))
+                    + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
+
         } catch (SQLException ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         btnStart.setEnabled(true);
-        
-        
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPauseActionPerformed
 
@@ -1232,12 +1230,10 @@ public class GUIMain extends javax.swing.JFrame
                 @Override
                 public void run()
                 {
-                    
-                        lblTime.setText(String.valueOf(nSeconds++));
-                   
+
+                    lblTime.setText(String.valueOf(nSeconds++));
+
                 }
-                    
-                 
             });
         }
 

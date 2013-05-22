@@ -42,10 +42,10 @@ public class ProductionOrderManager
     {
         podb.updateEmployee(ID, Name);
     }
-    
+
     public int getTime(int ID) throws SQLException
     {
         return podb.getTime(ID);
-        
+
     }
 }

@@ -91,7 +91,7 @@ public class ProductionOrderDBM
             {
                 throw new SQLException("Unable to insert data");
             }
-         
+
 
         }
 
@@ -137,13 +137,13 @@ public class ProductionOrderDBM
             String sql = "SELECT TimeUsed FROM ProductionOrder WHERE ID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
-  
+
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
             {
-                
+
                 int TimeUsed = rs.getInt("TimeUsed");
                 return TimeUsed;
 
