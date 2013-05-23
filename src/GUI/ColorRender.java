@@ -41,7 +41,8 @@ class ColorRender extends JLabel implements TableCellRenderer
         {
             setBackground(table.getSelectionBackground());
             setForeground(table.getSelectionForeground());
-        } else
+        }
+        else
         {
             setBackground(table.getBackground());
             setForeground(table.getForeground());
@@ -61,7 +62,8 @@ class ColorRender extends JLabel implements TableCellRenderer
                 long res = ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
                 if (res >= 4)
                 {
-                } else
+                }
+                else
                 {
 
                     if (row <= i)
