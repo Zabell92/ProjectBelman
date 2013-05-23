@@ -22,9 +22,9 @@ public class EmployeeManager
         this.edb = new EmployeeDBM();
     }
 
-    public ArrayList<Employee> getByEmployeeID(int ID) throws Exception
+    public int getByName(String Name) throws Exception
     {
-        return edb.getByEmployeeID(ID);
+        return edb.getByName(Name);
 
     }
 

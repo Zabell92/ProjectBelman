@@ -839,12 +839,12 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
-                    + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
+                    + po.getTime(POrderID), EManager.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
             po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());
 
 
-        } catch (SQLException ex)
+        } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -866,9 +866,9 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
-                    + po.getTime(POrderID), cbxEmp.getSelectedIndex() + 1, POrderID);
+                    + po.getTime(POrderID), EManager.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
 
-        } catch (SQLException ex)
+        } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }

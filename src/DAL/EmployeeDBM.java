@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -37,27 +38,28 @@ public class EmployeeDBM
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
 
-    public ArrayList<Employee> getByEmployeeID(int ID) throws Exception
+    public int getByName(String Name) throws Exception
     {
         {
             Connection con = dataSource.getConnection();
-            String sql = "SELECT Name FROM Employee WHERE ID = ?";
+            String sql = "SELECT ID FROM Employee WHERE Name = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, ID);
+            ps.setString(1, Name);
 
             ResultSet rs = ps.executeQuery();
 
-            ArrayList<Employee> Employee = new ArrayList<>();
-            while (rs.next())
+
+            if (rs.next())
             {
-                int id = rs.getInt("id");
-                String Name = rs.getString("Name");
+
+                int ID = rs.getInt("ID");
+
+                return ID;
 
 
-                Employee em = new Employee(id, Name);
-                Employee.add(em);
+
             }
-            return Employee;
+            throw new SQLException("Name not found");
         }
     }
 
