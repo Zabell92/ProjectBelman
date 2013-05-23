@@ -16,18 +16,17 @@ class ColorRender extends JLabel implements TableCellRenderer
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Calendar cal = Calendar.getInstance();
     String expDateString = sdf.format(cal.getTime()).toString();
-    private String rowName;
 
     public ColorRender(String row)
     {
-        this.rowName = row;
+
         setOpaque(true);
     }
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
     {
-        Object columnValue = table.getValueAt(row, table.getColumnModel().getColumnIndex(rowName));
+
 
         Date date = new Date();
         Date date1 = new Date();
@@ -53,7 +52,7 @@ class ColorRender extends JLabel implements TableCellRenderer
                 {
                     date = sdf.parse(dueDate);
                     date1 = sdf.parse(expDateString);
-                    //         System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+
                 } catch (ParseException ex)
                 {
                     Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);

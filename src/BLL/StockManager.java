@@ -4,9 +4,7 @@
  */
 package BLL;
 
-import BE.Sleeve;
 import BE.StockItem;
-import DAL.SleeveDBM;
 import DAL.StockDBM;
 import java.util.ArrayList;
 

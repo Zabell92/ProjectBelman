@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 public class StockTableModel extends AbstractTableModel
 {
 
-    private StockManager sm;
     private final String[] header =
     {
         "Id", "StockQuantity", "Length", "ChargeNo", "SleeveID", "CoilTypeID"
@@ -28,17 +27,6 @@ public class StockTableModel extends AbstractTableModel
         Integer.class, Double.class, Double.class, String.class, Integer.class, Integer.class
     };
     private ArrayList<StockItem> si;
-
-    public StockTableModel()
-    {
-        try
-        {
-            sm = new StockManager();
-        } catch (Exception ex)
-        {
-            System.out.println("lol");
-        }
-    }
 
     StockTableModel(ArrayList<StockItem> getByMaterialID)
     {

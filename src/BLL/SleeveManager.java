@@ -6,7 +6,6 @@ package BLL;
 
 import BE.Sleeve;
 import DAL.SleeveDBM;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**

@@ -5,7 +5,6 @@
 package GUI;
 
 import BE.ProductionOrder;
-import BLL.ProductionOrderManager;
 import java.awt.Color;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import javax.swing.table.AbstractTableModel;
 public class SimilarOrderTableModel extends AbstractTableModel
 {
 
-    private ProductionOrderManager pom;
     private final String[] header =
     {
         "Id", "POrder", "Duedate", "Quantity", "Width", "SleeveID"
@@ -31,17 +29,6 @@ public class SimilarOrderTableModel extends AbstractTableModel
         Integer.class, String.class, Date.class, Integer.class, Double.class, Integer.class
     };
     private ArrayList<ProductionOrder> Porder;
-
-    public SimilarOrderTableModel()
-    {
-        try
-        {
-            pom = new ProductionOrderManager();
-        } catch (Exception ex)
-        {
-            System.out.println("lol");
-        }
-    }
 
     SimilarOrderTableModel(ArrayList<ProductionOrder> showAll)
     {

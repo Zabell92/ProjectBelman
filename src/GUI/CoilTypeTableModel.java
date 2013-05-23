@@ -5,7 +5,6 @@
 package GUI;
 
 import BE.CoilType;
-import BLL.CoilTypeManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +16,6 @@ import javax.swing.table.AbstractTableModel;
 public class CoilTypeTableModel extends AbstractTableModel
 {
 
-    private CoilTypeManager ctm;
     private final String[] header =
     {
         "ID", "MaterialID", "Width", "Thickness", "Code"
@@ -27,17 +25,6 @@ public class CoilTypeTableModel extends AbstractTableModel
         Integer.class, Integer.class, Double.class, Double.class, String.class
     };
     private ArrayList<CoilType> ct;
-
-    public CoilTypeTableModel()
-    {
-        try
-        {
-            ctm = new CoilTypeManager();
-        } catch (Exception ex)
-        {
-            System.out.println("lol");
-        }
-    }
 
     CoilTypeTableModel(ArrayList<CoilType> getByMaterialID)
     {

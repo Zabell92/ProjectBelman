@@ -5,7 +5,6 @@
 package GUI;
 
 import BE.Sleeve;
-import BLL.SleeveManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +16,6 @@ import javax.swing.table.AbstractTableModel;
 public class SleeveTableModel extends AbstractTableModel
 {
 
-    private SleeveManager slm;
     private final String[] header =
     {
         "Id", "Thickness", "Circumference", "MaterialID"
@@ -27,17 +25,6 @@ public class SleeveTableModel extends AbstractTableModel
         Integer.class, Double.class, Double.class, Integer.class
     };
     private ArrayList<Sleeve> sl;
-
-    public SleeveTableModel()
-    {
-        try
-        {
-            slm = new SleeveManager();
-        } catch (Exception ex)
-        {
-            System.out.println("lol");
-        }
-    }
 
     SleeveTableModel(ArrayList<Sleeve> getBySleeveId)
     {

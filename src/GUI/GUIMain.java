@@ -7,7 +7,6 @@ package GUI;
 import BE.Employee;
 import BLL.CoilTypeManager;
 import BLL.EmployeeManager;
-import BLL.MaterialManager;
 import BLL.ProductionOrderManager;
 import BLL.SimilarOrderManager;
 import BLL.SimilarSleeveManager;
@@ -16,12 +15,9 @@ import BLL.StockManager;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -42,7 +38,6 @@ public class GUIMain extends javax.swing.JFrame
     }
     private ProductionOrderManager po;
     private SleeveManager slm;
-    private MaterialManager mm;
     private StockManager sm;
     private CoilTypeManager ctm;
     private SimilarOrderManager som;
@@ -60,9 +55,7 @@ public class GUIMain extends javax.swing.JFrame
     private double CoilTypeWidth;
     private double SimilarWidth;
     private int Counter;
-    private Employee Employees;
     private EmployeeManager EManager;
-    // private String strElapsedTime;
     private Timer timer = new Timer();
     private UpdateUITask test = new UpdateUITask();
 
@@ -80,7 +73,7 @@ public class GUIMain extends javax.swing.JFrame
             EManager = new EmployeeManager();
             po = new ProductionOrderManager();
             slm = new SleeveManager();
-            mm = new MaterialManager();
+
             sm = new StockManager();
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
@@ -113,7 +106,7 @@ public class GUIMain extends javax.swing.JFrame
 
         } catch (Exception ex)
         {
-//            JOptionPane.showMessageDialog(this, "EROOR - Can't open GUI", "Error 1", JOptionPane.ERROR_MESSAGE);
+
             ex.printStackTrace();
         }
     }
@@ -794,7 +787,7 @@ public class GUIMain extends javax.swing.JFrame
 
     private void cbxEmpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxEmpActionPerformed
     {//GEN-HEADEREND:event_cbxEmpActionPerformed
-        // hej hej
+        // TODO add your handling code here:
     }//GEN-LAST:event_cbxEmpActionPerformed
 
     private void FillComboBox()
@@ -809,7 +802,7 @@ public class GUIMain extends javax.swing.JFrame
             }
 
 
-            // TODO add your handling code here:
+
         } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -821,7 +814,7 @@ public class GUIMain extends javax.swing.JFrame
     }
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-//        timer = new Timer();
+
         test = new UpdateUITask();
 
         timer.schedule(test, 1000, 1000);
@@ -831,7 +824,7 @@ public class GUIMain extends javax.swing.JFrame
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
     {//GEN-HEADEREND:event_btnStopActionPerformed
         test.cancel();
-//        timer.cancel();
+
 
 
 
@@ -851,8 +844,7 @@ public class GUIMain extends javax.swing.JFrame
         btnStart.setEnabled(true);
 
 
-//        tblShowOrders.setModel(OrderModel);
-//        
+
 
 
     }//GEN-LAST:event_btnStopActionPerformed
@@ -861,7 +853,7 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnPauseActionPerformed
 
         test.cancel();
-//        timer.cancel();
+
 
         try
         {
@@ -1015,7 +1007,7 @@ public class GUIMain extends javax.swing.JFrame
                     System.out.println("Mouse clicked: " + Counter);
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
-//                        final int column = OrderModel.getSelectedColumn();
+
 
                     SleeveID = (int) OrderModel.getValueAt(row, 5);
                     CoilTypeWidth = (double) OrderModel.getValueAt(row, 4);
@@ -1037,7 +1029,7 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable CoilModel = (JTable) e.getSource();
                     final int row = CoilModel.getSelectedRow();
-//                        final int column = OrderModel.getSelectedColumn();
+
 
                     CoilTypeID = (int) CoilModel.getValueAt(row, 0);
                     try
@@ -1066,7 +1058,7 @@ public class GUIMain extends javax.swing.JFrame
                     final JTable SleeveModel = (JTable) e.getSource();
                     final int row = SleeveModel.getSelectedRow();
 
-//                        final int column = OrderModel.getSelectedColumn();
+
 
                     MaterialID = (int) SleeveModel.getValueAt(row, 3);
 
@@ -1100,7 +1092,7 @@ public class GUIMain extends javax.swing.JFrame
                     final JTable SleeveModel = (JTable) e.getSource();
                     final int row = SleeveModel.getSelectedRow();
 
-//                        final int column = OrderModel.getSelectedColumn();
+
 
                     SimilarWidth = (double) SleeveModel.getValueAt(row, 2);
 
@@ -1115,7 +1107,7 @@ public class GUIMain extends javax.swing.JFrame
                     }
 
                     tblSimilarOrders.setModel(SimilarOrderModel);
-                    //        tblSimilarOrders.setModel(SimilarOrderModel);
+
                     System.out.println("Valgte Width: " + SimilarWidth);
                 }
             }
@@ -1133,7 +1125,7 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable SimilarOrderModel = (JTable) e.getSource();
                     final int row = SimilarOrderModel.getSelectedRow();
-//                        final int column = OrderModel.getSelectedColumn();
+
 
                     SleeveID = (int) SimilarOrderModel.getValueAt(row, 5);
                     try
@@ -1161,7 +1153,7 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
-//                        final int column = OrderModel.getSelectedColumn();
+
 
                     POrderID = (int) OrderModel.getValueAt(row, 0);
 
@@ -1192,7 +1184,7 @@ public class GUIMain extends javax.swing.JFrame
         tblCoilInfo.setModel(CoilTypeModel);
         tblSleeveInfo.setModel(SleeveModel);
         tblSimilarSleeves.setModel(SimilarSleeveModel);
-        //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 // </editor-fold>
 
@@ -1203,9 +1195,7 @@ public class GUIMain extends javax.swing.JFrame
         String no = formatter.format(count);
         txtDueDate.setText(no);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        String expDateString = sdf.format(cal.getTime()).toString();
+
 
         for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
         {

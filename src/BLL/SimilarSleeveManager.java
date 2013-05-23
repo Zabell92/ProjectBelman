@@ -5,9 +5,7 @@
 package BLL;
 
 import BE.SimilarSleeve;
-import BE.Sleeve;
 import DAL.SimilarSleeveDBM;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**

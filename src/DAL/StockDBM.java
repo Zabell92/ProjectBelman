@@ -40,6 +40,7 @@ public class StockDBM
     {
         {
             Connection con = dataSource.getConnection();
+
             String sql = "SELECT * FROM Stock WHERE CoilTypeID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);

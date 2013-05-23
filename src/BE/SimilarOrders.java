@@ -4,8 +4,6 @@
  */
 package BE;
 
-import java.sql.Date;
-
 /**
  *
  * @author Aka

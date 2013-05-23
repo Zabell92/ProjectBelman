@@ -5,7 +5,6 @@
 package DAL;
 
 import BE.SimilarSleeve;
-import BE.Sleeve;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.io.FileReader;
 import java.sql.Connection;

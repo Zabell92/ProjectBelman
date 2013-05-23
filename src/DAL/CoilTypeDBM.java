@@ -5,7 +5,6 @@
 package DAL;
 
 import BE.CoilType;
-import BE.Material;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.io.FileReader;
 import java.sql.Connection;

@@ -5,7 +5,6 @@
 package GUI;
 
 import BE.SimilarSleeve;
-import BLL.SimilarSleeveManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +16,6 @@ import javax.swing.table.AbstractTableModel;
 public class SimilarSleeveTableModel extends AbstractTableModel
 {
 
-    private SimilarSleeveManager sslm;
     private final String[] header =
     {
         "Id", "Thickness", "Circumference", "MaterialID"
@@ -27,17 +25,6 @@ public class SimilarSleeveTableModel extends AbstractTableModel
         Integer.class, Double.class, Double.class, Integer.class
     };
     private ArrayList<SimilarSleeve> sl;
-
-    public SimilarSleeveTableModel()
-    {
-        try
-        {
-            sslm = new SimilarSleeveManager();
-        } catch (Exception ex)
-        {
-            System.out.println("lol");
-        }
-    }
 
     SimilarSleeveTableModel(ArrayList<SimilarSleeve> getBySleeveId)
     {

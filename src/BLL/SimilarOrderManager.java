@@ -5,7 +5,6 @@
 package BLL;
 
 import BE.ProductionOrder;
-import DAL.ProductionOrderDBM;
 import DAL.SimilarOrdersDBM;
 import java.sql.SQLException;
 import java.util.ArrayList;
