@@ -55,7 +55,7 @@ public class GUIMain extends javax.swing.JFrame
     private double CoilTypeWidth;
     private double SimilarWidth;
     private int Counter;
-    private EmployeeManager EManager;
+    private EmployeeManager em;
     private Timer timer = new Timer();
     private UpdateUITask test = new UpdateUITask();
 
@@ -70,7 +70,7 @@ public class GUIMain extends javax.swing.JFrame
         setExtendedState(MAXIMIZED_BOTH);
         try
         {
-            EManager = new EmployeeManager();
+            em = new EmployeeManager();
             po = new ProductionOrderManager();
             slm = new SleeveManager();
 
@@ -796,7 +796,7 @@ public class GUIMain extends javax.swing.JFrame
         ArrayList<Employee> testemployee = new ArrayList<Employee>();
         try
         {
-            for (Employee e : EManager.getAllEmployees())
+            for (Employee e : em.getAllEmployees())
             {
                 testemployee.add(e);
             }
@@ -832,7 +832,7 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
-                    + po.getTime(POrderID), EManager.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
+                    + po.getTime(POrderID), em.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
             po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());
 
@@ -858,7 +858,7 @@ public class GUIMain extends javax.swing.JFrame
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
-                    + po.getTime(POrderID), EManager.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
+                    + po.getTime(POrderID), em.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
 
         } catch (Exception ex)
         {
