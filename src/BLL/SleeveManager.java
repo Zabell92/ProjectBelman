@@ -17,11 +17,21 @@ public class SleeveManager
 
     private SleeveDBM sldb;
 
+    /**
+     *
+     * Creates a new SleeveDBM
+     */
     public SleeveManager() throws Exception
     {
         this.sldb = new SleeveDBM();
     }
 
+    /**
+     *
+     * @param ID
+     * @return the sleeves with specifeid ID from the sleeve list
+     * @throws Exception
+     */
     public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
     {
         return sldb.getBySleeveId(ID);

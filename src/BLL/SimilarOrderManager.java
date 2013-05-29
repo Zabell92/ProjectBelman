@@ -18,11 +18,20 @@ public class SimilarOrderManager
 
     private SimilarOrdersDBM sodb;
 
+    /**
+     *
+     * Creates a new similarOrdersDBM
+     */
     public SimilarOrderManager() throws Exception
     {
         sodb = new SimilarOrdersDBM();
     }
 
+    /**
+     *
+     * @param Width
+     * @return the similar orders with the specified width in the productionorder list
+     */
     public ArrayList<ProductionOrder> getSimilarOrders(double Width) throws SQLException
     {
         return sodb.getSimilarOrders(Width);
