@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 /**
- *
- * @author Aka
+ * The Dal class for handling all Sleeve related data from the database
+ * @author Team
  */
 public class SleeveDBM
 {
-
+ /**
+  * Initializes the connection
+  */
     private SQLServerDataSource dataSource;
 
     public SleeveDBM() throws Exception
@@ -35,7 +37,12 @@ public class SleeveDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-
+/**
+ * Selects everything from Sleeve in the database where a SleeveID is chosen
+ * @param ID
+ * @return everything from sleeve
+ * @throws Exception 
+ */
     public ArrayList<Sleeve> getBySleeveId(int ID) throws Exception
     {
         {

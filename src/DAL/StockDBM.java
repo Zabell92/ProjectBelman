@@ -14,12 +14,16 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 /**
+ * The DAL class that handles all Stock Data in the database.
  *
- * @author Aka
+ * @author Team
  */
 public class StockDBM
 {
 
+/**
+ * Initializes the connection
+ */
     private SQLServerDataSource dataSource;
 
     public StockDBM() throws Exception
@@ -35,7 +39,12 @@ public class StockDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-
+/**
+ * Selects everything from Stock in the database where a CoilTypeID matches.
+ * @param ID
+ * @return StockItem
+ * @throws Exception 
+ */
     public ArrayList<StockItem> getBySleeveId(int ID) throws Exception
     {
         {

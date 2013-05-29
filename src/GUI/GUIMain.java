@@ -26,8 +26,9 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 
 /**
- *
- * @author MikeZJ
+ *The Main GUI of the program
+ * Part of the observer pattern
+ * @author Team
  */
 public class GUIMain extends javax.swing.JFrame
 {
@@ -60,7 +61,7 @@ public class GUIMain extends javax.swing.JFrame
     private UpdateUITask test = new UpdateUITask();
 
     /**
-     * Creates new form OrderList
+     *  
      */
     public GUIMain()
     {
