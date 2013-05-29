@@ -26,8 +26,8 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 
 /**
- *The Main GUI of the program
- * Part of the observer pattern
+ * The Main GUI of the program Part of the observer pattern
+ *
  * @author Team
  */
 public class GUIMain extends javax.swing.JFrame
@@ -61,7 +61,7 @@ public class GUIMain extends javax.swing.JFrame
     private UpdateUITask test = new UpdateUITask();
 
     /**
-     *  
+     *
      */
     public GUIMain()
     {

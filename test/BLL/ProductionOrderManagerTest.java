@@ -24,26 +24,26 @@ import static org.junit.Assert.*;
  */
 public class ProductionOrderManagerTest
 {
-    
+
     public ProductionOrderManagerTest()
     {
     }
-    
+
     @BeforeClass
     public static void setUpClass()
     {
     }
-    
+
     @AfterClass
     public static void tearDownClass()
     {
     }
-    
+
     @Before
     public void setUp()
     {
     }
-    
+
     @After
     public void tearDown()
     {
@@ -58,13 +58,13 @@ public class ProductionOrderManagerTest
         String DueDate = "2014-03-04";
         DateFormat df = new SimpleDateFormat("yyyy-dd-mm");
         Date date = (Date) df.parse(DueDate);
-       
+
         System.out.println("showAll");
         ProductionOrderManager instance = new ProductionOrderManager();
         ArrayList<ProductionOrder> expResult = new ArrayList<>();
-        expResult.add(new ProductionOrder(123, 0, "5811-12004-010-7" , date, 69, 1235, 1, false, 0));
+        expResult.add(new ProductionOrder(123, 0, "5811-12004-010-7", date, 69, 1235, 1, false, 0));
         ArrayList result = instance.showAll();
-         
+
         System.out.println(result.isEmpty());
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

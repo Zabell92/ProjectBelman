@@ -19,26 +19,26 @@ import static org.junit.Assert.*;
  */
 public class CoilTypeManagerTest
 {
-    
+
     public CoilTypeManagerTest()
     {
     }
-    
+
     @BeforeClass
     public static void setUpClass()
     {
     }
-    
+
     @AfterClass
     public static void tearDownClass()
     {
     }
-    
+
     @Before
     public void setUp()
     {
     }
-    
+
     @After
     public void tearDown()
     {
@@ -56,16 +56,16 @@ public class CoilTypeManagerTest
         int MaterialID = 10;
         String Code = "RP-13/56";
         double Thickness = 3;
-                
+
         CoilTypeManager instance = new CoilTypeManager();
         ArrayList<CoilType> expResult = new ArrayList<>();
-      
+
         expResult.add(new CoilType(ID, MaterialID, Width, Thickness, Code));
         ArrayList<CoilType> result = instance.getByCoilTypeID(ID, Width);
-       
+
         System.out.println("Result : " + result.isEmpty());
-        assertEquals( "Failed blabla was: ", expResult, result);
+        assertEquals("Failed blabla was: ", expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 }

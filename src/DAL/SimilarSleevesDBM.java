@@ -14,14 +14,16 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 /**
- *The Dal class for handling all Sleeve related data from the database
+ * The Dal class for handling all Sleeve related data from the database
+ *
  * @author Team
  */
 public class SimilarSleevesDBM
 {
-/**
- * Initializes the connection
- */
+
+    /**
+     * Initializes the connection
+     */
     private SQLServerDataSource dataSource;
 
     public SimilarSleevesDBM() throws Exception
@@ -37,14 +39,17 @@ public class SimilarSleevesDBM
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
-/**
- * Selects everything from Sleeve where materialID and Thickness matches with the data from the database.
- * @param ID
- * @param Width
- * @param Thickness
- * @return everything from sleeve
- * @throws Exception 
- */
+
+    /**
+     * Selects everything from Sleeve where materialID and Thickness matches
+     * with the data from the database.
+     *
+     * @param ID
+     * @param Width
+     * @param Thickness
+     * @return everything from sleeve
+     * @throws Exception
+     */
     public ArrayList<Sleeve> getNewSimilarSleeve(int ID, double Width, double Thickness) throws Exception
     {
         {
