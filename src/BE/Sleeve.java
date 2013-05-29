@@ -18,13 +18,11 @@ public class Sleeve
     private int EndTime;
     private final int MaterialID;
 
-    public Sleeve(int ID, double Thickness, double Circumference, int StartTime, int EndTime, int MaterialID)
+    public Sleeve(int ID, double Thickness, double Circumference, int MaterialID)
     {
         this.ID = ID;
         this.Thickness = Thickness;
         this.Circumference = Circumference;
-        this.StartTime = StartTime;
-        this.EndTime = EndTime;
         this.MaterialID = MaterialID;
     }
 

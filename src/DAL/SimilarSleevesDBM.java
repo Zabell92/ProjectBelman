@@ -66,13 +66,11 @@ public class SimilarSleevesDBM
                 int id = rs.getInt("id");
                 double thickness = rs.getDouble("Thickness");
                 double Circumference = rs.getDouble("Circumference");
-                int StartTime = rs.getInt("StartTime");
-                int EndTime = rs.getInt("EndTime");
                 int MaterialID = rs.getInt("MaterialID");
 
 
 
-                Sleeve sl = new Sleeve(id, thickness, Circumference, StartTime, EndTime, MaterialID);
+                Sleeve sl = new Sleeve(id, thickness, Circumference, MaterialID);
                 Sleeve.add(sl);
             }
             return Sleeve;
