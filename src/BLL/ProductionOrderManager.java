@@ -38,11 +38,11 @@ public class ProductionOrderManager
     }
 
     /**
-     *
+     * update the time in the database
      * @param TimeUsed
      * @param EmployeeID
      * @param ID
-     * update the time in the database
+     * 
      */
     public void updateTime(long TimeUsed, int EmployeeID, int ID) throws SQLException
     {
