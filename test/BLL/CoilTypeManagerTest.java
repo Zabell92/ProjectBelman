@@ -62,7 +62,7 @@ public class CoilTypeManagerTest
         String Code = "RP-13/56";
         double Thickness = 3;
 
-        CoilType 1 = new CoilType(ID, MaterialID, Width, Code, Thickness);
+//        CoilType 1 = new CoilType(ID, MaterialID, Width, Code, Thickness);
 //        CoilTypeManager instance = new CoilTypeManager();
 //        ArrayList<CoilType> expResult = new ArrayList<>();
 //
