@@ -32,7 +32,7 @@ import javax.swing.UIManager;
  */
 public class GUIMain extends javax.swing.JFrame
 {
-
+    
     public void setTimerText(long time)
     {
         lblTime.setText(Long.toString(time * 1000));
@@ -65,32 +65,32 @@ public class GUIMain extends javax.swing.JFrame
      */
     public GUIMain()
     {
-
+        
         initComponents();
-
+        
         setExtendedState(MAXIMIZED_BOTH);
         try
         {
             em = new EmployeeManager();
             po = new ProductionOrderManager();
             slm = new SleeveManager();
-
+            
             sm = new StockManager();
             ctm = new CoilTypeManager();
             som = new SimilarOrderManager();
             ssm = new SimilarSleeveManager();
-
-
+            
+            
             Counter = 0;
             OrderModel = new OrderTableModel(po.showAll());
             tblShowOrders.setModel(OrderModel);
             tblShowOrder.setModel(OrderModel);
             tblUpdateShowOrder.setModel(OrderModel);
             tblRemoveShowOrder.setModel(OrderModel);
-
-
-
-
+            
+            
+            
+            
             Initialize();
             FillComboBox();
             SleeveListener();
@@ -100,14 +100,14 @@ public class GUIMain extends javax.swing.JFrame
             SimilarOrdersListener();
             SimilarSleeveListener();
             ProductionIDListener();
-
-
-
-
-
+            
+            
+            
+            
+            
         } catch (Exception ex)
         {
-
+            
             ex.printStackTrace();
         }
     }
@@ -785,12 +785,12 @@ public class GUIMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_txtUpdateIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUpdateIDActionPerformed
-
+    
     private void cbxEmpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxEmpActionPerformed
     {//GEN-HEADEREND:event_cbxEmpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxEmpActionPerformed
-
+    
     private void FillComboBox()
     {
         cbxEmp.removeAllItems();
@@ -801,9 +801,9 @@ public class GUIMain extends javax.swing.JFrame
             {
                 testemployee.add(e);
             }
-
-
-
+            
+            
+            
         } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -815,52 +815,53 @@ public class GUIMain extends javax.swing.JFrame
     }
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
-
+        
         test = new UpdateUITask();
-
+        
         timer.schedule(test, 1000, 1000);
         btnStart.setEnabled(false);
     }//GEN-LAST:event_btnStartActionPerformed
-
+    
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopActionPerformed
     {//GEN-HEADEREND:event_btnStopActionPerformed
         test.cancel();
-
-
-
-
-
+        
+        
+        
+        
+        
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
                     + po.getTime(POrderID), em.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
             po.updateIsDone(POrderID);
             OrderModel.setCollection(po.showAll());
-
-
+            
+            
         } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         btnStart.setEnabled(true);
-
-
-
-
-
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnStopActionPerformed
-
+    
     private void btnPauseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPauseActionPerformed
     {//GEN-HEADEREND:event_btnPauseActionPerformed
-
+        
         test.cancel();
-
-
+        
+        
         try
         {
             po.updateTime(Long.parseLong((lblTime.getText()))
                     + po.getTime(POrderID), em.getByName(cbxEmp.getSelectedItem().toString()), POrderID);
-
+            lblTime.setText("0");
+            
         } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -908,9 +909,9 @@ public class GUIMain extends javax.swing.JFrame
         {
             public void run()
             {
-
+                
                 new GUIMain().setVisible(true);
-
+                
             }
         });
     }
@@ -1008,17 +1009,17 @@ public class GUIMain extends javax.swing.JFrame
                     System.out.println("Mouse clicked: " + Counter);
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
-
-
+                    
+                    
                     SleeveID = (int) OrderModel.getValueAt(row, 5);
                     CoilTypeWidth = (double) OrderModel.getValueAt(row, 4);
                     Initialize();
                 }
             }
         });
-
+        
     }
-
+    
     private void StockListener()
     {
         tblCoilInfo.addMouseListener(new MouseAdapter()
@@ -1030,8 +1031,8 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable CoilModel = (JTable) e.getSource();
                     final int row = CoilModel.getSelectedRow();
-
-
+                    
+                    
                     CoilTypeID = (int) CoilModel.getValueAt(row, 0);
                     try
                     {
@@ -1046,7 +1047,7 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
-
+    
     private void CoilListener()
     {
         tblSleeveInfo.addMouseListener(new MouseAdapter()
@@ -1058,21 +1059,21 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable SleeveModel = (JTable) e.getSource();
                     final int row = SleeveModel.getSelectedRow();
-
-
-
+                    
+                    
+                    
                     MaterialID = (int) SleeveModel.getValueAt(row, 3);
-
+                    
                     try
                     {
-
+                        
                         CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(MaterialID, CoilTypeWidth));
-
+                        
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    
                     tblCoilInfo.setModel(CoilTypeModel);
                     System.out.println("Valgte CoilTypeID: " + MaterialID);
                     System.out.println("Valgte Width: " + CoilTypeWidth);
@@ -1080,7 +1081,7 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
-
+    
     private void SimilarOrdersListener()
     {
         tblCoilInfo.addMouseListener(new MouseAdapter()
@@ -1092,29 +1093,29 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable SleeveModel = (JTable) e.getSource();
                     final int row = SleeveModel.getSelectedRow();
-
-
-
+                    
+                    
+                    
                     SimilarWidth = (double) SleeveModel.getValueAt(row, 2);
-
+                    
                     try
                     {
-
+                        
                         SimilarOrderModel = new SimilarOrderTableModel(som.getSimilarOrders(SimilarWidth));
-
+                        
                     } catch (Exception ex)
                     {
                         Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    
                     tblSimilarOrders.setModel(SimilarOrderModel);
-
+                    
                     System.out.println("Valgte Width: " + SimilarWidth);
                 }
             }
         });
     }
-
+    
     private void SimilarSleeveListener()
     {
         tblSimilarOrders.addMouseListener(new MouseAdapter()
@@ -1126,8 +1127,8 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable SimilarOrderModel = (JTable) e.getSource();
                     final int row = SimilarOrderModel.getSelectedRow();
-
-
+                    
+                    
                     SleeveID = (int) SimilarOrderModel.getValueAt(row, 5);
                     try
                     {
@@ -1142,7 +1143,7 @@ public class GUIMain extends javax.swing.JFrame
             }
         });
     }
-
+    
     private int ProductionIDListener()
     {
         tblShowOrders.addMouseListener(new MouseAdapter()
@@ -1154,18 +1155,18 @@ public class GUIMain extends javax.swing.JFrame
                 {
                     final JTable OrderModel = (JTable) e.getSource();
                     final int row = OrderModel.getSelectedRow();
-
-
+                    
+                    
                     POrderID = (int) OrderModel.getValueAt(row, 0);
-
+                    
                     System.out.println("Valgte StockItem:" + POrderID);
                 }
-
+                
             }
         });
         return POrderID;
     }
-
+    
     private void Initialize()
     {
         try
@@ -1175,7 +1176,7 @@ public class GUIMain extends javax.swing.JFrame
             CoilTypeModel = new CoilTypeTableModel(ctm.getByCoilTypeID(0, 0.0));
             SleeveModel = new SleeveTableModel(slm.getBySleeveId(SleeveID));
             SimilarSleeveModel = new SimilarSleeveTableModel(ssm.getNewSimilarSleeve(0));
-
+            
         } catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -1185,7 +1186,7 @@ public class GUIMain extends javax.swing.JFrame
         tblCoilInfo.setModel(CoilTypeModel);
         tblSleeveInfo.setModel(SleeveModel);
         tblSimilarSleeves.setModel(SimilarSleeveModel);
-
+        
     }
 // </editor-fold>
 
@@ -1195,9 +1196,9 @@ public class GUIMain extends javax.swing.JFrame
         NumberFormat formatter = new DecimalFormat("###,###");
         String no = formatter.format(count);
         txtDueDate.setText(no);
-
-
-
+        
+        
+        
         for (int i = 0; i <= tblShowOrders.getRowCount() - 1; i++)
         {
             ColorRender cr = new ColorRender(tblShowOrders.getColumnName(0));
@@ -1207,12 +1208,12 @@ public class GUIMain extends javax.swing.JFrame
             }
         }
     }
-
+    
     class UpdateUITask extends TimerTask
     {
-
+        
         private long nSeconds = 0;
-
+        
         @Override
         public void run()
         {
@@ -1221,9 +1222,9 @@ public class GUIMain extends javax.swing.JFrame
                 @Override
                 public void run()
                 {
-
+                    
                     lblTime.setText(String.valueOf(nSeconds++));
-
+                    
                 }
             });
         }
