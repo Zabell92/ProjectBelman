@@ -73,4 +73,31 @@ public class SleeveDBM
             return Sleeve;
         }
     }
+
+    public ArrayList<Sleeve> getNewSimilarSleeve(int ID) throws Exception
+    {
+        {
+            Connection con = dataSource.getConnection();
+            String sql = "SELECT * FROM Sleeve WHERE ID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, ID);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Sleeve> Sleeve = new ArrayList<>();
+            while (rs.next())
+            {
+                int id = rs.getInt("id");
+                double thickness = rs.getDouble("Thickness");
+                double Circumference = rs.getDouble("Circumference");
+                int MaterialID = rs.getInt("MaterialID");
+
+
+
+                Sleeve sl = new Sleeve(id, thickness, Circumference, MaterialID);
+                Sleeve.add(sl);
+            }
+            return Sleeve;
+        }
+    }
 }

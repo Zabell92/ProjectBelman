@@ -4,7 +4,7 @@
  */
 package GUI;
 
-import BE.SimilarSleeve;
+import BE.Sleeve;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -24,9 +24,9 @@ public class SimilarSleeveTableModel extends AbstractTableModel
     {
         Integer.class, Double.class, Double.class, Integer.class
     };
-    private ArrayList<SimilarSleeve> sl;
+    private ArrayList<Sleeve> sl;
 
-    SimilarSleeveTableModel(ArrayList<SimilarSleeve> getBySleeveId)
+    SimilarSleeveTableModel(ArrayList<Sleeve> getBySleeveId)
     {
         fireTableDataChanged();
         sl = getBySleeveId;
@@ -60,7 +60,7 @@ public class SimilarSleeveTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col)
     {
         {
-            SimilarSleeve s = sl.get(row);
+            Sleeve s = sl.get(row);
             switch (col)
             {
                 case 0:
@@ -82,7 +82,7 @@ public class SimilarSleeveTableModel extends AbstractTableModel
         return (false);
     }
 
-    public void setCollection(Collection<SimilarSleeve> list)
+    public void setCollection(Collection<Sleeve> list)
     {
         sl = new ArrayList<>(list);
         fireTableDataChanged();

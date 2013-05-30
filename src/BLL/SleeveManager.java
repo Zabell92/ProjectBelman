@@ -37,4 +37,9 @@ public class SleeveManager
         return sldb.getBySleeveId(ID);
 
     }
+
+    public ArrayList<Sleeve> getNewSimilarSleeve(int ID) throws Exception
+    {
+        return sldb.getNewSimilarSleeve(ID);
+    }
 }

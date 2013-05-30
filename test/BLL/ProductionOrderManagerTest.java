@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
  */
 public class ProductionOrderManagerTest
 {
+
     static ProductionOrderManager pomgr;
 
     public ProductionOrderManagerTest()
@@ -52,21 +53,18 @@ public class ProductionOrderManagerTest
     @Test
     public void testShowAll() throws Exception
     {
-        
+
         System.out.println("Showing test for: showall");
         try
         {
             pomgr = new ProductionOrderManager();
-        }
-        catch(FileNotFoundException ex)
+        } catch (FileNotFoundException ex)
         {
             System.out.println("Error - pomgr threw a FileNotFoundException: " + ex.getMessage());
         }
         System.out.println("Showing all produtionorder items: " + pomgr.showAll().size() + "\n");
-        
+
     }
-
-
 
     /**
      * Test of getTime method, of class ProductionOrderManager.

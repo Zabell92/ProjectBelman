@@ -26,7 +26,6 @@ public class ProductionOrderManager
     {
         podb = new ProductionOrderDBM();
     }
-    
 
     /**
      *
@@ -40,10 +39,11 @@ public class ProductionOrderManager
 
     /**
      * update the time in the database
+     *
      * @param TimeUsed
      * @param EmployeeID
      * @param ID
-     * 
+     *
      */
     public void updateTime(long TimeUsed, int EmployeeID, int ID) throws SQLException
     {
@@ -52,8 +52,7 @@ public class ProductionOrderManager
 
     /**
      *
-     * @param ID
-     * Update the Done time in the database
+     * @param ID Update the Done time in the database
      */
     public void updateIsDone(int ID) throws SQLException
     {
@@ -63,8 +62,7 @@ public class ProductionOrderManager
     /**
      *
      * @param ID
-     * @param Name
-     * update the employees in the database
+     * @param Name update the employees in the database
      */
     public void updateEmployee(int ID, String Name) throws SQLException
     {
@@ -80,5 +78,10 @@ public class ProductionOrderManager
     {
         return podb.getTime(ID);
 
+    }
+
+    public ArrayList<ProductionOrder> getSimilarOrders(double Width) throws SQLException
+    {
+        return podb.getSimilarOrders(Width);
     }
 }

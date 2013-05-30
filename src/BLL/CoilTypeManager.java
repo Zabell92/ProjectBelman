@@ -19,6 +19,7 @@ public class CoilTypeManager
 
     /**
      * creates a new coiltype databasemanager
+     *
      * @throws Exception
      */
     public CoilTypeManager() throws Exception

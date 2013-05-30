@@ -28,8 +28,6 @@ public class CoilType
 
     }
 
-   
-
     /**
      * @return the ID
      */

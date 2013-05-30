@@ -153,4 +153,39 @@ public class ProductionOrderDBM
 
         }
     }
+
+    public ArrayList<ProductionOrder> getSimilarOrders(double Width) throws SQLServerException, SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            String sql = "SELECT * FROM ProductionOrder WHERE Width <= ? AND IsDone = 0 ORDER BY DueDate";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDouble(1, Width);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<ProductionOrder> POrder = new ArrayList<>();
+
+            while (rs.next())
+            {
+                int id = rs.getInt("ID");
+                int EmployeeID = rs.getInt("EmployeeID");
+                String Porder = rs.getString("POrder");
+                Date DueDate = rs.getDate("DueDate");
+                int Quantity = rs.getInt("Quantity");
+                double width = rs.getDouble("Width");
+                int SleeveID = rs.getInt("SleeveID");
+                boolean IsDone = rs.getBoolean("IsDone");
+                int TimeUsed = rs.getInt("TimeUsed");
+
+
+                ProductionOrder po = new ProductionOrder(id, EmployeeID, Porder,
+                        DueDate, Quantity, width, SleeveID, IsDone, TimeUsed);
+                POrder.add(po);
+            }
+            return POrder;
+
+        }
+
+    }
 }
